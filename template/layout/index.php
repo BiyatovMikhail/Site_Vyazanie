@@ -41,7 +41,9 @@
       <div class="line-empty"></div>
     </div>
     <div class="row">
-      <div class="line-decorate"></div>
+      <div class="line-decorate">
+        <img src="/img/LineBigDecor11.png" style="width: 100%;">
+      </div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -89,7 +91,9 @@
       <div class="line-empty"></div>
     </div>
     <div class="row">
-      <div class="line-decorate"></div>
+      <div class="line-decorate">
+        <img src="/img/LineBigDecor22.png" style="width: 100%;">
+      </div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -131,7 +135,9 @@
       <div class="line-empty"></div>
     </div>
     <div class="row">
-      <div class="line-decorate"></div>
+      <div class="line-decorate">
+        <img src="/img/LineBigDecor33.png" style="width: 100%;">
+      </div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -158,26 +164,34 @@
             </div>
         </div>
       </div>
+      
     </div>
 
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-      
+      <div class="row">
+         <div class="line-empty"></div>
+      </div>
+      <div class="row">
+         <div class="line-decorate">
+           <img src="/img/LineBigDecor4.png" style="width: 100%;">
+         </div>
+      </div>   
 
   </div>
   <div class="section-after-content">
     <div class="container">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
         <div class="row">
-          <div class="col col-md-24">.col .col-md-24</div>
+          <div class="col col-md-24" style="background-color: sandybrown;">.col .col-md-24</div>
         
         </div>
         <div class="row">
-          <div class="col-24 col-md-4">.col .col-md-4</div>
-          <div class="col-24 col-md-7">.col .col-md-7</div>
-          <div class="col-24 col-md-2">.col .col-md-2</div>
-          <div class="col-24 col-md-4">.col .col-md-4</div>
-          <div class="col-24 col-md-7">.col .col-md-7</div>
+          <div class="col col-md-2" style="background-color: grey;">.col .col-md-4</div>
+          <div class="col col-md-3" style="background-color: chocolate;">.col .col-md-6</div>
+          <div class="col col-md" style="background-color: green;">.col .col-md-2</div>
+          <div class="col col-md-2" style="background-color: red;">.col .col-md-4</div>
+          <div class="col col-md-3" style="background-color: yellow;">.col .col-md-6</div>
         </div>
 
         <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
