@@ -59,13 +59,13 @@
               <div class="element-indent-empty">
               </div>
               <div class="element-post-title">
-                <p class="text-center text-uppercase font-weight-bold"> Наши новинки </p>
+                <p class="text-center text-uppercase font-weight-bold" style="font-family: 'Lobster', cursive;"> Наши новинки </p>
               </div>
               <div class="element-line-decorate">
                   <img src="/img/line-decor1.png" class="card-img-top" alt="..." >
               </div>
               <div class="element-post-text">
-                 <p class="text-center font-italic"> новая коллекция </p>
+                 <p class="text-center font-italic" > Новая коллекция </p>
               </div>
               <div class="element-indent-empty">
               </div>
@@ -108,7 +108,7 @@
         <div class="card" style="width: 20rem;">
            <div class="element indent">
               <div class="element-post-title">
-                <p class="element-text-title"> Наши акции </p>
+                <p class="element-text-title" style="font-family: 'Satisfy', cursive;"> Наши акции </p>
               </div>
               <div class="element-post-text">
                  <p class="element-text"> новые акции </p>
@@ -183,15 +183,15 @@
     <div class="container">
     <!-- Stack the columns on mobile by making one full-width and the other half-width -->
         <div class="row">
-          <div class="col col-md-24" style="background-color: sandybrown;">.col .col-md-24</div>
+          <div class="col" style="background-color: sandybrown;">.col .col-md-24</div>
         
         </div>
         <div class="row">
-          <div class="col col-md-2" style="background-color: grey;">.col .col-md-4</div>
-          <div class="col col-md-3" style="background-color: chocolate;">.col .col-md-6</div>
-          <div class="col col-md" style="background-color: green;">.col .col-md-2</div>
-          <div class="col col-md-2" style="background-color: red;">.col .col-md-4</div>
-          <div class="col col-md-3" style="background-color: yellow;">.col .col-md-6</div>
+          <div class="col" style="background-color: grey;">.col .col-md-4</div>
+          <div class="col-4" style="background-color: chocolate;">.col .col-md-6</div>
+          <div class="col-1" style="background-color: green;">.col .col-md-2</div>
+          <div class="col" style="background-color: red;">.col .col-md-4</div>
+          <div class="col-4" style="background-color: yellow;">.col .col-md-6</div>
         </div>
 
         <!-- Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop -->
