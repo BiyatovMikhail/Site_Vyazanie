@@ -13,4 +13,9 @@ class shop extends ControllerBase {
             "index"
         );
     }
+
+    public function category() {
+        $category = $this->request->getPath()[2];
+        var_dump($category);
+    }
 }

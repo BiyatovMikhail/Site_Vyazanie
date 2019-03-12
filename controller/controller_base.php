@@ -10,6 +10,11 @@ class ControllerBase {
         $this->controller = $value;
     }
 
+    /**
+     * @var request
+     */
+    public $request;
+
     private $render;
     /**
      * @var DB $db
@@ -20,6 +25,7 @@ class ControllerBase {
 
     public function __construct()
     {
+        $this->request = app::Current()->getRequest();
     }
 
     public function canAnonymus($action) {
