@@ -1,4 +1,8 @@
 
+.clear {
+    clear: both;
+}
+
 .main-content {
     max-width: 1400px;
     margin:0 auto;
@@ -67,4 +71,33 @@
 .product {
     float: left;
     margin: 5px 5px 5px 5px;
+}
+.product-main-images{
+
+}
+.flex-basis { 
+    flex: 1 0 50%; 
+}
+
+.product-gallery {
+    margin: 10px;
+}
+
+.product-gallery .product-main-images img {
+    width: 400px;
+}
+
+.product-gallery .product-images {
+    margin-top: 20px;
+}
+.product-gallery .product-images .product-images-cell {
+    float: left;
+    margin-right: 30px;
+}
+
+.product-gallery .product-images img {
+    width: 80px;
+}
+.bind-product-description{
+    text-align: center;
 }
