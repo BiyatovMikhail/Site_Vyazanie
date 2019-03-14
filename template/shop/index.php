@@ -7,7 +7,7 @@
           <div class="row">
                 <div class="col">
                         <nav class="nav flex-column">
-                        <a class="nav-link active" href="#">Active</a>
+                        <a class="nav-link active" href="/shop/good/stock">Active</a>
                         <a class="nav-link" href="/shop/category/instock">В наличии</a>
                         <a class="nav-link" href="/shop/category/headwear">Головные уборы/Шапки/Шарфы</a>
                         <a class="nav-link" href="/shop/category/mittens">Варежки/Митенки</a>

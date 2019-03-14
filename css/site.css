@@ -90,9 +90,17 @@
 .product-gallery .product-images {
     margin-top: 20px;
 }
-.product-gallery .product-images .product-images-cell {
+.all-product-images{
     float: left;
-    margin-right: 30px;
+}
+.card-product-images{
+    margin-top: 5px;
+    margin-right: 5px;
+    width: 4rem; height: 5rem;
+}
+.content-card-product-images{
+    background-size:cover !important;
+    width:100%; height:100%;
 }
 
 .product-gallery .product-images img {
@@ -100,4 +108,23 @@
 }
 .bind-product-description{
     text-align: center;
+}
+
+.product-description {
+    padding-top: 20px;
+}
+
+.name-product{
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.price-product{
+    font-size: 12px;
+    margin-bottom: 20px;
+}
+.text-product{
+    margin-bottom: 20px;
+}
+.shop-separator{
+    line-height: 37px;
 }

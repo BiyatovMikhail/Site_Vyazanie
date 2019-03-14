@@ -39,11 +39,8 @@
 </div>
 
 <script>
-$('#myTab a').click(function (e) {
-  e.preventDefault()
-  $(this).tab('show')
-})
 
+$('.navmy .nav-link').not(".active").mouseover(function() { $(this).addClass("active"); }).mouseleave(function() { $(this).removeClass("active"); });
 
 </script>
 
