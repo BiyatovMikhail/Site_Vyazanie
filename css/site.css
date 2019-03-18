@@ -128,3 +128,16 @@
 .shop-separator{
     line-height: 37px;
 }
+.hpost-text{
+    text-align: center;
+}
+.post-text-content{
+    text-align: center;
+}
+.card-img-top-my{
+    display: flex;
+    justify-content: center;
+}
+.card-img-top-my img{
+    align-self:center;
+}

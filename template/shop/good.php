@@ -15,7 +15,7 @@
                         <a class="nav-link" href="/shop/category/childrenalbum">Детский альбом</a>
                         <a class="nav-link" href="/shop/category/dresses">Платья/Юбки</a>
                         <a class="nav-link" href="/shop/category/handbags">Сумочки/Клатчи/Кошельки</a>
-                        <a class="nav-link" href="/shop/category/promotions">Акции</a>
+                        <a class="nav-link" href="/shop/promotions">Акции</a>
                         <a class="nav-link" href="/shop/category/ideasphoto">Идей из интернета для фотосессий</a>
                         <a class="nav-link" href="/shop/category/ideasinspiration">Идей из интернета для вдохновения</a>                        
                         <a class="nav-link disabled" href="#">Disabled</a>
@@ -108,6 +108,7 @@
                                 <div class="product-description">
                                     <h1 class="name-product"> Шапка коричневая</h1>
                                     <div class="price-product"> 2000p </div>
+                                    <div class="price-product-discount"> </div>
                                     <div class="text-product"> 
                                         <strong> Масса </strong>
                                         <br>

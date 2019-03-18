@@ -34,4 +34,13 @@ class shop extends ControllerBase {
             "good"
         );
     }
+    public function promotions() {
+       
+        return $this->Render()->WriteHTML(
+            "MODEL",
+            "shop",
+            "promotions"
+        );
+    }
+    
 }
