@@ -29,79 +29,35 @@
                 <div class="col-10">
                         <div class="shop-contents-main"> 
                                 <div class="card product" style="width: 18rem; height: 30rem">
-                                        <div class="content-card-product-images" style="background:url(/img/images4.jpg); "></div>
-                                       
+                                        <div class="content-main-card-product-images" style="background:url(/img/images4.jpg); "></div>
                                         <div class="card-body">
                                                 <h5 class="card-title product-name">Название карточки1</h5>
-                                                <p class="card-text product-price">2000р.</p>
+                                                <p class="card-text product-price-old"> 2000р.</p>
+                                                <p class="card-text product-price-discount">1500р.</p>
                                                 <a href="#" class="btn btn-primary">Посмотреть</a>
                                                 <a href="#" class="btn btn-primary">В корзину</a>    
                                         </div>
                                 </div>
                                 <div class="card product" style="width: 18rem; height: 30rem">
-                                        <img src="/img/images1.jpg" class="card-img-top-my" alt="...">
+                                        <div class="content-main-card-product-images" style="background:url(/img/images3.jpg); "></div>
                                         <div class="card-body">
                                                 <h5 class="card-title product-name">Название карточки2</h5>
-                                                <p class="card-text product-price">2000р.</p>
+                                                <p class="card-text product-price-old"> 2000р.</p>
+                                                <p class="card-text product-price-discount">1500р.</p>
                                                 <a href="#" class="btn btn-primary">Посмотреть</a>
                                                 <a href="#" class="btn btn-primary">В корзину</a>    
                                         </div>
                                 </div>
-                                <div class="card product" style="width: 18rem; height: 30rem" >
-                                        <img src="/img/images2.jpg" class="card-img-top-my" alt="...">
+                                <div class="card product" style="width: 18rem; height: 30rem">
+                                        <div class="content-main-card-product-images" style="background:url(/img/images2.jpg); "></div>
                                         <div class="card-body">
                                                 <h5 class="card-title product-name">Название карточки3</h5>
-                                                <p class="card-text product-price">2000р.</p>
+                                                <p class="card-text product-price-old"> 2000р.</p>
+                                                <p class="card-text product-price-discount">1500р.</p>
                                                 <a href="#" class="btn btn-primary">Посмотреть</a>
                                                 <a href="#" class="btn btn-primary">В корзину</a>    
                                         </div>
-                                </div>
-                                <div class="card product" style="width: 18rem;">
-                                        <img src="/img/images1.jpg" class="card-img-top-my" alt="...">
-                                        <div class="card-body">
-                                                <h5 class="card-title product-name">Название карточки4</h5>
-                                                <p class="card-text product-price">2000р.</p>
-                                                <a href="#" class="btn btn-primary">Посмотреть</a>
-                                                <a href="#" class="btn btn-primary">В корзину</a>    
-                                        </div>
-                                </div>
-                                <div class="card product" style="width: 18rem;">
-                                        <img src="/img/images2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                                <h5 class="card-title product-name">Название карточки5</h5>
-                                                <p class="card-text product-price">2000р.</p>
-                                                <a href="#" class="btn btn-primary">Посмотреть</a>
-                                                <a href="#" class="btn btn-primary">В корзину</a>    
-                                        </div>
-                                </div>
-                                <div class="card product" style="width: 18rem;">
-                                        <img src="/img/images1.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                                <h5 class="card-title product-name">Название карточки6</h5>
-                                                <p class="card-text product-price">2000р.</p>
-                                                <a href="#" class="btn btn-primary">Посмотреть</a>
-                                                <a href="#" class="btn btn-primary">В корзину</a>    
-                                        </div>
-                                </div>
-                                <div class="card product" style="width: 18rem;">
-                                        <img src="/img/images2.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                                <h5 class="card-title product-name">Название карточки7</h5>
-                                                <p class="card-text product-price">2000р.</p>
-                                                <a href="#" class="btn btn-primary">Посмотреть</a>
-                                                <a href="#" class="btn btn-primary">В корзину</a>    
-                                        </div>
-                                </div>
-                                <div class="card product" style="width: 18rem;">
-                                        <img src="/img/images1.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                                <h5 class="card-title product-name">Название карточки8</h5>
-                                                <p class="card-text product-price">2000р.</p>
-                                                <a href="#" class="btn btn-primary">Посмотреть</a>
-                                                <a href="#" class="btn btn-primary">В корзину</a>    
-                                        </div>
-                                </div>
-                               
+                                </div>                           
                         </div>
                 </div>
          </div>

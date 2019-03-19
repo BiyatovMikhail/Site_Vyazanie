@@ -23,10 +23,10 @@
     <a class="nav-link" href="#">Полезные статьи</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Контакты</a>
+    <a class="nav-link" href="/contacts">Контакты</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Корзина</a>
+    <a class="nav-link" href="/basket">Корзина</a>
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>

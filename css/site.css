@@ -134,10 +134,22 @@
 .post-text-content{
     text-align: center;
 }
-.card-img-top-my{
-    display: flex;
-    justify-content: center;
+.product-price-old{
+    text-align: center;
+    text-decoration: line-through;
 }
-.card-img-top-my img{
-    align-self:center;
+.product-price-discount{
+    text-align: center;  
+}
+.content-main-card-product-images{
+    background-size:cover !important;
+    width:100%; height:100%;
+}
+.card-product-shop{
+    width: 18rem;
+    height: 30rem;
+}
+.content-card-product-shop-images{
+    background-size:cover !important;
+    width:100%; height:100%;
 }
