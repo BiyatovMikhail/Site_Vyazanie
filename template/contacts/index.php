@@ -2,7 +2,8 @@
 <div class="contacts">
     <div class="container">
          <div class="row">
-            <div class="col-24">
+            
+            <div class="col-6" style="margin:0 auto;">
             <div class="post-contacts">
                 <h2 class="hpost-text"> Контакты </h2>
                 <p class="post-text-content">
@@ -18,23 +19,24 @@
                     _________
 
                 </div>
+               
+                <div class="form-message">
                 <br>
                 <strong> Оставить сообщение  </strong>
                 <br>
-                <div class="form-message">
                     <form>
                         <div class="form-group">
-                            <label for="exampleInputEmail1">Email address</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <label for="exampleInputEmail1">Ваш еmail</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите email">
+                            
                         </div>
                         <div class="form-group">
                             <label for="InputPhone1">Телефон</label>
-                            <input type="text" class="form-control" id="InputPhone1" placeholder="Телефон">
+                            <input type="text" class="form-control" id="InputPhone1" placeholder="введите телефон">
                         </div>
                         <div class="form-group">
-                            <label for="exampleInputPassword1">Text</label>
-                            <textarea class="form-control" id="textAreaMessage"></textarea>
+                            <label for="textAreaMessage">Cообщение</label>
+                            <textarea class="form-control" id="textAreaMessage" placeholder="ваше сообщение"></textarea>
                             
                         </div>
                         
@@ -49,8 +51,10 @@
 
                 </div>
             </div>
+            
             </div>
+           
         </div>
-
+        
     </div>
 </div>

@@ -30,3 +30,88 @@
     <button id="order" class="btn btn-info">Оформить заказ</button>
 </div>
 </div>
+
+
+
+<div class="container">
+<table class="table table-hover table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Имя</th>
+      <th scope="col">Фамилия</th>
+      <th scope="col">Username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+    </tr>
+  </tbody>
+</table>
+
+<table class="table table-hover table-bordered">
+  <thead class="thead-light">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Артикул</th>
+      <th scope="col">Название</th>
+      <th scope="col">Фото</th>
+      <th scope="col">цена</th>
+      <th scope="col">количество</th>
+      <th scope="col">сумма</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <td>Mark</td>
+      <td>Otto</td>
+      <td>@mdo</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th scope="row">2</th>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <td>Jacob</td>
+      <td>Thornton</td>
+      <td>@fat</td>
+      <th></th>
+    </tr>
+    <tr>
+      <th scope="row">3</th>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+      <td>Larry</td>
+      <td>the Bird</td>
+      <td>@twitter</td>
+      <th></th>
+    </tr>
+    
+    <tr><td colspan="8"><img src="img/loading.gif" alt=""></td></tr>
+   
+  </tbody>
+</table>
+</div>
