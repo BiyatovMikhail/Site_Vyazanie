@@ -1,5 +1,5 @@
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
@@ -16,7 +16,8 @@
 	<p class="text-center">Давайте начнем </p>
 	<p>
 		<a href="" class="btn btn-block btn-twitter"> <i class="fab fa-twitter"></i>   Войти через Twitter</a>
-        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Войти через facebook</a>
+        <a href="" class="btn btn-block btn-facebook"> <i class="fab fa-facebook-f"></i>   Войти через Facebook</a>
+		<a href="" class="btn btn-block btn-google-plus"> <i class="fab fa-google-plus-g"></i>   Войти через Google+</a>
         <a href="" class="btn btn-block btn-vk"> <i class="fab fa-vk"></i>   Войти через Вконтакте</a>
         <a href="" class="btn btn-block btn-odnoklassniki"> <i class="fab fa-odnoklassniki"></i></i>   Войти через Одноклассники</a>
       

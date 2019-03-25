@@ -3,14 +3,20 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login for Form 1</h3>
                     <div class="social-login">
-                        <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
-                        <br>
-                        <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+                        <p>
+                            <a href="" class="btn social-btn btn-twitter"> <i class="fab fa-twitter"></i>   Войти через Twitter</a>
+                            <a href="" class="btn social-btn btn-facebook"> <i class="fab fa-facebook-f"></i>   Войти через Facebook</a>
+                            <a href="" class="btn social-btn btn-google-plus"> <i class="fab fa-google-plus-g"></i>   Войти через Google+</a>
+                            <a href="" class="btn social-btn btn-vk"> <i class="fab fa-vk"></i>   Войти через Вконтакте</a>
+                            <a href="" class="btn social-btn btn-odnoklassniki"> <i class="fab fa-odnoklassniki"></i></i>   Войти через Одноклассники</a>
+                        </P>
                     </div>
                     <form>
                         <div class="form-group">
@@ -29,7 +35,6 @@
                         </div>
                         <h2>Вы не имеете аккаунта?</h2>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Зарегестрироваться" />
                             <a class="btnSubmit" href="/loginform/registerform">Зарегестрироваться</a>
                         </div>
                     </form>

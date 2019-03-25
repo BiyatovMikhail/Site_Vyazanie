@@ -17,7 +17,7 @@
     <a class="nav-link" href="/customerservice">Доставка и оплата</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Блог</a>
+    <a class="nav-link" href="/blog2">Блог</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Полезные статьи</a>

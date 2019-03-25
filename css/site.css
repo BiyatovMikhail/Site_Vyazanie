@@ -168,6 +168,11 @@
     margin-bottom: 3%;
 }
 
+
+
+
+
+
 .login-container{
     margin-top: 5%;
     margin-bottom: 5%;
@@ -201,8 +206,6 @@
     font-weight: 600;
     text-decoration: none;
 }
-.facebook-btn{  background-color:#3C589C; }
-.google-btn{ background-color: #DF4B3B; }
 .social-btn{
     margin-top: 2px;
     margin-bottom: 2px;
@@ -251,7 +254,10 @@
     background-color: #ee8208;
     color: #fff;
 }
-
+.btn-google-plus{
+    background-color: #dd4b39;
+    color: #fff;
+}
 
 
 
