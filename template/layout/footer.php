@@ -16,8 +16,11 @@ this is footer
                
 
         </div>
-        <div class="footer-contacts">
-        
+        <div class="footer-contacts" style="text-align: center;">
+        +7-910-556-65-66 | s@bk.ru
+        </div>
+        <div class="copyright" style="text-align: center;">
+             сайт создан Biyatov
         </div>
 
     </div>

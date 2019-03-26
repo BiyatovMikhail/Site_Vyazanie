@@ -153,6 +153,14 @@
     background-size:cover !important;
     width:100%; height:100%;
 }
+.card-home-main{
+    width: 20rem;
+    height: 30rem;
+}
+.content-card-home-main-images{
+    background-size:cover !important;
+    width:100%; height:100%;
+}
 .post-contacts{
     margin:0 auto;
 
@@ -258,6 +266,30 @@
     background-color: #dd4b39;
     color: #fff;
 }
+.footer-content{
+    background-color: #dd4b39;
+    color: #fff;
+}
 
 
 
+
+
+.center-image {
+    height: 160px; /*can be anything*/
+    width: 160px; /*can be anything*/
+    position: relative;
+}
+
+.center-image img {
+    max-height: 100%;  
+    max-width: 100%; 
+    width: auto;
+    height: auto;
+    position: absolute;  
+    top: 0;  
+    bottom: 0;  
+    left: 0;  
+    right: 0;  
+    margin: auto;
+}

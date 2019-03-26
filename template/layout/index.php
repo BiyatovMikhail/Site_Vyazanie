@@ -23,6 +23,9 @@
     <a class="nav-link" href="#">Полезные статьи</a>
   </li>
   <li class="nav-item">
+    <a class="nav-link" href="#">Форум</a>
+  </li>
+  <li class="nav-item">
     <a class="nav-link" href="/contacts">Контакты</a>
   </li>
   <li class="nav-item">
