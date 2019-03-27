@@ -20,7 +20,7 @@
     <a class="nav-link" href="/blog2">Блог</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="#">Полезные статьи</a>
+    <a class="nav-link" href="/usefularticles">Полезные статьи</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="#">Форум</a>
