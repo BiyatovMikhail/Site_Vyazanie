@@ -9,6 +9,7 @@
 
 -->
 
+<?php var_dump($MODEL); exit(); ?>
 
 
 this is index
@@ -20,6 +21,7 @@ this is index
       <div class="line-decorate">
         <img src="/img/linebigdecor5.png" style="width: 80%;">
       </div>
+      <div class="line-testmy"></div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -69,6 +71,7 @@ this is index
       <div class="line-decorate">
         <img src="/img/linebigdecor6.png" style="width: 100%;">
       </div>
+      <div class="line-testmy"></div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -120,6 +123,7 @@ this is index
       <div class="line-decorate">
         <img src="/img/LineBigDecor33.png" style="width: 100%;">
       </div>
+      <div class="line-testmy"></div>
     </div>
     <div class="row">
       <div class="col-sm">
@@ -157,6 +161,7 @@ this is index
       <div class="row">
          <div class="line-decorate">
            <img src="/img/LineBigDecor11.png" style="width: 70%;">
+           <div class="line-testmy"></div>
          </div>
       </div>   
 

@@ -74,7 +74,9 @@ class ControllerBase {
     public function getHeaderCSS() {
         return [
             "/css/bootstrap.css",
-            "/css/main.css"
+            "/css/site.css",
+            "https://fonts.googleapis.com/css?family=Lobster",
+            "https://fonts.googleapis.com/css?family=Lobster|Satisfy"
         ];
     }
 

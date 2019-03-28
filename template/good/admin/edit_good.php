@@ -33,8 +33,8 @@
     <td><input name="params[name][]" value="<?= $value["name"] ?>" /></td>
     <td><input name="params[value][]" value="<?= $value["value"] ?>" /></td>
     <td>
-        <button onclick="addLine(this); return false;">Add</button>
-        <button onclick="removeLine(this); return false;">Remove</button>
+        <button type="button" onclick="addLine(this); return false;">Add</button>
+        <button type="button" onclick="removeLine(this); return false;">Remove</button>
     </td>
 </tr>
 <?php endforeach; ?>
@@ -42,12 +42,24 @@
     <td><input name="params[name][]" value="" /></td>
     <td><input name="params[value][]" value="" /></td>
     <td>
-        <button onclick="addLine(this); return false;">Add</button>
-        <button onclick="removeLine(this); return false;">Remove</button>
+        <button type="button" onclick="addLine(this); return false;">Add</button>
+        <button type="button" onclick="removeLine(this); return false;">Remove</button>
     </td>
 </tr>
 
 </table>
+
+<script>
+    function addLine(element) {
+        var el = $(element).parent().parent().clone();
+        el.find("input").val("");
+        $(element).parent().parent().after(el);
+    }
+
+    function removeLine(element) {
+        $(element).parent().parent().detach();
+    }
+</script>
 
         <button type="submit" class="btn btn-primary">Отправить</button>
     </form>

@@ -3,7 +3,7 @@
         <br>
         <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card border-secondary mb-3">
                     <div class="card-header">
                     Featured
                     </div>
@@ -22,10 +22,10 @@
                     Featured
                     </div>
                     <div class="row no-gutters">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                         <img src="/img/images4.jpg" class="card-img" alt="..." style="max-width: 150px; max-hight: 200px;">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                         <div class="card-body">
                             <h5 class="card-title">Название карточки</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -36,11 +36,10 @@
                     </div>
                     </div>
                 </div>
-            </div>
-            </div>
-<div class="row">
+            </div>          
+        <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card border-secondary mb-3">
                     <div class="card-header">
                     Featured
                     </div>
@@ -52,17 +51,17 @@
                 </div>
             </div>
             </div>
-<div class="row">
+        <div class="row">
             <div class="col">
                 <div class="card border-secondary mb-3" >
                     <div class="card-header">
                     Featured
                     </div>
                     <div class="row no-gutters">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                         <img src="/img/images3.jpg" class="card-img" alt="..." style="max-width: 150px; max-hight: 200px;">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                         <div class="card-body">
                             <h5 class="card-title">Название карточки</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -74,10 +73,9 @@
                     </div>
                 </div>
             </div>
-            </div>
-<div class="row">
+        <div class="row">
             <div class="col">
-                <div class="card">
+                <div class="card border-secondary mb-3">
                     <div class="card-header">
                     Featured
                     </div>
@@ -89,17 +87,17 @@
                 </div>
             </div>
             </div>
-<div class="row">
+        <div class="row">
             <div class="col">
                 <div class="card border-secondary mb-3" >
                     <div class="card-header">
                     Featured
                     </div>
                     <div class="row no-gutters">
-                        <div class="col-md-4">
+                        <div class="col-md-2">
                         <img src="/img/images2.jpg" class="card-img" alt="..." style="max-width: 150px; max-hight: 200px;">
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-10">
                         <div class="card-body">
                             <h5 class="card-title">Название карточки</h5>
                             <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
@@ -111,8 +109,7 @@
                     </div>
                 </div>
             </div>
-            </div>
-<div class="row">
+        <div class="row">
             <div class="col">
             </div>
         </div>
