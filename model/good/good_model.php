@@ -132,6 +132,15 @@ class good_model extends ModelBase {
         return $good["id"];
     }
 
+    public function deleteGood($id) {
+        if ($id > 0) {
+            $this->db->update("DELETE FROM `good` WHERE `good`.`id` = :id", [ "id" => $id ]);
+            return true;
+        }
+        return false;
+    }
+
+
     public function saveParams($id, $params) {
         $this->db->update("DELETE FROM `good_info` WHERE `good_id` = :id;", [ "id" => $id ]);
         foreach ($params["name"] as $k => $v)
@@ -177,5 +186,13 @@ class good_model extends ModelBase {
         if ($id === false)
             return false;
         return $category["id"];
+    }
+
+    public function deleteGoodCategory($id) {
+        if ($id > 0) {
+            $this->db->update("DELETE FROM `good_category` WHERE `good_category`.`id` = :id", [ "id" => $id ]);
+            return true;
+        }
+        return false;
     }
 }

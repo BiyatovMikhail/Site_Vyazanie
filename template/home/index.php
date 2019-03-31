@@ -9,7 +9,7 @@
 
 -->
 
-<?php var_dump($MODEL); exit(); ?>
+<!-- <?php var_dump($MODEL); exit(); ?> -->
 
 
 this is index
