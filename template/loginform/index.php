@@ -18,10 +18,11 @@
                             <a href="" class="btn social-btn btn-odnoklassniki"> <i class="fab fa-odnoklassniki"></i></i>   Войти через Одноклассники</a>
                         </P>
                     </div>
-                    <form class="needs-validation" novalidate>
+                    <form class="needs-validation" method="POST" action="/loginform/logIn" novalidate>
+                      <input type="hidden" name="action" value="login" />
                         <div class="form-group" style="position: relative;">
                             <label for="loginvalidationTooltip01">Ваш еmail</label>
-                            <input type="text" class="form-control" id="loginvalidationTooltip01" placeholder="Your Email *" value="" required>
+                            <input type="text"  class="form-control" id="loginvalidationTooltip01" name="login" placeholder="Your Email *" value="" required>
                             <div class="valid-tooltip">
                                 Отлично!
                             </div>
@@ -31,7 +32,7 @@
                         </div>
                         <div class="form-group" style="position: relative;">
                             <label for="registerpasswordvalidationTooltip02">Ваш пароль</label>
-                            <input type="password" class="form-control" id="registerpasswordvalidationTooltip02" placeholder="Your Password *" value="" required/>
+                            <input type="password" name="password" class="form-control" id="registerpasswordvalidationTooltip02" placeholder="Your Password *" value="" required/>
                             <div class="invalid-tooltip">
                                  Логин и пароль не совпадают! Попробуйте еще раз.
                             </div>

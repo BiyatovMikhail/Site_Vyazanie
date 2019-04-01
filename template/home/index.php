@@ -9,9 +9,6 @@
 
 -->
 
-<!-- <?php var_dump($MODEL); exit(); ?> -->
-
-
 this is index
   <div class="container">
     <div class="row">

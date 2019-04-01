@@ -8,7 +8,6 @@ class home extends ControllerBase {
     // }
 
     protected function index() {
-
         /** @var good_model $model */
         $model = $this->getModel("good", "good");
 
@@ -26,7 +25,7 @@ class home extends ControllerBase {
         $item["items"] = $model->getGoodsByCategory(2);
 
         $data[] = $item;
-
+        
         return $this
                 ->Render()
                 ->WriteHTML($data, "home", "index");

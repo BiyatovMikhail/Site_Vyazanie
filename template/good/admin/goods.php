@@ -24,14 +24,15 @@
             ]) ?> 
         </p>
         <a href="/admin/good/edit_good/<?= $v["id"] ?>" class="btn btn-primary">Редактировать</a>
-        <a href="/admin/good/edit_good/<?= $v["id"] ?>" class="btn btn-primary">Удалить</a>
+        <a href="/admin/good/del_good/<?= $v["id"] ?>" class="btn btn-primary">Удалить</a>
         <button type="button" onclick="deleteGood(this); return false;">Удалить</button>
     </div>
 </div>
 <?php endforeach; ?>
 
 <script>
-    function deleteGood(element_id) {
+    function delood(element_id) {
         $(element_id).parent().parent().detach();
+        <? deleteGood(element_id); ?>
     }
 </script>

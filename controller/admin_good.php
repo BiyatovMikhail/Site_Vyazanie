@@ -76,4 +76,12 @@ class admin_good extends ControllerBase {
         return $this->index();
     }
 
+    public function del_good(){
+        $id = $this->getFromIndex($this->path, 3, -1);
+        // $model = $this->model->getGood($id);
+        $this->model->deleteGood($id);
+
+        return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+    }
+
 }
