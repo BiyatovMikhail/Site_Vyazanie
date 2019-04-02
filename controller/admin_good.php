@@ -84,4 +84,15 @@ class admin_good extends ControllerBase {
         return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
     }
 
+    public function del_cat(){
+        $id = $this->getFromIndex($this->path, 3, -1);
+        if (count($this->model->getGoodsByCategory($id)) > 0) 
+            return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+            
+        $this->model->deleteGoodCategory($id);
+
+        return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+    }
+
+
 }

@@ -13,6 +13,14 @@ class pic_model extends ModelBase {
         return $model;
     }
 
+    public function deletePic($id) {
+        if ($id > 0) {
+            $this->db->update("DELETE FROM `pic` WHERE `pic`.`id` = :id", [ "id" => $id ]);
+            return true;
+        }
+        return false;
+    }
+
     public function One($module, $id) {
         $data = $this->All($module, $id);
         if (count($data) == 0) {

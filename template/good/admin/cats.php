@@ -13,6 +13,7 @@
         <p class="card-text"><?= $v["description"] ?></p>
         <a href="/admin/good/edit_cat/<?= $v["id"] ?>" class="btn btn-primary">Редактировать</a>
         <a href="/admin/good/show_good/<?= $v["id"] ?>" class="btn btn-primary">Товары</a>
+        <a href="/admin/good/del_cat/<?= $v["id"] ?>" class="btn btn-primary">Удалить</a>
     </div>
 </div>
 <?php endforeach; ?>

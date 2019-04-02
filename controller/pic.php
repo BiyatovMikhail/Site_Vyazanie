@@ -10,10 +10,22 @@ class pic extends ControllerBase {
      * @var pic_model $model
      */
     private $model;
+    private $path;
 
     public function __construct()
     {
         $this->model = $this->getModel("pic");
+        $this->path  = app::Current()->getRequest()->getPath();
+    }
+
+    public function del() {
+        $id = $this->getFromIndex($this->path, 2, -1);
+
+        if ($id == -1)
+            return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+
+        $this->model->deletePic($id);
+        return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
     }
 
     public function one() {
