@@ -31,14 +31,17 @@ class pic extends ControllerBase {
     public function one() {
         $pic = $this->model->One($this->params["module"], $this->params["id"]);
         return $this->Render()->WriteHTML(
-            $pic, "pic", "one"
+            ["pic" => $pic, "del" => false], "pic", "one"
         );
     }
 
     public function all() {
+        $del = false;
+        if (isset($this->params["del"])) $del = $this->params["del"];
+        
         $pics = $this->model->All($this->params["module"], $this->params["id"]);
         return $this->Render()->WriteHTML(
-            $pics, "pic", "all"
+            ["pics" => $pics, "del" => $del], "pic", "all"
         );
     }
 

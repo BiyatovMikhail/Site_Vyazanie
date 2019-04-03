@@ -26,6 +26,58 @@
             <label for="inputvalue">Описание</label>
             <?= $this->writeHTML(["name" => "description", "value" => $v["description"]], "shared", "editor") ?>
         </div>
+        <div class="form-group">
+            <label for="inputprice">Цена</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">₽</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+               
+                <input value="<?= $v["price"] ?>" type="number" step="0.01" min="0" class="form-control" id="inputprice" name="price" placeholder="Введите Цену товара">
+            </div>
+        </div>
+        <div class="form-group">
+        <label for="inputperdiscount">Скидка в процентах</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">%</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+                
+                <input value="<?= $v["per_discount"] ?>" type="number" step="0.01" min="0" class="form-control" id="inputperdiscount" name="per_discount" placeholder="Введите процент скидки">
+            </div>
+        </div>
+        <div class="form-group">
+        <label for="inputpricediscount">Цена</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">₽</span>
+                    <span class="input-group-text">0.00</span>
+                </div>
+               
+                <input value="<?= $v["price_discount"] ?>" type="number" step="0.01" min="0" class="form-control" id="inputpricediscount" name="price_discount" placeholder="Введите Цену товара со скидкой">
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" name="is_discount" type="checkbox" value="1" id="Check1isdiscount">
+                <label class="form-check-label" for="Check1isdiscount">
+                    Если со скидкой поставить чекбокс!
+                </label>
+            </div>
+        </div>
+        <div class="form-group">
+        <label for="inputcountgood">Количество</label>
+            <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  
+                    <span class="input-group-text">Кол-во</span>
+                </div>
+                
+                <input value="<?= $v["count_good"] ?>" type="number" step="1" min="0" class="form-control" id="inputcountgood" name="count_good" placeholder="Введите количество товара">
+            </div>
+        </div>
         <table>
 
 <?php foreach($MODEL["params"] as $value): ?>
@@ -69,8 +121,10 @@
     <p> 
         <?= $this->drawRoute("pic", "all", [
             "module" => "good",
-            "id" => $v["id"]
+            "id" => $v["id"],
+            "del" => true
         ]) ?> 
+
     </p>
 
     <p> 

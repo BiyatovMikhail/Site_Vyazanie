@@ -39,7 +39,12 @@ class good_model extends ModelBase {
             "id" => -1,
             "name" => "",
             "description" => "",
-            "category_id" => ""
+            "category_id" => "",
+            "price" => "",
+            "per_discount" => "",
+            "price_discount" => "",
+            "is_discount" => "",
+            "count_good" => ""
         ];
 
         $good["params"] = [];
@@ -95,11 +100,17 @@ class good_model extends ModelBase {
     private function insertGood($good) {
      
         
-        $id = $this->db->create("INSERT INTO `good` (`name`, `description`, `category_id`) VALUES (:name, :description, :category_id)", 
+        $id = $this->db->create("INSERT INTO `good` (`name`, `description`, `category_id`, `price`, `per_discount`, `price_discount`, `is_discount`, `count_good`) 
+                                VALUES (:name, :description, :category_id, :price, :per_discount, :price_discount, :is_discount, :count_good)", 
         [
             "name" => $good["name"],
             "description" => $good["description"],
-            "category_id" => $good["category_id"]
+            "category_id" => $good["category_id"],
+            "price" => $good["price"],
+            "per_discount" => $good["per_discount"],
+            "price_discount" => $good["price_discount"],
+            "is_discount" => $good["is_discount"],
+            "count_good" => $good["count_good"]
         ]);
      
             
@@ -112,16 +123,28 @@ class good_model extends ModelBase {
     }
 
     private function updateGood($good) {
+        if (!isset($good["is_discount"])) $good["is_discount"] = 0;
+        if (!isset($good["count_good"]) || $good["count_good"] == "") $good["count_good"] = 0;
         $result = $this->db->update("UPDATE `good` 
                                         SET `name` = :name, 
                                             `description` = :description,
-                                            `category_id` = :category_id
+                                            `category_id` = :category_id,
+                                            `price` = :price,
+                                            `per_discount` = :per_discount,
+                                            `price_discount` = :price_discount,
+                                            `is_discount` = :is_discount,
+                                            `count_good` = :count_good
                                                 WHERE 
                                             `good`.`id` = :id ",
                                             [
                                                 "name" => $good["name"],
                                                 "description" => $good["description"],
                                                 "category_id" => $good["category_id"],
+                                                "price" => $good["price"],
+                                                "per_discount" => $good["per_discount"],
+                                                "price_discount" => $good["price_discount"],
+                                                "is_discount" => $good["is_discount"],
+                                                "count_good" => $good["count_good"],
                                                 "id" => $good["id"]
                                             ]);
         if ($result === false)
