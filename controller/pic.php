@@ -35,6 +35,11 @@ class pic extends ControllerBase {
         );
     }
 
+    public function onesrc() {
+        $pic = $this->model->One($this->params["module"], $this->params["id"]);
+        return $pic["link"];
+    }
+
     public function all() {
         $del = false;
         if (isset($this->params["del"])) $del = $this->params["del"];

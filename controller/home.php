@@ -15,14 +15,14 @@ class home extends ControllerBase {
         
         $item = [];
         $item["category"] = "Главная";
-        $item["items"] = $model->getGoodsByCategory(1);
+        $item["items"] = $model->getGoodsByCategory(2);
         
         $data[] = $item;
         //array_push($data, $item);
 
         $item = [];
         $item["category"] = "Акции";
-        $item["items"] = $model->getGoodsByCategory(2);
+        $item["items"] = $model->getGoodsByCategory(3);
 
         $data[] = $item;
         
