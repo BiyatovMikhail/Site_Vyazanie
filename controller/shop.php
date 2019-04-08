@@ -15,8 +15,13 @@ class shop extends ControllerBase {
     }
 
     public function category() {
-        // $category = $this->request->getPath()[2];
-        // var_dump($category);
+        $category = $this->request->getPath()[2];
+
+        /** @var good_model $model */
+        $model = $this->getModel("good", "good");
+        $goods = $model->getGoodsByCategory($category);
+
+        var_dump($goods); exit();
 
         return $this->Render()->WriteHTML(
             "MODEL",

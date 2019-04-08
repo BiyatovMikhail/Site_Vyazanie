@@ -12,17 +12,33 @@ class home extends ControllerBase {
         $model = $this->getModel("good", "good");
 
         $data = [];
+
+        $ids = [];
         
         $item = [];
         $item["category"] = "Главная";
-        $item["items"] = $model->getGoodsByCategory(2);
+        $item["items"] = $model->getGoodsByCategory(2, 2);
+
+        foreach ($item["items"] as $value) {
+            $ids[] = $value["id"];
+        }
         
         $data[] = $item;
         //array_push($data, $item);
 
         $item = [];
         $item["category"] = "Акции";
-        $item["items"] = $model->getGoodsByCategory(3);
+        $item["items"] = $model->getGoodsByCategory(3, 2);
+
+        foreach ($item["items"] as $value) {
+            $ids[] = $value["id"];
+        }
+
+        $data[] = $item;
+
+        $item = [];
+        $item["category"] = "Все товары";
+        $item["items"] = $model->getGoodAllRand($ids);
 
         $data[] = $item;
         

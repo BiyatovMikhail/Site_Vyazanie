@@ -9,7 +9,7 @@
 
 -->
 
-<?php //var_dump($MODEL); ?>
+<?php //var_dump($MODEL[1]); exit(); ?>
 
 
 
@@ -38,7 +38,7 @@ this is index
     <?= $one ?>
 
     <div class="col-sm">
-      <div class="card card card-home-main" >
+      <div class="card" style="width: 20rem;" >
             <div class="element-indent-empty">
             </div>
             <div class="element-post-title">
@@ -50,10 +50,10 @@ this is index
             <div class="element-post-text">
                <p class="text-center font-italic" > Новая коллекция </p>
             </div>
-            <div class="element-indent-empty">
-            </div>
             <div class="element-post-button">
                 <button type="button" class="btn btn-outline-secondary">Перейти в магазин</button>
+            </div>
+            <div class="element-indent-empty">
             </div>
           
       </div>
@@ -85,7 +85,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
   <div class="row">
     <?= $one ?>
     <div class="col-sm">
-      <div class="card card-home-main" >
+      <div class="card" style="width: 20rem;" >
           <div class="element-indent-empty">
           </div>
          <div class="element indent">
@@ -113,6 +113,14 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
   </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
+<?php 
+
+$oneall = $this->WriteHTML($MODEL[2]["items"][0], "home", "goodall");
+$twoall = $this->WriteHTML($MODEL[2]["items"][1], "home", "goodall");
+$threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
+
+?> 
+
   <div class="row">
     <div class="line-empty"></div>
   </div>
@@ -123,30 +131,10 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
     <div class="line-testmy"></div>
   </div>
   <div class="row">
-    <div class="col-sm">
-      <div class="card card-home-main" >
-      <div class="content-card-home-main-images" style="background:url(/img/images5.jpg); "></div>
-         <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card card-home-main" >
-      <div class="content-card-home-main-images" style="background:url(/img/images6.jpg); "></div>
-         <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-         </div>
-      </div>
-    </div>
-    <div class="col-sm">
-      <div class="card card-home-main">
-      <div class="content-card-home-main-images" style="background:url(/img/images7.jpg); "></div>
-          <div class="card-body">
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          </div>
-      </div>
-    </div>
+
+  <?= $oneall ?>
+  <?= $twoall ?>
+  <?= $threeall ?>
     
   </div>
 

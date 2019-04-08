@@ -55,7 +55,7 @@ class request {
         $parts = [];
         foreach ($tParts as $k => $v) {
             if ($v != "")
-                $parts[] = $v;
+                $parts[] = urldecode($v);
         }
 
         $this->path = $parts;

@@ -13,6 +13,13 @@ class good_model extends ModelBase {
         return $this->db->selectMany("SELECT * FROM `good`", []);
     }
 
+    public function getGoodAllRand($exclude = null) {
+        if ($exclude === null)
+            return $this->db->selectMany("SELECT * FROM `good` order by rand()", []);
+        else
+            return $this->db->selectMany("SELECT * FROM `good` where `id` not in (:ids) order by rand()", [ "ids" => implode(",", $exclude)]);
+    }
+
     public function getCategoryOrDefault($id) {
         $cat = $this->db->selectOne("SELECT * FROM `good_category` where id = :id", ["id" => $id]);
 
@@ -54,8 +61,13 @@ class good_model extends ModelBase {
         return $good;
     }
 
-    public function getGoodsByCategory($id) {
-        $goods = $this->db->selectMany("SELECT * FROM `good` where category_id = :id", [ "id" => $id ]);
+    public function getGoodsByCategory($id, $count = 100) {
+        $goods = null;
+        if (is_numeric($id))
+            $goods = $this->db->selectMany("SELECT * FROM `good` where category_id = :id limit " .  $count, [ "id" => $id ]);
+        else
+            $goods = $this->db->selectMany("SELECT * FROM `good` where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) limit " .  $count, [ "id" => $id ]);
+
         $ids = [];
         foreach ($goods as $k => $value) {
             $goods[$k]["params"] = [];
