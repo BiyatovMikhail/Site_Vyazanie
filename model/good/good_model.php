@@ -61,6 +61,34 @@ class good_model extends ModelBase {
         return $good;
     }
 
+    public function getGoodByName($goodname) {
+        $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` = :id", [ "id" => $id ]);
+        
+
+        if ($good !== false) {
+            $good["params"] = $this->getParams($id);
+            return $good;
+        }
+
+        $good = [
+            "id" => -1,
+            "name" => "",
+            "description" => "",
+            "category_id" => "",
+            "price" => "",
+            "per_discount" => "",
+            "price_discount" => "",
+            "is_discount" => "",
+            "count_good" => ""
+        ];
+
+        $good["params"] = [];
+
+        
+
+        return $good;
+    }
+
     public function getGoodsByCategory($id, $count = 100) {
         $goods = null;
         if (is_numeric($id))
