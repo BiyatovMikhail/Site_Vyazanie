@@ -26,9 +26,9 @@
             <div class="col-10">
                 <div class="container">
                     <nav class="nav shop-bread-crambs">
-                        <a class="nav-link active" href="#">Active</a>
+                        <a class="nav-link active" href="/shop">Каталог</a>
                         <span class="shop-separator"> > </span>
-                        <a class="nav-link" href="#">Link</a>
+                        <a class="nav-link" href="/shop/category/headwear">Категория</a>
                         <span class="shop-separator"> > </span>
                         <a class="nav-link" href="#">Link</a>
                         <span class="shop-separator"> > </span>

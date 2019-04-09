@@ -1,0 +1,6 @@
+
+ <div class="content-card-product-shop-images" style="background:url(/img/images4.jpg); "></div>
+
+ <div class="card product card-product-shop" >
+
+ 

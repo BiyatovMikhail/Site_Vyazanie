@@ -7,8 +7,16 @@ class shop extends ControllerBase {
     }
 
     public function index() {
+         /** @var good_model $model */
+         $model = $this->getModel("good", "good");
+         $cat = $model->getcategoryes();
+         $goodsAll = $model->getGoodAll();
+
         return $this->Render()->WriteHTML(
-            "MODEL",
+            [
+                "cat" => $cat,
+                "goodsAll" => $goodsAll
+            ],
             "shop",
             "index"
         );
@@ -17,24 +25,38 @@ class shop extends ControllerBase {
     public function category() {
         $category = $this->request->getPath()[2];
 
-        /** @var good_model $model */
-        $model = $this->getModel("good", "good");
-        $goods = $model->getGoodsByCategory($category);
 
-        var_dump($goods); exit();
+         /** @var good_model $model */
+         $model = $this->getModel("good", "good");
+         $cat = $model->getcategoryes();
+         $goodsAll = $model->getGoodsByCategory($category);
 
         return $this->Render()->WriteHTML(
-            "MODEL",
+            [
+                "cat" => $cat,
+                "goodsAll" => $goodsAll,
+                'category' => $category
+            ],
             "shop",
-            "category"
+            "index"
         );
     }
 
     public function good() {
-        // $category = $this->request->getPath()[2];
+
+        /** @var good_model $model */
+        $model = $this->getModel("good", "good");
+       
+        $categoryname = $this->request->getPath()[2];
+        $goodname = $this->request->getPath()[3];
+
+        $goods = $model->
+        
         // var_dump($category);
         return $this->Render()->WriteHTML(
-            "MODEL",
+            [
+
+            ],
             "shop",
             "good"
         );

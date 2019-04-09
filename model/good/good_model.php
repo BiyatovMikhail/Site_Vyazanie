@@ -10,14 +10,14 @@ class good_model extends ModelBase {
     }
 
     public function getGoodAll() {
-        return $this->db->selectMany("SELECT * FROM `good`", []);
+        return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id", []);
     }
 
     public function getGoodAllRand($exclude = null) {
         if ($exclude === null)
-            return $this->db->selectMany("SELECT * FROM `good` order by rand()", []);
+            return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id order by rand()", []);
         else
-            return $this->db->selectMany("SELECT * FROM `good` where `id` not in (:ids) order by rand()", [ "ids" => implode(",", $exclude)]);
+            return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` not in (:ids) order by rand()", [ "ids" => implode(",", $exclude)]);
     }
 
     public function getCategoryOrDefault($id) {
@@ -34,7 +34,7 @@ class good_model extends ModelBase {
     }
 
     public function getGood($id) {
-        $good = $this->db->selectOne("SELECT * FROM `good` where `id` = :id", [ "id" => $id ]);
+        $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` = :id", [ "id" => $id ]);
         
 
         if ($good !== false) {
@@ -64,9 +64,11 @@ class good_model extends ModelBase {
     public function getGoodsByCategory($id, $count = 100) {
         $goods = null;
         if (is_numeric($id))
-            $goods = $this->db->selectMany("SELECT * FROM `good` where category_id = :id limit " .  $count, [ "id" => $id ]);
-        else
-            $goods = $this->db->selectMany("SELECT * FROM `good` where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) limit " .  $count, [ "id" => $id ]);
+            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where category_id = :id limit " .  $count, [ "id" => $id ]);
+        else {
+            $id = str_replace("_", "/", $id);
+            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) limit " .  $count, [ "id" => $id ]);
+        }
 
         $ids = [];
         foreach ($goods as $k => $value) {
