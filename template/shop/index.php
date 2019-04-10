@@ -41,9 +41,10 @@
                         </div>
                         <?php endif; ?>
                         <div class="shop-contents-main"> 
-
+                        <div class="row">
                                 <?= $this->WriteHTML($MODEL["goodsAll"], "shop", "goodcardone"); ?>
-
+                        </div>
+                        <div class="row">
 
                                 <div class="card product card-product-shop" >
                                         <div class="content-card-product-shop-images" style="background:url(/img/images4.jpg); "></div>
@@ -163,7 +164,7 @@
                                         </div>
                                 </div>
 
-
+                        </div>
 
 
 

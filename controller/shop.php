@@ -50,12 +50,15 @@ class shop extends ControllerBase {
         $categoryname = $this->request->getPath()[2];
         $goodname = $this->request->getPath()[3];
 
-        $goods = $model->
+        $goods = $model->getGoodByName($goodname, $categoryname);
+        $category = $model->getcategoryes();
         
         // var_dump($category);
         return $this->Render()->WriteHTML(
             [
-
+                "catname" => $categoryname,
+                "goods" => $goods,
+                "category" => $category
             ],
             "shop",
             "good"

@@ -36,7 +36,7 @@ class good_model extends ModelBase {
     public function getGood($id) {
         $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` = :id", [ "id" => $id ]);
         
-
+        
         if ($good !== false) {
             $good["params"] = $this->getParams($id);
             return $good;
@@ -61,12 +61,13 @@ class good_model extends ModelBase {
         return $good;
     }
 
-    public function getGoodByName($goodname) {
-        $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` = :id", [ "id" => $id ]);
+    public function getGoodByName($goodname, $namecat) {
+        $goodname = str_replace("_", "/", $goodname);
+        $namecat = str_replace("_", "/", $namecat);
+        $good = $this->db->selectOne("SELECT * FROM good AS g WHERE g.category_id IN (SELECT id FROM good_category WHERE `name` = :namecat) AND `name` = :namegood", ["namecat" => $namecat, "namegood" => $goodname]);
         
-
         if ($good !== false) {
-            $good["params"] = $this->getParams($id);
+            $good["params"] = $this->getParams($good["id"]);
             return $good;
         }
 
@@ -83,7 +84,7 @@ class good_model extends ModelBase {
         ];
 
         $good["params"] = [];
-
+        
         
 
         return $good;

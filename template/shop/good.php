@@ -1,40 +1,44 @@
+<? $MODEL  ?>
+<? //var_dump($MODEL); exit(); ?>
+
 <div class="container">
     <div class="row">
-                <div class="col">
-                        <nav class="nav flex-column">
-                        <a class="nav-link active" href="/shop/good/stock">Active</a>
-                        <a class="nav-link" href="/shop/category/instock">В наличии</a>
-                        <a class="nav-link" href="/shop/category/headwear">Головные уборы/Шапки/Шарфы</a>
-                        <a class="nav-link" href="/shop/category/mittens">Варежки/Митенки</a>
-                        <a class="nav-link" href="/shop/category/christening">Крестильное</a>
-                        <a class="nav-link" href="/shop/category/sweaterandcardigan">Женские свитера и кардиганы</a>
-                        <a class="nav-link" href="/shop/category/manalbums">Мужской альбом</a>
-                        <a class="nav-link" href="/shop/category/toys">Подушки/Игрушки/Разное</a>
-                        <a class="nav-link" href="/shop/category/tshirts">Футболки/Топы</a>
-                        <a class="nav-link" href="/shop/category/socks">Носочки</a>
-                        <a class="nav-link" href="/shop/category/childrenalbum">Детский альбом</a>
-                        <a class="nav-link" href="/shop/category/dresses">Платья/Юбки</a>
-                        <a class="nav-link" href="/shop/category/handbags">Сумочки/Клатчи/Кошельки</a>
-                        <a class="nav-link" href="/shop/promotions">Акции</a>
-                        <a class="nav-link" href="/shop/category/ideasphoto">Идей из интернета для фотосессий</a>
-                        <a class="nav-link" href="/shop/category/ideasinspiration">Идей из интернета для вдохновения</a>                        
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                        </nav>
-                </div>
+        <div class="col">
+                            <?= $this->WriteHTML($MODEL["category"], "shop", "categleftmenu"); ?>
+                            <!-- <nav class="nav flex-column">
+                            <a class="nav-link active" href="/shop/good/stock">Active</a>
+                            <a class="nav-link" href="/shop/category/instock">В наличии</a>
+                            <a class="nav-link" href="/shop/category/headwear">Головные уборы/Шапки/Шарфы</a>
+                            <a class="nav-link" href="/shop/category/mittens">Варежки/Митенки</a>
+                            <a class="nav-link" href="/shop/category/крестильное">Крестильное</a>
+                            <a class="nav-link" href="/shop/category/sweaterandcardigan">Женские свитера и кардиганы</a>
+                            <a class="nav-link" href="/shop/category/manalbums">Мужской альбом</a>
+                            <a class="nav-link" href="/shop/category/toys">Подушки/Игрушки/Разное</a>
+                            <a class="nav-link" href="/shop/category/tshirts">Футболки/Топы</a>
+                            <a class="nav-link" href="/shop/category/socks">Носочки</a>
+                            <a class="nav-link" href="/shop/category/childrenalbum">Детский альбом</a>
+                            <a class="nav-link" href="/shop/category/dresses">Платья/Юбки</a>
+                            <a class="nav-link" href="/shop/category/handbags">Сумочки/Клатчи/Кошельки</a>
+                            <a class="nav-link" href="/shop/category/promotions">Акции</a>
+                            <a class="nav-link" href="/shop/category/ideasphoto">Идей из интернета для фотосессий</a>
+                            <a class="nav-link" href="/shop/category/ideasinspiration">Идей из интернета для вдохновения</a>                        
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                            </nav> -->
+        </div>
 
 
             <div class="col-10">
-                <div class="container">
-                    <nav class="nav shop-bread-crambs">
-                        <a class="nav-link active" href="/shop">Каталог</a>
-                        <span class="shop-separator"> > </span>
-                        <a class="nav-link" href="/shop/category/headwear">Категория</a>
-                        <span class="shop-separator"> > </span>
-                        <a class="nav-link" href="#">Link</a>
-                        <span class="shop-separator"> > </span>
-                        <a class="nav-link disabled" href="#">Disabled</a>
-                    </nav>
-                </div>
+            <?php if (isset($MODEL["catname"])): ?>
+                        <div class="container">
+                                <nav class="nav shop-bread-crambs">
+                                        <a class="nav-link active" href="/shop">Каталог</a>
+                                        <span class="shop-separator"> > </span>
+                                        <a class="nav-link" href="/shop/category/<?= $MODEL["catname"] ?>"><?= str_replace("_", "/",  $MODEL["catname"]) ?></a>
+                                        <span class="shop-separator"> > </span>
+                                        <a class="nav-link" href="/shop/category/<?= $MODEL["catname"] ?>/<?= $MODEL["goods"]["name"]?>"><?= str_replace("_", "/",  $MODEL["goods"]["name"]) ?></a>
+                                </nav>
+                        </div>
+            <?php endif; ?>
                 <div class="shop-product" >
                     <div class="container">
                         <div class="row">
@@ -106,9 +110,12 @@
                             </div>
                             <div class="col" style="background-color: red;">
                                 <div class="product-description">
-                                    <h1 class="name-product"> Шапка коричневая</h1>
-                                    <div class="price-product"> 2000p </div>
-                                    <div class="price-product-discount"> </div>
+                                    <h1 class="name-product"> <?= $MODEL["goods"]["name"]?></h1>
+                                    <h2 class="price-product"> <?= $MODEL["goods"]["price"]?>р </h2>
+                                    <div class="price-product-discount"><?= $MODEL["goods"]["price_discount"]?>р </div>
+                                    <div class="description-product"><?= $MODEL["goods"]["description"]?> </div>
+
+
                                     <div class="text-product"> 
                                         <strong> Масса </strong>
                                         <br>
