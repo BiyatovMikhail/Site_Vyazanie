@@ -50,6 +50,14 @@ class pic extends ControllerBase {
         );
     }
 
+    public function allsrc() {
+        $del = false;
+        if (isset($this->params["del"])) $del = $this->params["del"];
+        
+        $pics = $this->model->All($this->params["module"], $this->params["id"]);
+        return $pics;
+    }    
+
     public function add() {
         return $this->Render()->WriteHTML(
             [

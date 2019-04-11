@@ -1,5 +1,5 @@
 <? $MODEL  ?>
-<? //var_dump($MODEL); exit(); ?>
+<? //var_dump($MODEL["goods"]["params"]); exit(); ?>
 
 <div class="container">
     <div class="row">
@@ -49,15 +49,35 @@
                             <div class="col" style="background-color: green;">
                                 <div class="product-gallery">
                                     <div class="product-main-images">
-                                        <img src="/img/images1.jpg">
+                                        <?php $src = $this->drawRoute("pic", "onesrc", [
+                                            "module" => "good",
+                                            "id" => $MODEL["goods"]["id"]
+                                        ]) ?>
+                                       
+                                        <img src="<?= $src ?>" class="card-img" alt="...">
                                     </div>
                                     <div class="product-images">
                                         <div class="row">
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images2.jpg); "></div>
+                                        <?php $srcsm = $this->drawRoute("pic", "allsrc", [
+                                            "module" => "good",
+                                            "id" => $MODEL["goods"]["id"]
+                                        ]); ?>
+                                            
+                                            <?php $i = 0; foreach ($srcsm  as $value): $i++; if ($i == 1) continue;?>
+                                                <div class="all-product-images">
+                                                    <div class="card" style="width: 4rem;" >
+                                                        <img src="<?= $value["link"] ?>" class="card-img center" alt="<?= $value["name"] ?>">
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            <?php endforeach; ?>
+
+                                            <?php $i = 0; foreach ($srcsm  as $value): $i++; if ($i == 1) continue;?>
+                                                <div class="all-product-images">
+                                                    <div class="card card-product-images" >
+                                                         <div class="content-card-product-images" style="background:url(<?= $value["link"] ?>); "></div>
+                                                    </div>
+                                                </div>
+                                            <?php endforeach; ?>
                                             <div class="all-product-images">
                                                 <div class="card card-product-images" >
                                                     <div class="content-card-product-images" style="background:url(/img/images4.jpg); "></div>
@@ -100,7 +120,12 @@
                                             </div>
                                         </div>
 
-                                        
+                                        <script>
+                                            jQuery(".all-product-images img").click(function() {
+                                                var img = jQuery(this);
+                                                jQuery(".product-main-images img").attr("src", img.attr("src"));
+                                            })
+                                        </script>
                                         <div class="clear"></div>
                                     </div>
                                     <div class="product-social">
@@ -114,24 +139,16 @@
                                     <h2 class="price-product"> <?= $MODEL["goods"]["price"]?>р </h2>
                                     <div class="price-product-discount"><?= $MODEL["goods"]["price_discount"]?>р </div>
                                     <div class="description-product"><?= $MODEL["goods"]["description"]?> </div>
+                                    
+                                    <?php foreach ($MODEL["goods"]["params"] as $value): ?>
+                                        <div class="text-product"> 
+                                            <p> <?= $value["name"]?> - <?= $value["value"]?></p>
 
-
+                                        </div>
+                                    <? endforeach; ?>                                
+                                  
                                     <div class="text-product"> 
-                                        <strong> Масса </strong>
-                                        <br>
-                                        "0,900 кг"
-                                        <br>
-                                        <strong>Пол</strong>
-                                        <br>
-                                        "Женское"
-                                        <br>
-                                        <strong>Материал</strong>
-                                        <br>
-                                        "25% шерсть, 75% полиамид."
-                                        <br>
-
-                                        "Рост модели: 171 см, размер onesize."
-                                        <br>
+                                        
                                         <br>
 
                                         "Остались вопросы? Пишите в Whatsapp или звоните по номеру +7 (968) 827-20-04 и мы обязательно поможем определиться вам с выбором, а также сразу оформить заказ."
@@ -142,6 +159,7 @@
                                         <div class="size-product">
                                         </div>
                                         <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                                        <a href="#" class="btn btn-primary">Заказать</a>
                                     </div>
                                 </div> 
                             </div>

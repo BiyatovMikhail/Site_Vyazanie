@@ -3,4 +3,27 @@
 
  <div class="card product card-product-shop" >
 
- 
+
+
+
+
+
+    <?= foreach ($MODEL["goods"]["params"] as $value): ?>
+        <div class="text-product"> 
+            <p> <?$value["name"]?> <?$value["value"]?></p>
+
+        </div>
+    <? endforeach; ?>
+
+
+
+
+
+
+<?= foreach ($MODEL as $value): ?>
+    <div class="text-product"> 
+    <p> <?$value["goods"]["params"]["name"]?> <?$value["goods"]["params"]["value"]?></p>
+
+    </div>
+<? endforeach; ?>
+

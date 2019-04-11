@@ -20,6 +20,22 @@ class good_model extends ModelBase {
             return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` not in (:ids) order by rand()", [ "ids" => implode(",", $exclude)]);
     }
 
+    public function getGood4RandByCategory($exclude = null, $catname) {
+        if ($exclude === null)
+            return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name 
+                                            FROM `good` 
+                                            LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id 
+                                            WHERE `good_category`.name = 'Крестильное'
+                                            order by rand() LIMIT 4", []);
+        else
+            return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name 
+                                            FROM `good` 
+                                            LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id 
+                                            WHERE `good_category`.name = :catname
+                                            AND `good`.name NOT IN (:goodname)
+                                            order by rand() LIMIT 4", [ "goodname" => implode(",", $exclude), "catname" => $catname]);
+    }
+
     public function getCategoryOrDefault($id) {
         $cat = $this->db->selectOne("SELECT * FROM `good_category` where id = :id", ["id" => $id]);
 
