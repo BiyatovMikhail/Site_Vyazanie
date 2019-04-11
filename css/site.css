@@ -30,6 +30,7 @@
 .line-decorate{
     
     width: 100%;
+    max-height: 20px;
     background-color: grey;
    
   border-top-left-radius: calc(0.25rem - 1px);
@@ -63,9 +64,11 @@
 }
 .product-price{
     text-align: center;
+    font-family: 'Parisienne', cursive;
 }
 .product-name{
     text-align: center;
+    font-family: 'Parisienne', cursive;
 }
 
 .product {

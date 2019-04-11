@@ -28,7 +28,7 @@ this is index
   </div>
   <div class="row">
     <div class="line-decorate">
-      <img src="/img/linebigdecor5.png" style="width: 80%;">
+      <img src="/img/linebigdecornew1.png" style="width: 100%;">
     </div>
     <div class="line-testmy"></div>
   </div>
@@ -78,7 +78,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
   </div>
   <div class="row">
     <div class="line-decorate">
-      <img src="/img/linebigdecor6.png" style="width: 100%;">
+      <img src="/img/linebigdecornew2.png" style="width: 100%;">
     </div>
     <div class="line-testmy"></div>
   </div>
@@ -126,7 +126,7 @@ $threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
   </div>
   <div class="row">
     <div class="line-decorate">
-      <img src="/img/LineBigDecor33.png" style="width: 100%;">
+      <img src="/img/linebigdecornew3.png" style="width: 100%;">
     </div>
     <div class="line-testmy"></div>
   </div>
@@ -145,7 +145,7 @@ $threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
     </div>
     <div class="row">
        <div class="line-decorate">
-         <img src="/img/LineBigDecor11.png" style="width: 70%;">
+         <img src="/img/linebigdecornew4.png" style="width: 100%;">
          <div class="line-testmy"></div>
        </div>
     </div>   
@@ -192,7 +192,12 @@ $threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
         <div class="col" ></div>
       
       </div>
-
+      <div class="row">
+       <div class="line-decorate">
+         <img src="/img/linebigdecornew5.png" style="width: 100%;">
+         <div class="line-testmy"></div>
+       </div>
+    </div> 
       
   </div>
     

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/site.css" /> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
