@@ -13,7 +13,13 @@
         <img src="<?= $src ?>" class="card-img" alt="...">
         <div class="card-body">
                 <h5 class="card-title product-name"><?= $value["name"] ?></h5>
-                <p class="card-text product-price"><?= $value["price"] ?>Р </p>
+                
+                <?php if ($value["is_discount"] == true): ?>
+                <p class="card-text product-price" style="text-decoration: line-through;"><?= $value["price"] ?>Р </p>
+                <p class="card-text product-price"><?= $value["price_discount"] ?>Р </p>
+                <?php else: ?>
+                <p class="card-text product-price"><?= $value["price_discount"] ?>Р </p>
+                <?php endif; ?>
                 <a href="/shop/good/<?= str_replace("/", "_", $value["cat_name"])  ?>/<?= str_replace("/", "_", $value["name"]) ?>" class="btn btn-primary">Посмотреть</a>
             
         </div>

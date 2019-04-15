@@ -41,14 +41,14 @@ class loginform extends ControllerBase {
 
                 app::Current()->getUser()->logIn($login, $id);
                 
-                return $this->index();
+                return $this->Render()->Redirect("Home", "Index");
 
             } else {
                 return $this->index(["Неверный пароль"]);
             }           
         }
 
-        return $this->index();
+        return $this->Redirect("/");
     }
 
 

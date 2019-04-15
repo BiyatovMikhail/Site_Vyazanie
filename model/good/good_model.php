@@ -27,13 +27,14 @@ class good_model extends ModelBase {
                                             LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id 
                                             WHERE `good_category`.name = 'Крестильное'
                                             order by rand() LIMIT 4", []);
-        else
+        else {
             return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name 
                                             FROM `good` 
                                             LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id 
                                             WHERE `good_category`.name = :catname
                                             AND `good`.name NOT IN (:goodname)
                                             order by rand() LIMIT 4", [ "goodname" => implode(",", $exclude), "catname" => $catname]);
+        }
     }
 
     public function getCategoryOrDefault($id) {
@@ -50,8 +51,7 @@ class good_model extends ModelBase {
     }
 
     public function getGood($id) {
-        $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `id` = :id", [ "id" => $id ]);
-        
+        $good = $this->db->selectOne("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `good`.`id` = :id", [ "id" => $id ]);
         
         if ($good !== false) {
             $good["params"] = $this->getParams($id);
@@ -114,6 +114,52 @@ class good_model extends ModelBase {
             $id = str_replace("_", "/", $id);
             $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) limit " .  $count, [ "id" => $id ]);
         }
+
+        $ids = [];
+        foreach ($goods as $k => $value) {
+            $goods[$k]["params"] = [];
+            $ids[] = $value["id"];
+        }
+
+        $params = $this->getParams($ids);
+
+        foreach ($params as $value) {
+            foreach ($goods as $good_k => $good_v) {
+                if ($good_v["id"] == $value["good_id"])
+                    $goods[$good_k]["params"][] = $value;
+                    //array_push($goods[$good_k]["params"], $value);
+            }
+        }
+
+        return $goods;
+    }
+
+    public function getGoodsInStock($count = 100) {
+        $goods = null;
+        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where count_good > 0 limit " .  $count, [  ]);
+
+        $ids = [];
+        foreach ($goods as $k => $value) {
+            $goods[$k]["params"] = [];
+            $ids[] = $value["id"];
+        }
+
+        $params = $this->getParams($ids);
+
+        foreach ($params as $value) {
+            foreach ($goods as $good_k => $good_v) {
+                if ($good_v["id"] == $value["good_id"])
+                    $goods[$good_k]["params"][] = $value;
+                    //array_push($goods[$good_k]["params"], $value);
+            }
+        }
+
+        return $goods;
+    }
+
+    public function getGoodsIsDiscount($count = 100) {
+        $goods = null;
+        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where is_discount = true limit " .  $count, [  ]);
 
         $ids = [];
         foreach ($goods as $k => $value) {

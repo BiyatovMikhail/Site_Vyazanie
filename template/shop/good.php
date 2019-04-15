@@ -65,8 +65,8 @@
                                             
                                             <?php $i = 0; foreach ($srcsm  as $value): $i++; if ($i == 1) continue;?>
                                                 <div class="all-product-images">
-                                                    <div class="card" style="width: 4rem;" >
-                                                        <img src="<?= $value["link"] ?>" class="card-img center" alt="<?= $value["name"] ?>">
+                                                    <div class="card mx-1 my-1" style="width: 4rem;" >
+                                                        <img src="<?= $value["link"] ?>" class="card-img img-fluid" alt="<?= $value["name"] ?>">
                                                     </div>
                                                 </div>
                                             <?php endforeach; ?>
@@ -158,8 +158,12 @@
                                     <div class="product-params">
                                         <div class="size-product">
                                         </div>
-                                        <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                                        <?php if ($value["count_good"] === 0): ?>
                                         <a href="#" class="btn btn-primary">Заказать</a>
+                                        <?php else: ?>
+                                        <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> </div>
+                                        <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                                        <?php endif; ?>
                                     </div>
                                 </div> 
                             </div>

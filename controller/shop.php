@@ -29,7 +29,14 @@ class shop extends ControllerBase {
          /** @var good_model $model */
          $model = $this->getModel("good", "good");
          $cat = $model->getcategoryes();
-         $goodsAll = $model->getGoodsByCategory($category);
+         $goodsAll = [];
+
+        if ($category == "В наличии")
+            $goodsAll = $model->getGoodsInStock();
+        else if ($category == "Акции")
+            $goodsAll = $model->getGoodsIsDiscount();
+        else 
+            $goodsAll = $model->getGoodsByCategory($category);
 
         return $this->Render()->WriteHTML(
             [
@@ -52,7 +59,7 @@ class shop extends ControllerBase {
 
         $goods = $model->getGoodByName($goodname, $categoryname);
         $category = $model->getcategoryes();
-        $goods4bycat = $model->getGood4RandByCategory($goodname, $categoryname);
+        $goods4bycat = $model->getGood4RandByCategory([$goodname], $categoryname);
         
         // var_dump($category);
         return $this->Render()->WriteHTML(
