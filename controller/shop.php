@@ -67,7 +67,7 @@ class shop extends ControllerBase {
                 "catname" => $categoryname,
                 "goods" => $goods,
                 "category" => $category,
-                "goodsbycat" => $goods4bycat
+                "goods4bycat" => $goods4bycat
             ],
             "shop",
             "good"

@@ -63,7 +63,7 @@
                                             "id" => $MODEL["goods"]["id"]
                                         ]); ?>
                                             
-                                            <?php $i = 0; foreach ($srcsm  as $value): $i++; if ($i == 1) continue;?>
+                                            <?php foreach ($srcsm  as $value): ?>
                                                 <div class="all-product-images">
                                                     <div class="card mx-1 my-1" style="width: 4rem;" >
                                                         <img src="<?= $value["link"] ?>" class="card-img img-fluid" alt="<?= $value["name"] ?>">
@@ -78,6 +78,9 @@
                                                     </div>
                                                 </div>
                                             <?php endforeach; ?>
+
+
+
                                             <div class="all-product-images">
                                                 <div class="card card-product-images" >
                                                     <div class="content-card-product-images" style="background:url(/img/images4.jpg); "></div>
@@ -88,36 +91,7 @@
                                                     <div class="content-card-product-images" style="background:url(/img/images3.jpg); "></div>
                                                 </div>
                                             </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images2.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images1.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images1.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images2.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images1.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images1.jpg); "></div>
-                                                </div>
-                                            </div>
+                                           
                                         </div>
 
                                         <script>
@@ -135,9 +109,13 @@
                             </div>
                             <div class="col" style="background-color: red;">
                                 <div class="product-description">
-                                    <h1 class="name-product"> <?= $MODEL["goods"]["name"]?></h1>
-                                    <h2 class="price-product"> <?= $MODEL["goods"]["price"]?>р </h2>
-                                    <div class="price-product-discount"><?= $MODEL["goods"]["price_discount"]?>р </div>
+                                    <div class="product-name-good"> <?= $MODEL["goods"]["name"]?></div>
+                                    <?php if ($MODEL["goods"]["is_discount"] == true): ?>
+                                    <div class="product-price-good" style="text-decoration: line-through;"> <?= $MODEL["goods"]["price"]?>р </div>
+                                    <div class="product-price-discount-good"><?= $MODEL["goods"]["price_discount"]?>р </div>
+                                    <?php else: ?>
+                                    <div class="product-price-good"> <?= $MODEL["goods"]["price"]?>р </div>
+                                     <?php endif; ?>
                                     <div class="description-product"><?= $MODEL["goods"]["description"]?> </div>
                                     
                                     <?php foreach ($MODEL["goods"]["params"] as $value): ?>
@@ -181,6 +159,10 @@
                             <h3> Также вам может понравиться </h3>
                         </div>
                         <div class="bind-product-content">
+                        <div class="row">
+                                <?= $this->WriteHTML($MODEL["goods4bycat"], "shop", "goodcardone"); ?>
+                        </div>
+
                             <div class="card product" style="width: 14rem;">
                                     <img src="/img/images1.jpg" class="card-img-top" alt="...">
                                     <div class="card-body">
