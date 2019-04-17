@@ -41,7 +41,7 @@ class home extends ControllerBase {
         $item["items"] = $model->getGoodAllRand($ids);
 
         $data[] = $item;
-        
+      //  var_dump($data); exit();
         return $this
                 ->Render()
                 ->WriteHTML($data, "home", "index");

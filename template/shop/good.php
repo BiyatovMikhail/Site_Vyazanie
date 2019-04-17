@@ -71,16 +71,7 @@
                                                 </div>
                                             <?php endforeach; ?>
 
-                                            <?php $i = 0; foreach ($srcsm  as $value): $i++; if ($i == 1) continue;?>
-                                                <div class="all-product-images">
-                                                    <div class="card card-product-images" >
-                                                         <div class="content-card-product-images" style="background:url(<?= $value["link"] ?>); "></div>
-                                                    </div>
-                                                </div>
-                                            <?php endforeach; ?>
-
-
-
+                                           
                                             <div class="all-product-images">
                                                 <div class="card card-product-images" >
                                                     <div class="content-card-product-images" style="background:url(/img/images4.jpg); "></div>
@@ -136,10 +127,16 @@
                                     <div class="product-params">
                                         <div class="size-product">
                                         </div>
-                                        <?php if ($value["count_good"] === 0): ?>
+                                        <?php if ($MODEL["goods"]["count_good"] == 0): ?>
+                                       
+                                        <div class="count-product">Товара в наличии нет, но его можно заказать. </div>
                                         <a href="#" class="btn btn-primary">Заказать</a>
+                                            <!-- Button trigger modal -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
+                                            Заказать модальное окно
+                                            </button>
                                         <?php else: ?>
-                                        <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> </div>
+                                        <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> шт </div>
                                         <a href="#" class="btn btn-primary">Добавить в корзину</a>
                                         <?php endif; ?>
                                     </div>
@@ -148,6 +145,12 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+
+
 
 
                 <div class="container">
@@ -159,37 +162,13 @@
                             <h3> Также вам может понравиться </h3>
                         </div>
                         <div class="bind-product-content">
+
+                        <?php //var_dump($MODEL["goods4bycat"]); exit(); ?>
                         <div class="row">
                                 <?= $this->WriteHTML($MODEL["goods4bycat"], "shop", "goodcardone"); ?>
                         </div>
 
-                            <div class="card product" style="width: 14rem;">
-                                    <img src="/img/images1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                            <h5 class="card-title product-name">Название карточки</h5>
-                                            <p class="card-text product-price">2000р.</p>
-                                            <a href="#" class="btn btn-primary">Посмотреть</a>
-                                            <a href="#" class="btn btn-primary">В корзину</a>    
-                                    </div>
-                            </div>
-                            <div class="card product" style="width: 14rem;">
-                                    <img src="/img/images1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                            <h5 class="card-title product-name">Название карточки</h5>
-                                            <p class="card-text product-price">2000р.</p>
-                                            <a href="#" class="btn btn-primary">Посмотреть</a>
-                                            <a href="#" class="btn btn-primary">В корзину</a>    
-                                    </div>
-                            </div>
-                            <div class="card product" style="width: 14rem;">
-                                    <img src="/img/images1.jpg" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                            <h5 class="card-title product-name">Название карточки</h5>
-                                            <p class="card-text product-price">2000р.</p>
-                                            <a href="#" class="btn btn-primary">Посмотреть</a>
-                                            <a href="#" class="btn btn-primary">В корзину</a>    
-                                    </div>
-                            </div>
+                            
                             <div class="clear"></div>
                         </div>
                     </div>
@@ -197,4 +176,54 @@
                 </div>
         </div>
     </div>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
+    Запустить модальное окно
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="orderModalCenter" tabindex="-1" role="dialog" aria-labelledby="orderModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="orderModalLongTitle">Заявка на товар</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
+            <input type="text" class="form-control" id="order-user-name" placeholder="введите имя">
+          </div>
+          <div class="form-group">
+                <label for="orderInputEmail1">Ваш еmail:</label>
+                <input type="email" class="form-control" id="orderInputEmail1" aria-describedby="emailHelp" placeholder="введите email">
+                
+            </div>
+            <div class="form-group">
+                <label for="orderInputPhone1">Ваш телефон:</label>
+                <input type="text" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
+            </div>
+            <div class="form-group">
+                <label for="ordertextAreaMessage">Cообщение</label>
+                <textarea class="form-control" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>
+            </div>
+          
+        </form>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-primary">Отправить заявку</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+
+
 </div>

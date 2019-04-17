@@ -59,9 +59,9 @@ class shop extends ControllerBase {
 
         $goods = $model->getGoodByName($goodname, $categoryname);
         $category = $model->getcategoryes();
-        $goods4bycat = $model->getGood4RandByCategory([$goodname], $categoryname);
+        $goods4bycat = $model->getGood4RandByCategory([$goodname], str_replace("_", "/", $categoryname));
         
-        // var_dump($category);
+        //var_dump($goods4bycat);
         return $this->Render()->WriteHTML(
             [
                 "catname" => $categoryname,

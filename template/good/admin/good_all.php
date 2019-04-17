@@ -10,6 +10,7 @@
             ]) ?> 
         </p>
         <a href="/admin/good/edit_good/<?= $v["id"] ?>" class="btn btn-primary">Редактировать</a>
+        <a href="/admin/good/del_good/<?= $v["id"] ?>" class="btn btn-danger">Удалить</a>
        
     </div>
 </div>

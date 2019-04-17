@@ -11,7 +11,7 @@
     <a class="nav-link" href="/shop">Магазин</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/shop/promotions">Акции</a>
+    <a class="nav-link" href="/shop/category/Акции">Акции</a>
   </li>
   <li class="nav-item">
     <a class="nav-link" href="/customerservice">Доставка и оплата</a>

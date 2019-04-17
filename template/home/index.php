@@ -52,7 +52,7 @@ this is index
                <p class="text-center font-italic" > Новая коллекция </p>
             </div>
             <div class="element-post-button">
-                <button type="button" class="btn btn-outline-secondary">Перейти в магазин</button>
+                <a href="/shop" class="btn btn-outline-secondary" >Перейти в магазин</a>
             </div>
             <div class="element-indent-empty">
             </div>
@@ -101,7 +101,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
                <p class="element-text text-center"> новые акции </p>
             </div>
             <div class="element-post-button text-center">
-                <button type="button" class="btn btn-outline-secondary">Посмотреть акции</button>
+                <a href="/shop/category/Акции" class="btn btn-outline-secondary" >Посмотреть акции</a>
             </div>
             <div class="element-indent-empty">
             </div>
@@ -114,14 +114,17 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
   </div>
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-<?php 
+<div class="row" >
+  <div class="clik-main-good">
+      <?php 
 
-$oneall = $this->WriteHTML($MODEL[2]["items"][0], "home", "goodall");
-$twoall = $this->WriteHTML($MODEL[2]["items"][1], "home", "goodall");
-$threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
+      $oneall = $this->WriteHTML($MODEL[2]["items"][0], "home", "goodall");
+      $twoall = $this->WriteHTML($MODEL[2]["items"][1], "home", "goodall");
+      $threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
 
-?> 
-
+      ?> 
+  </div>
+</div>
   <div class="row">
     <div class="line-empty"></div>
   </div>
@@ -206,3 +209,10 @@ $threeall = $this->WriteHTML($MODEL[2]["items"][2], "home", "goodall");
 </div>
 
 
+ <script>
+    // jQuery(".clik-main-good img").click(function() {
+    //     var img = jQuery(this);
+    //     jQuery(".product-main-images img").attr("src", img.attr("src"));
+
+    // })
+</script>
