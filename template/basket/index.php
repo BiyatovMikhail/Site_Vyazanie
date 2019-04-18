@@ -19,8 +19,17 @@
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
-          <td>Mark</td>
-          <td>Otto</td>
+          <td>
+          <div>
+              <label>
+              500p
+              </label></div>
+          </td>
+          <td>
+          <div>                       
+              <input type="number" id="replyNumber" min="0" data-bind="value:replyNumber" />
+          </div>
+          </td>
           <td>@mdo</td>
           <th></th>
         </tr>

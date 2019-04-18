@@ -131,13 +131,17 @@
                                        
                                         <div class="count-product">Товара в наличии нет, но его можно заказать. </div>
                                         <a href="#" class="btn btn-primary">Заказать</a>
-                                            <!-- Button trigger modal -->
+                                            <!-- Button trigger modal order -->
                                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
                                             Заказать модальное окно
                                             </button>
                                         <?php else: ?>
                                         <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> шт </div>
                                         <a href="#" class="btn btn-primary">Добавить в корзину</a>
+                                            <!-- Button trigger modal basket -->
+                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
+                                            Добавить в корзину модальное окно корзина
+                                            </button>
                                         <?php endif; ?>
                                     </div>
                                 </div> 
@@ -182,7 +186,9 @@
     Запустить модальное окно
     </button>
 
-    <!-- Modal -->
+   <form class="needs-validation" method="POST" action="/loginform/logIn" novalidate>
+
+    <!-- Modal order -->
     <div class="modal fade" id="orderModalCenter" tabindex="-1" role="dialog" aria-labelledby="orderModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
@@ -193,7 +199,7 @@
             </button>
         </div>
         <div class="modal-body">
-        <form>
+        <form class="order-order" method="POST" action="/basket/order" novalidate>
           <div class="form-group">
             <label for="order-user-name" class="col-form-label">Ваше имя:</label>
             <input type="text" class="form-control" id="order-user-name" placeholder="введите имя">
@@ -215,7 +221,48 @@
         </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary " data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+            <button type="button" class="btn btn-primary">Отправить заявку</button>
+        </div>
+        </div>
+    </div>
+    </div>
+
+
+
+ 
+
+    <!-- Modal basket-->
+    <div class="modal fade" id="basketModalCenter" tabindex="-1" role="dialog" aria-labelledby="basketModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="basketModalLongTitle">Заявка на товар</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body">
+        <form>
+          <div class="form-group">
+            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
+            <input type="text" class="form-control" id="order-user-name" placeholder="введите имя">
+          </div>
+         
+        </form>
+        <div class="modal-body">
+            <h5>Popover in a modal</h5>
+            <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">перейти в корзину</a> triggers a popover on click.</p>
+            <hr>
+            <h5>Popover in a modal</h5>
+            <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">продолжить покупки</a> triggers a popover on click.</p>
+            <hr>
+            <h5>Tooltips in a modal</h5>
+            <p><a href="#" class="tooltip-test" title="Tooltip">перейти в корзину для оформления заказа</a> and <a href="#" class="tooltip-test" title="Tooltip">продолжить покупки</a> have tooltips on hover.</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
             <button type="button" class="btn btn-primary">Отправить заявку</button>
         </div>
         </div>
