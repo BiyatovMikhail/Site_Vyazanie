@@ -186,47 +186,55 @@
     Запустить модальное окно
     </button>
 
-   <form class="needs-validation" method="POST" action="/loginform/logIn" novalidate>
+  
 
     <!-- Modal order -->
-    <div class="modal fade" id="orderModalCenter" tabindex="-1" role="dialog" aria-labelledby="orderModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="orderModalLongTitle">Заявка на товар</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-        <div class="modal-body">
-        <form class="order-order" method="POST" action="/basket/order" novalidate>
-          <div class="form-group">
-            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
-            <input type="text" class="form-control" id="order-user-name" placeholder="введите имя">
-          </div>
-          <div class="form-group">
-                <label for="orderInputEmail1">Ваш еmail:</label>
-                <input type="email" class="form-control" id="orderInputEmail1" aria-describedby="emailHelp" placeholder="введите email">
-                
+    <form class="order-order" method="POST" action="/order/save_order" novalidate>
+    <div class="modal fade" id="orderModalCenter" tabindex="-1" role="dialog" aria-labelledby="orderModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLongTitle">Заявка на товар</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                        <input type="hidden" name="user_id" value="us_id" />
+                        <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+    
+    
+                        <div class="form-group">
+                            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
+                            <input type="text" name="user_name" class="form-control" id="order-user-name" placeholder="введите имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputEmail1">Ваш еmail:</label>
+                            <input type="email" name="user_email" class="form-control" id="orderInputEmail1"
+                                aria-describedby="emailHelp" placeholder="введите email">
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputPhone1">Ваш телефон:</label>
+                            <input type="text" name="user_phone" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
+                        </div>
+                        <div class="form-group">
+                            <label for="ordertextAreaMessage">Cообщение</label>
+                            <textarea class="form-control" name="user_message" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>
+                        </div>
+    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </div>
             </div>
-            <div class="form-group">
-                <label for="orderInputPhone1">Ваш телефон:</label>
-                <input type="text" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
-            </div>
-            <div class="form-group">
-                <label for="ordertextAreaMessage">Cообщение</label>
-                <textarea class="form-control" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>
-            </div>
-          
-        </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
-            <button type="button" class="btn btn-primary">Отправить заявку</button>
-        </div>
         </div>
     </div>
-    </div>
+    </form>
 
 
 
@@ -243,7 +251,7 @@
             </button>
         </div>
         <div class="modal-body">
-        <form>
+       <form class="order-basket" method="POST" action="/basket/order" novalidate>>
           <div class="form-group">
             <label for="order-user-name" class="col-form-label">Ваше имя:</label>
             <input type="text" class="form-control" id="order-user-name" placeholder="введите имя">
