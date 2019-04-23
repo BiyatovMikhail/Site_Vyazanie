@@ -19,10 +19,13 @@ class order_model extends ModelBase {
     }
 
     public function saveOrder($order) {
-      
         if (!isset($order["id"]) || $order["id"] == -1){
-    
-            return $this->insertOrder($order);
+            $id = $this->insertOrder($order);
+
+            $order["id"] = $id;
+            $order["numb_order"] = $id;
+
+            return $this->updateOrder($order);
         }
         else
             return $this->updateOrder($order);
@@ -55,7 +58,6 @@ class order_model extends ModelBase {
 
     private function updateOrder($order) {
       //  if (!isset($order["user_id"] !== "admin")) return;
-        
         $result = $this->db->update("UPDATE `good_order` 
                                         SET `numb_order` = :numb_order, 
                                             `user_id` = :user_id_my,

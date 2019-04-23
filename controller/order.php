@@ -24,7 +24,9 @@ class order extends ControllerBase {
     }
 
     public function save_order() {
-        
+
+        //$current_user = $this->getModel("user");
+
         $this->model = $this->getModel("order");
 
         $orderP = $_POST;
@@ -40,9 +42,9 @@ class order extends ControllerBase {
         $is_done = $_POST["is_done"];
         $is_delete = $_POST["is_delete"];
 
-        $data1[] = [
+        $data1 = [
             "numb_order" => 0,
-            "user_id" => $user_id,
+            "user_id" => 0,
             "good_id" => $good_id,
             "user_name" => $user_name,
             "user_email" => $user_email,
@@ -54,23 +56,7 @@ class order extends ControllerBase {
             "is_delete" => 0
         ];
 
-     if (isset($_POST["action"])) {
-        $user  = $_POST["user"];
-        $email = $_POST["email"];
-        $text  = $_POST["text"];
-      
-       
-        $data[] = [
-            "user" => $user,
-            "email" => $email,
-            "text" => $text
-        ];
-       
-
-    }
-
-      //  var_dump($data1); exit();
-
+     
         $this->model->saveOrder($data1);
         return $this->index();
     }

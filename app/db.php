@@ -79,6 +79,10 @@ class DB {
 
         $stmt->execute();
 
+        if ($stmt->errorCode() != 0) {
+            var_dump($stmt->errorInfo()); exit();
+        }
+
         return $stmt;
     }
 
@@ -143,6 +147,7 @@ class DB {
     public function create($sql, $params) {
         // var_dump($sql, $params); exit();
         $stmt = $this->createStatment($sql, $params);
+        //var_dump($stmt->errorInfo()); exit();
         //var_dump($this->db->errorInfo()); exit();
         return $this->getDb()->lastInsertId();
     }
@@ -165,6 +170,9 @@ class DB {
             }
 
             $stmt->execute();
+            if ($stmt->errorCode() != 0) {
+                var_dump($stmt->errorInfo()); exit();
+            }
         }
         
         return $this->getDb()->lastInsertId();
