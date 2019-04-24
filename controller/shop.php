@@ -60,6 +60,8 @@ class shop extends ControllerBase {
         $goods = $model->getGoodByName($goodname, $categoryname);
         $category = $model->getcategoryes();
         $goods4bycat = $model->getGood4RandByCategory([$goodname], str_replace("_", "/", $categoryname));
+
+        $user = app::Current()->getUser();
         
         //var_dump($goods4bycat);
         return $this->Render()->WriteHTML(
@@ -67,7 +69,8 @@ class shop extends ControllerBase {
                 "catname" => $categoryname,
                 "goods" => $goods,
                 "category" => $category,
-                "goods4bycat" => $goods4bycat
+                "goods4bycat" => $goods4bycat,
+                "userid" => $user->getUserID()   
             ],
             "shop",
             "good"

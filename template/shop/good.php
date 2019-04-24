@@ -202,7 +202,7 @@
                 </div>
                 <div class="modal-body">
 
-                        <input type="hidden" name="user_id" value="us_id" />
+                        <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                         <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
     
     

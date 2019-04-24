@@ -54,6 +54,10 @@ class admin extends ControllerBase {
             [
                 "href" => "/admin/feedback",
                 "text" => "все обратные запросы"
+            ],
+            [
+                "href" => "/admin/order",
+                "text" => "все заказы"
             ]
         ], "shared", "menu");
     }
@@ -101,6 +105,9 @@ class admin extends ControllerBase {
     }
 
     public function feedback() {
+        return $this->writeComponent();
+    }
+    public function order() {
         return $this->writeComponent();
     }
 }
