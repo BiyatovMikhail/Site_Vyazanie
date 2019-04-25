@@ -1,0 +1,302 @@
+<div class="card text-center">
+  <div class="card-header">
+    <ul class="nav nav-tabs card-header-tabs">
+      <li class="nav-item">
+        <a class="nav-link active" href="/order/admin/orderall">Active</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Link</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#">Disabled</a>
+      </li>
+    </ul>
+  </div>
+  <div class="card-body">
+  <div class="container">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">номер заказа</th>
+          <th scope="col">id юзера</th>
+          <th scope="col">имя пользователя</th>
+          <th scope="col">email пользователя</th>
+          <th scope="col">телефон пользователя</th>
+          <th scope="col">сообщение</th>
+          <th scope="col">id товара</th>
+          <th scope="col">название товара</th>
+          <th scope="col">дата создания заказа</th>
+          <th scope="col">дата изменения заказа</th>
+          <th scope="col">заказ выполнен</th>
+          <th scope="col">удалить заказ</th>
+        </tr>
+      </thead>
+      <tbody>
+       
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td>@fat</td>
+          <td>@fat</td>
+          <td>@fat</td>
+          <td>@fat</td>
+          <td>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                <label class="form-check-label" for="defaultCheck1">
+                    done
+                </label>
+            </div>
+          </td>
+          <td>
+            <div class="form-check">
+                <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+            </div>
+          </td>
+          
+          <th></th>
+        </tr>
+       
+        
+      </tbody>
+    </table>
+    
+    <br>
+    <button id="order" class="btn btn-info">отправить</button>
+   
+  </div>
+  </div>
+</div>
+тут все заказы
+<div class="basket">
+  <div class="container">
+    <table class="table table-hover table-bordered">
+      <thead class="thead-light">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">номер заказа</th>
+          <th scope="col">id юзера</th>
+          <th scope="col">имя пользователя</th>
+          <th scope="col">email пользователя</th>
+          <th scope="col">телефон пользователя</th>
+          <th scope="col">сообщение</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="row">1</th>
+          <td>Mark</td>
+          <td>Otto</td>
+          <td>@mdo</td>
+          <td>
+          <div>
+              <label>
+              500p
+              </label></div>
+          </td>
+          <td>
+          <div>                       
+              <input type="number" id="replyNumber" min="0" data-bind="value:replyNumber" />
+          </div>
+          </td>
+          <td>@mdo</td>
+          <th></th>
+        </tr>
+        <tr>
+          <th scope="row">2</th>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <td>Jacob</td>
+          <td>Thornton</td>
+          <td>@fat</td>
+          <th></th>
+        </tr>
+        <tr>
+          <th scope="row">3</th>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+          <td>Larry</td>
+          <td>the Bird</td>
+          <td>@twitter</td>
+          <th></th>
+        </tr>
+        
+        <tr><td colspan="7"><img src="img/loading.gif" alt=""></td></tr>
+        
+      </tbody>
+    </table>
+    <div>Итого: <span id="total-basket-summa">0</span> руб.</div>
+    <br>
+    <button id="order" class="btn btn-info">Оформить заказ</button>
+
+      <!-- Button trigger modal order -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">
+        Посмотреть модальное окно
+        </button>
+<!-- Extra large modal button -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example1-modal-xl">Extra large modal</button>
+
+  </div>
+</div>
+
+
+
+<!-- Extra large modal -->
+<div class="modal fade bd-example1-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      ...
+         <div class="form-group">
+            <label for="orderInputEmail1">Ваш еmail:</label>
+            <input type="email" name="user_email" class="form-control" id="orderInputEmail1"
+                aria-describedby="emailHelp" placeholder="введите email">
+
+        </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+ <!-- Modal order -->
+ <form class="order-order" method="POST" action="/order/save_order" novalidate>
+    <div class="modal fade bd-example-modal-xl" id="orderModalCenter" tabindex="-1" role="dialog" aria-labelledby="orderModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLongTitle">Заявка на товар</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                        <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
+                        <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+    
+    
+                        <div class="form-group">
+                            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
+                            <input type="text" name="user_name" class="form-control" id="order-user-name" placeholder="введите имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputEmail1">Ваш еmail:</label>
+                            <input type="email" name="user_email" class="form-control" id="orderInputEmail1"
+                                aria-describedby="emailHelp" placeholder="введите email">
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputPhone1">Ваш телефон:</label>
+                            <input type="text" name="user_phone" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
+                        </div>
+                        <div class="form-group">
+                            <label for="ordertextAreaMessage">Cообщение</label>
+                            <textarea class="form-control" name="user_message" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>
+                        </div>
+                        <form>
+                            <div class="form-group row">
+                                <label for="numberOrder" class="col-sm-2 col-form-label">Номер заказа</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="numberOrder" value="numberOrder">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="numberGood" class="col-sm-2 col-form-label">Номер товара</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="numberGood" value="numberGood">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nameGood" class="col-sm-2 col-form-label">Название товара</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="nameGood" value="nameGood">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="numberUser" class="col-sm-2 col-form-label">Номер пользователя</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="numberUser" value="numberUser">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="nameUser" class="col-sm-2 col-form-label">Имя пользователя</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="nameUser" value="nameUser">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="emailUser" class="col-sm-2 col-form-label">emailUser пользователя</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="emailUser" value="emailUser">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="phoneUser" class="col-sm-2 col-form-label">phoneUser пользователя</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="phoneUser" value="phoneUser">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="messageUser" class="col-sm-2 col-form-label">messageUser пользователя</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="messageUser" value="messageUser">
+                                <textarea class="form-control"  id="messageUser" placeholder="messageUser сообщение"></textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="dateCreateOrder" class="col-sm-2 col-form-label">dateCreateOrder</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="dateCreateOrder" value="dateCreateOrder">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="dateChangeOrder" class="col-sm-2 col-form-label">dateChangeOrder</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="dateChangeOrder" value="dateChangeOrder">
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="isDoneOrder" class="col-sm-2 col-form-label">isDoneOrder</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="isDoneOrder" value="isDoneOrder">
+                                </div>
+                            </div>
+                            <div class="form-check form-group row">
+                                <label for="isDeleteOrder" class="col-sm-2 col-form-label">isDeleteOrder</label>
+                                <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
+                                <div class="col-sm-10">
+                                <input type="text" readonly class="form-control-plaintext" id="isDeleteOrder" value="isDeleteOrder">
+                                <input class="form-check-input" type="checkbox" name="is_delete" value="" id="defaultCheck1">
+                                </div>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                <label class="form-check-label" for="defaultCheck1">Default checkbox</label>
+                            </div>
+
+                        </form>
+    
+                    
+                </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+   

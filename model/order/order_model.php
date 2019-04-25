@@ -34,8 +34,8 @@ class order_model extends ModelBase {
     private function insertOrder($order) {
      
         
-        $id = $this->db->create("INSERT INTO `good_order` (`numb_order`, `user_id`, `good_id`, `user_name`, `user_email`, `user_phone`, `user_message`, `date_create`, `date_change`, `is_done`, `is_delete`) 
-                                VALUES (:numb_order, :user_id_my, :good_id, :user_name_my, :user_email, :user_phone, :user_message, :date_create, :date_change, :is_done, :is_delete)", 
+        $id = $this->db->create("INSERT INTO `good_order` (`numb_order`, `user_id`, `good_id`, `user_name`, `user_email`, `user_phone`, `user_message`, `date_create`, `date_change`, `comment_admin`, `is_done`, `is_delete`) 
+                                VALUES (:numb_order, :user_id_my, :good_id, :user_name_my, :user_email, :user_phone, :user_message, :date_create, :date_change, :comment_admin, :is_done, :is_delete)", 
         [
             "numb_order" => $order["numb_order"],
             "user_id_my" => $order["user_id"],
@@ -46,6 +46,7 @@ class order_model extends ModelBase {
             "user_message" => $order["user_message"],
             "date_create" => $order["date_create"],
             "date_change" => $order["date_change"],
+            "comment_admin" => $order["comment_admin"],
             "is_done" => $order["is_done"],
             "is_delete" => $order["is_delete"]
         ]);
@@ -68,6 +69,7 @@ class order_model extends ModelBase {
                                             `user_message` = :user_message,
                                             `date_create` = :date_create,
                                             `date_change` = :date_change,
+                                            `comment_admin` = :comment_admin,
                                             `is_done` = :is_done,
                                             `is_delete` = :is_delete
                                                 WHERE 
@@ -82,6 +84,7 @@ class order_model extends ModelBase {
                                                 "user_message" => $order["user_message"],
                                                 "date_create" => $order["date_create"],
                                                 "date_change" => $order["date_change"],
+                                                "comment_admin" => $order["comment_admin"],
                                                 "is_done" => $order["is_done"],
                                                 "is_delete" => $order["is_delete"],
 

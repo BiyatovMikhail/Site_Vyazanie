@@ -39,12 +39,13 @@ class order extends ControllerBase {
         $user_message = $_POST["user_message"];
         $date_create = $_POST["date_create"];
         $date_change = $_POST["date_change"];
+        $comment_admin = $_POST["comment_admin"];
         $is_done = $_POST["is_done"];
         $is_delete = $_POST["is_delete"];
 
         $data1 = [
-            "numb_order" => 0,
-            "user_id" => 0,
+            "numb_order" => $numb_order,
+            "user_id" => $user_id,
             "good_id" => $good_id,
             "user_name" => $user_name,
             "user_email" => $user_email,
@@ -52,6 +53,7 @@ class order extends ControllerBase {
             "user_message" => $user_message,
             "date_create" => date("Y-m-d H:i:s"),
             "date_change" => date("Y-m-d H:i:s"),
+            "comment_admin" => $comment_admin,
             "is_done" => 0,
             "is_delete" => 0
         ];
