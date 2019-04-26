@@ -25,43 +25,49 @@
 	<p class="divider-text">
         <span class="bg-light">или</span>
     </p>
-	<form>
+	<form method="POST" action="/user1/save_user">
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Фамилия" type="text">
+        <input name="surname" class="form-control" placeholder="Фамилия" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Имя и Отчество" type="text">
+        <input name="name" class="form-control" placeholder="Имя" type="text">
+    </div> <!-- form-group// -->
+	<div class="form-group input-group">
+		<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+		 </div>
+        <input name="name2" class="form-control" placeholder="Отчество" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fas fa-user-secret"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Ваш Ник" type="text">
+        <input name="nikname" class="form-control" placeholder="Ваш Ник" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="" class="form-control" placeholder="Ваш Email" type="email">
+        <input name="email" class="form-control" placeholder="Ваш Email" type="email">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
 		
-    	<input name="" class="form-control" placeholder="Номер телефона" type="text">
+    	<input name="phone" class="form-control" placeholder="Номер телефона" type="text">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fas fa-venus-mars"></i> </span>
 		</div>
-		<select class="form-control">
+		<select class="form-control" name="gender">
 			<option selected=""> Ваш пол</option>
 			<option>Мужской</option>
 			<option>Женский</option>
@@ -72,13 +78,13 @@
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Придумайте пароль" type="password">
+        <input class="form-control" name="pass1" placeholder="Придумайте пароль" type="password">
     </div> <!-- form-group// -->
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" placeholder="Повторите пароль" type="password">
+        <input class="form-control" name="pass2" placeholder="Повторите пароль" type="password">
     </div> <!-- form-group// -->                                      
     <div class="form-group">
         <button type="submit" class="btn btn-primary btn-block"> Создать аккаунт  </button>
