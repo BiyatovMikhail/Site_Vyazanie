@@ -2,16 +2,16 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="/order/admin/orderall">Все заказы</a>
+        <a class="nav-link active" href="/order/admin/show_order_all">Все заказы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Активные заказы</a>
+        <a class="nav-link" href="/order/admin/show_order_activ">Активные заказы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Выполненные заказы</a>
+        <a class="nav-link" href="/order/admin/show_order_done">Выполненные заказы</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link " href="#">Удаленные заказы</a>
+        <a class="nav-link " href="/order/admin/show_order_del">Удаленные заказы</a>
       </li>
     </ul>
   </div>
@@ -32,10 +32,10 @@
         
             <tr>
             <th scope="row">2</th>
-            <td>numb_order</td>
-            <td>user_name</td>
-            <td>good_name</td>
-            <td>date_create</td>
+            <td><?= $v["numb_order"] ?>numb_order</td>
+            <td><?= $v["user_name"] ?>user_name</td>
+            <td><?= $v["good_name"] ?>good_name</td>
+            <td><?= $v["date_create"] ?>date_create</td>
             <td><button id="order" class="btn btn-info">Посмотреть</button></td>
             
             </tr>

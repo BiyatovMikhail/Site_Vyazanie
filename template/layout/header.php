@@ -30,6 +30,8 @@
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
 
+      <a class="text-muted" href="/user/profile">профиль/</a>
+      <a class="text-muted" href="/user/order">мои_заказы/</a>
       <a class="text-muted" href="/admin">Админка</a>
 
         <?= $this->drawRoute("loginform", "displayButton") ?>

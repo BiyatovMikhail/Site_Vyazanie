@@ -2,12 +2,30 @@
 
 class order_model extends ModelBase {
 
-    public function getOrdersAll() {
+    public function getOrdersAllForAdm() {
         return $this->db->selectMany("SELECT * FROM `good_order`", []);
     }
 
     public function getOrderById($id) {
         $order = $this->db->selectOne("SELECT * FROM `good_order` where `good_order`.`id` = :id", [ "id" => $id ]);
+      
+        return $order;
+    }
+
+    public function getOrdersActivForAdm() {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_done` = 0");
+      
+        return $order;
+    }
+
+    public function getOrdersDoneForAdm() {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_done` = 1");
+      
+        return $order;
+    }
+
+    public function getOrdersDelForAdm() {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_delete` = 1");
       
         return $order;
     }
