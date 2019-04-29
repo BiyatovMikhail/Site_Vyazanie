@@ -106,7 +106,7 @@ class DB {
      * Возвращает либо набор данных, либо false
      * если что то пошло не так
      */
-    public function selectMany($sql, $params) {
+    public function selectMany($sql, $params = []) {
 
         $stmt = $this->createStatment($sql, $params);
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -29,17 +29,17 @@
             </tr>
         </thead>
         <tbody>
-        
-            <tr>
-            <th scope="row">2</th>
-            <td>numb_order</td>
-            <td>user_name</td>
-            <td>good_name</td>
-            <td>date_create</td>
-            <td><button id="order" class="btn btn-info">Посмотреть</button></td>
-            
-            </tr>
-        
+            <? foreach ($MODEL as $value) {?>
+                <tr>
+                <th scope="row">2</th>
+                <td><?= $v["numb_order"] ?>numb_order</td>
+                <td><?= $v["user_name"] ?>user_name</td>
+                <td><?= $v["good_name"] ?>good_name</td>
+                <td><?= $v["date_create"] ?>date_create</td>
+                <td><button id="order" type="button"  class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg">Посмотреть</button></td>
+                
+                </tr>
+            <?    } ?>
             
         </tbody>
         </table>

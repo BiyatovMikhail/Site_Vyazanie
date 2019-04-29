@@ -19,8 +19,20 @@ class admin_order extends ControllerBase {
     }
 
     public function index() {
+        $ordersAll = $this->model->getOrdersAllForAdm();
+        $ordersActiv = $this->model->getOrdersActivForAdm();  
+        $ordersDone = $this->model->getOrdersDoneForAdm(); 
+        $ordersDel = $this->model->getOrdersDelForAdm();  
+
+        $data = [
+            "orderalladm" => $ordersAll,
+            "orderactivadm" => $ordersActiv,
+            "orderdoneadm" => $ordersDone,
+            "orderdeladm" => $ordersDel,
+        ];
+
         return $this->Render()->WriteHTML(
-            $this->model->getOrdersAllForAdm(),
+            $data,
             "order/admin", "orderalladm"
         );
     }
@@ -39,7 +51,7 @@ class admin_order extends ControllerBase {
     public function show_order_activ() {
         $id = $this->getFromIndex($this->path, 3, -1);
         $ordersActiv = $this->model->getOrdersActivForAdm();  
-
+       // var_dump($ordersActiv); exit();
         return $this->Render()->WriteHTML(
             $ordersActiv , 
             "order/admin", "orderactivadm"
