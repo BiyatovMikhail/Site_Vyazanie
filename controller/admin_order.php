@@ -19,7 +19,7 @@ class admin_order extends ControllerBase {
     }
 
     public function index() {
-        $ordersAll = $this->model->getOrdersAllForAdm();
+        $ordersAll = $this->model->getOrdersAllUserGoodForAdm();
         $ordersActiv = $this->model->getOrdersActivForAdm();  
         $ordersDone = $this->model->getOrdersDoneForAdm(); 
         $ordersDel = $this->model->getOrdersDelForAdm();  

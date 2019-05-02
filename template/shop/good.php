@@ -1,5 +1,5 @@
 <? $MODEL  ?>
-<? //var_dump($MODEL["goods"]["params"]); exit(); ?>
+<? //var_dump($MODEL); exit(); ?>
 
 <div class="container">
     <div class="row">
@@ -130,11 +130,19 @@
                                         <?php if ($MODEL["goods"]["count_good"] == 0): ?>
                                        
                                         <div class="count-product">Товара в наличии нет, но его можно заказать. </div>
-                                        <a href="#" class="btn btn-primary">Заказать</a>
-                                            <!-- Button trigger modal order -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
-                                            Заказать модальное окно
-                                            </button>
+                                            <a href="#" class="btn btn-primary">Заказать</a>
+                                                <?php if ($MODEL["userid"] == -1): ?>
+                                                <!-- Button trigger modal order notUser -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordernotUserModalCenter">
+                                                Заказать модальное окно notUser
+                                                </button>
+                                                <?php else: ?>
+                                                <!-- Button trigger modal order -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
+                                                Заказать модальное окно User
+                                                </button>
+
+                                                <?php endif; ?>
                                         <?php else: ?>
                                         <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> шт </div>
                                         <a href="#" class="btn btn-primary">Добавить в корзину</a>
@@ -205,6 +213,54 @@
                         <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                         <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
     
+    <!--
+                        <div class="form-group">
+                            <label for="order-user-name" class="col-form-label">Ваше имя:</label>
+                            <input type="text" name="user_name" class="form-control" id="order-user-name" placeholder="введите имя">
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputEmail1">Ваш еmail:</label>
+                            <input type="email" name="user_email" class="form-control" id="orderInputEmail1"
+                                aria-describedby="emailHelp" placeholder="введите email">
+    
+                        </div>
+                        <div class="form-group">
+                            <label for="orderInputPhone1">Ваш телефон:</label>
+                            <input type="text" name="user_phone" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
+                        </div>  -->
+                        <div class="form-group">
+                            <label for="ordertextAreaMessage">Cообщение</label>
+                            <textarea class="form-control" name="user_message" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>
+                        </div>
+    
+                    
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                    <button type="submit" class="btn btn-primary">Отправить заявку</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </form>
+
+<!-- Modal order notUser-->
+<form class="order-order" method="POST" action="/order/save_order" novalidate>
+    <div class="modal fade" id="ordernotUserModalCenter" tabindex="-1" role="dialog" aria-labelledby="ordernotUserModalCenterTitle"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLongTitle">Заявка на товар</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                        <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
+                        <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+    
     
                         <div class="form-group">
                             <label for="order-user-name" class="col-form-label">Ваше имя:</label>
@@ -219,7 +275,7 @@
                         <div class="form-group">
                             <label for="orderInputPhone1">Ваш телефон:</label>
                             <input type="text" name="user_phone" class="form-control" id="orderInputPhone1" placeholder="введите телефон">
-                        </div>
+                        </div>  
                         <div class="form-group">
                             <label for="ordertextAreaMessage">Cообщение</label>
                             <textarea class="form-control" name="user_message" id="ordertextAreaMessage" placeholder="ваше сообщение"></textarea>

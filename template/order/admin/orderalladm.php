@@ -2,35 +2,47 @@
 <script>
     function fill_modal(selector) {
         var data = JSON.parse(jQuery(selector).html());
+        var_dump(data); exit();
         jQuery("#good_id").val(data.good_id);
         jQuery("#numberOrder").val(data.numb_order);
         jQuery("#numberGood").val(data.good_id);
-        jQuery("#nameGood").val(data.user_email);
+        jQuery("#nameGood").val(data.name);
+        jQuery("#numberUser").val(data.user_id);
+        jQuery("#nameUser").val(data.user_name);
+        jQuery("#emailUser").val(data.user_email);
+        jQuery("#phoneUser").val(data.user_phone);
+        jQuery("#messageUser").val(data.user_message);
+        jQuery("#dateCreateOrder").val(data.date_create);
+        jQuery("#dateChangeOrder").val(data.date_change);
+        jQuery("#commentAdmin").val(data.comment_admin);
+        jQuery("#isDoneOrder").val(data.is_done);
+        jQuery("#isDeleteOrder").val(data.is_delete);
+        
     }
 </script>
 
 
 <div class="card text-center">
-  <div class="card-header">
-    <ul class="nav nav-tabs card-header-tabs" id="myTabOrder" role="tablist">
-        <li class="nav-item">
-            <a class="nav-link active" id="orderAll-tab" data-toggle="tab" href="#orderAll" role="tab" aria-controls="orderAll" aria-selected="true">orderAll</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="orderActiv-tab" data-toggle="tab" href="#orderActiv" role="tab" aria-controls="orderActiv" aria-selected="false">orderActiv</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="orderDone-tab" data-toggle="tab" href="#orderDone" role="tab" aria-controls="orderDone" aria-selected="false">orderDone</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" id="orderDel-tab" data-toggle="tab" href="#orderDel" role="tab" aria-controls="orderDel" aria-selected="false">orderDel</a>
-        </li>
-      
-      
-    </ul>
-  </div>
+    <div class="card-header">
+        <ul class="nav nav-tabs card-header-tabs" id="myTabOrder" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="orderAll-tab" data-toggle="tab" href="#orderAll" role="tab" aria-controls="orderAll" aria-selected="true">orderAll</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="orderActiv-tab" data-toggle="tab" href="#orderActiv" role="tab" aria-controls="orderActiv" aria-selected="false">orderActiv</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="orderDone-tab" data-toggle="tab" href="#orderDone" role="tab" aria-controls="orderDone" aria-selected="false">orderDone</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="orderDel-tab" data-toggle="tab" href="#orderDel" role="tab" aria-controls="orderDel" aria-selected="false">orderDel</a>
+            </li>
+        
+        
+        </ul>
+    </div>
   <div class="tab-content" id="myTabOrderContent">
-  <div class="tab-pane fade show active" id="orderAll" role="tabpanel" aria-labelledby="orderAll-tab">
+    <div class="tab-pane fade show active" id="orderAll" role="tabpanel" aria-labelledby="orderAll-tab">
         <div class="card-body">
             <div class="container">
                 <table class="table table-hover table-bordered">
@@ -50,7 +62,7 @@
                         <th scope="row"><?= ++$i ?></th> 
                         <td><?= $v["numb_order"] ?></td>
                         <td><?= $v["user_name"] ?></td>
-                        <td><?= $v["good_name"] ?></td>
+                        <td><?= $v["name"] ?></td>
                         <td><?= $v["date_create"] ?></td>
                         <td>
                             <div class="order-data-<?= $i ?>" style="display:none;"><?= json_encode($v) ?></div>
@@ -68,8 +80,8 @@
     </div>
   <div class="tab-pane fade" id="orderActiv" role="tabpanel" aria-labelledby="orderActiv-tab">
     <div class="card-body">
-            <div class="container">
-                <table class="table table-hover table-bordered">
+        <div class="container">
+            <table class="table table-hover table-bordered">
                 <thead class="thead-light">
                     <tr>
                     <th scope="col">#</th>
@@ -81,22 +93,24 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <? $i = 0; foreach ($MODEL["orderactivadm"] as $value) {?>
+                    <? $i = 0; foreach ($MODEL["orderactivadm"] as $v) {?>
                         <tr>
                         <th scope="row"><?= ++$i ?></th> 
-                        <td><?= $v["numb_order"] ?>numb_order</td>
-                        <td><?= $v["user_name"] ?>user_name</td>
-                        <td><?= $v["good_name"] ?>good_name</td>
-                        <td><?= $v["date_create"] ?>date_create</td>
-                        <td><button id="order" class="btn btn-info">Посмотреть</button></td>
+                        <td><?= $v["numb_order"] ?></td>
+                        <td><?= $v["user_name"] ?></td>
+                        <td><?= $v["name"] ?></td>
+                        <td><?= $v["date_create"] ?></td>
+                        <td>
+                        <div class="order-data-<?= $i ?>" style="display:none;"><?= json_encode($v) ?></div>
+                            <button id="order" type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="fill_modal('.order-data-<?= $i ?>')" >Посмотреть</button>
+                        </td>
                         
                         </tr>
                     <?    } ?>
                     
                 </tbody>
-                </table>
-                
-            </div>
+            </table>
+            
         </div>
     </div>
   </div>
@@ -122,7 +136,10 @@
                         <td><?= $v["user_name"] ?></td>
                         <td><?= $v["good_name"] ?></td>
                         <td><?= $v["date_create"] ?></td>
-                        <td><button id="order" class="btn btn-info">Посмотреть</button></td>
+                        <td>
+                             <div class="order-data-<?= $i ?>" style="display:none;"><?= json_encode($v) ?></div>
+                            <button id="order" type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="fill_modal('.order-data-<?= $i ?>')" >Посмотреть</button>
+                        </td>
                         
                         </tr>
                     <?    } ?>
@@ -134,39 +151,42 @@
         </div>
   </div>
   <div class="tab-pane fade" id="orderDel" role="tabpanel" aria-labelledby="orderDel-tab">
-        <div class="card-body">
-            <div class="container">
-                <table class="table table-hover table-bordered">
-                <thead class="thead-light">
+    <div class="card-body">
+        <div class="container">
+            <table class="table table-hover table-bordered">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">номер заказа</th>
+                <th scope="col">имя пользователя</th>
+                <th scope="col">название товара</th>
+                <th scope="col">дата создания заказа</th>
+                <th scope="col">посмотреть заказ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <? $i = 0; foreach ($MODEL["orderdeladm"] as $v) {?>
                     <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">номер заказа</th>
-                    <th scope="col">имя пользователя</th>
-                    <th scope="col">название товара</th>
-                    <th scope="col">дата создания заказа</th>
-                    <th scope="col">посмотреть заказ</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <? foreach ($MODEL["orderdeladm"] as $v) {?>
-                        <tr>
-                        <th scope="row">2</th> 
-                        <td><?= $v["numb_order"] ?></td>
-                        <td><?= $v["user_name"] ?></td>
-                        <td><?= $v["good_name"] ?></td>
-                        <td><?= $v["date_create"] ?></td>
-                        <td><button id="order" class="btn btn-info">Посмотреть</button></td>
-                        
-                        </tr>
-                    <?    } ?>
+                    <th scope="row"><? ++$i; ?></th> 
+                    <td><?= $v["numb_order"] ?></td>
+                    <td><?= $v["user_name"] ?></td>
+                    <td><?= $v["good_name"] ?></td>
+                    <td><?= $v["date_create"] ?></td>
+                    <td>
+                        <div class="order-data-<?= $i ?>" style="display:none;"><?= json_encode($v) ?></div>
+                        <button id="order" type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="fill_modal('.order-data-<?= $i ?>')" >Посмотреть</button>
+                    </td>
                     
-                </tbody>
-                </table>
+                    </tr>
+                <?    } ?>
                 
-            </div>
+            </tbody>
+            </table>
+            
         </div>
+    </div>
   </div>
-  </div>
+</div>
   
 </div>
 тут все заказы
@@ -197,11 +217,12 @@
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
+        <form>
         <div class="modal-body">
 
                 <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                 <input type="hidden" name="good_id" id="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
-                <form>
+               
                     <div class="form-group row">
                         <label for="numberOrder" class="col-sm-3 col-form-label">Номер заказа</label>
                         <div class="col-sm-9">
@@ -279,7 +300,7 @@
                         <input class="form-check-input" type="checkbox" name="is_delete" value="" id="isDeleteOrder">
                         <label class="form-check-label" for="isDeleteOrder">Удалить заказ</label>
                     </div>
-                </form>
+               
 
         </div>
         
@@ -287,11 +308,27 @@
             <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
             <button type="submit" class="btn btn-primary">Сохранить изменения</button>
         </div>
-    
+        </form>
     </div>
   </div>
 </div>
 
+
+<nav aria-label="...">
+  <ul class="pagination justify-content-center">
+    <li class="page-item disabled">
+      <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">1</a></li>
+    <li class="page-item active" aria-current="page">
+      <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+    </li>
+    <li class="page-item"><a class="page-link" href="#">3</a></li>
+    <li class="page-item">
+      <a class="page-link" href="#">Next</a>
+    </li>
+  </ul>
+</nav>
 
 
  

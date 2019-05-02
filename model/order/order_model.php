@@ -6,6 +6,10 @@ class order_model extends ModelBase {
         return $this->db->selectMany("SELECT * FROM `good_order`", []);
     }
 
+    public function getOrdersAllUserGoodForAdm() {
+        return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id ", []);
+    }
+
     public function getOrderById($id) {
         $order = $this->db->selectOne("SELECT * FROM `good_order` where `good_order`.`id` = :id", [ "id" => $id ]);
       
@@ -13,7 +17,13 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersActivForAdm() {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_done` = 0");
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0");
+      
+        return $order;
+    }
+
+    public function getOrdersGoodActivForAdm() {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0");
       
         return $order;
     }

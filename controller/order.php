@@ -25,17 +25,27 @@ class order extends ControllerBase {
 
     public function save_order() {
 
-        //$current_user = $this->getModel("user");
+        $current_user = $this->getModel("user");
 
         $this->model = $this->getModel("order");
 
         $orderP = $_POST;
         $numb_order = $_POST["numb_order"];
         $user_id = $_POST["user_id"];
+        var_dump($user_id); exit();
+        if ($user_id != -1) {
+            $user_name = $current_user["surname"] + $current_user["name"] + $current_user["name2"];
+            $user_email = $current_user["email"];
+            $user_phone = $current_user["phone"];
+        }
+        else {
+            $user_name = $_POST["user_name"];
+            $user_email = $_POST["user_email"];
+            $user_phone = $_POST["user_phone"];
+        }
+
         $good_id = $_POST["good_id"];
-        $user_name = $_POST["user_name"];
-        $user_email = $_POST["user_email"];
-        $user_phone = $_POST["user_phone"];
+        
         $user_message = $_POST["user_message"];
         $date_create = $_POST["date_create"];
         $date_change = $_POST["date_change"];
