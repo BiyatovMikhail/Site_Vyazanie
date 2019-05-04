@@ -30,7 +30,7 @@
             <div class="col-10">
             <?php if (isset($MODEL["catname"])): ?>
                         <div class="container">
-                                <nav class="nav shop-bread-crambs">
+                                <nav class="nav shop-bread-crambs myfontmain">
                                         <a class="nav-link active" href="/shop">Каталог</a>
                                         <span class="shop-separator"> > </span>
                                         <a class="nav-link" href="/shop/category/<?= $MODEL["catname"] ?>"><?= str_replace("_", "/",  $MODEL["catname"]) ?></a>
@@ -99,7 +99,7 @@
                                 </div>
                             </div>
                             <div class="col" style="background-color: red;">
-                                <div class="product-description">
+                                <div class="product-description myfontmain">
                                     <div class="product-name-good"> <?= $MODEL["goods"]["name"]?></div>
                                     <?php if ($MODEL["goods"]["is_discount"] == true): ?>
                                     <div class="product-price-good" style="text-decoration: line-through;"> <?= $MODEL["goods"]["price"]?>р </div>
@@ -116,7 +116,7 @@
                                         </div>
                                     <? endforeach; ?>                                
                                   
-                                    <div class="text-product"> 
+                                    <div class="text-product myfontmain"> 
                                         
                                         <br>
 
@@ -129,8 +129,8 @@
                                         </div>
                                         <?php if ($MODEL["goods"]["count_good"] == 0): ?>
                                        
-                                        <div class="count-product">Товара в наличии нет, но его можно заказать. </div>
-                                            <a href="#" class="btn btn-primary">Заказать</a>
+                                        <div class="count-product myfontmain">Товара в наличии нет, но его можно заказать. </div>
+                                            <a href="#" class="btn btn-primary myfontmain">Заказать</a>
                                                 <?php if ($MODEL["userid"] == -1): ?>
                                                 <!-- Button trigger modal order notUser -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordernotUserModalCenter">
@@ -213,6 +213,11 @@
                         <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                         <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
     
+                        <?php if ($MODEL["goods"]["is_discount"] == true): ?>
+                        <input type="hidden" name="price_order" value="<?= $MODEL["goods"]["price_discount"] ?>" />
+                        <?php else: ?>
+                        <input type="hidden" name="price_order" value="<?= $MODEL["goods"]["price"] ?>" />
+                        <?php endif; ?>
     <!--
                         <div class="form-group">
                             <label for="order-user-name" class="col-form-label">Ваше имя:</label>
@@ -260,8 +265,13 @@
 
                         <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                         <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
-    
-    
+                     
+                        <?php if ($MODEL["goods"]["is_discount"] == true): ?>
+                        <input type="hidden" name="price_order" value="<?= $MODEL["goods"]["price_discount"] ?>" />
+                        <?php else: ?>
+                        <input type="hidden" name="price_order" value="<?= $MODEL["goods"]["price"] ?>" />
+                        <?php endif; ?>
+            
                         <div class="form-group">
                             <label for="order-user-name" class="col-form-label">Ваше имя:</label>
                             <input type="text" name="user_name" class="form-control" id="order-user-name" placeholder="введите имя">

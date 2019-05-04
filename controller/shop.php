@@ -28,6 +28,7 @@ class shop extends ControllerBase {
 
          /** @var good_model $model */
          $model = $this->getModel("good", "good");
+        // var_dump($model); exit();
          $cat = $model->getcategoryes();
          $goodsAll = [];
 

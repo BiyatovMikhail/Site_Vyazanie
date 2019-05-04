@@ -10,6 +10,11 @@ class order_model extends ModelBase {
         return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id ", []);
     }
 
+    public function getOrdersAllGoodForUser($userId) {
+        var_dump($userId); exit();
+        return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId", [ "userId" => $userId ]);
+    }
+
     public function getOrderById($id) {
         $order = $this->db->selectOne("SELECT * FROM `good_order` where `good_order`.`id` = :id", [ "id" => $id ]);
       
@@ -28,14 +33,38 @@ class order_model extends ModelBase {
         return $order;
     }
 
+    public function getOrdersGoodActivForUser($userId) {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0", [ "userId" => $userId ]);
+      
+        return $order;
+    }
+
     public function getOrdersDoneForAdm() {
         $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_done` = 1");
       
         return $order;
     }
 
+    public function getOrdersDoneForUser($userId) {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 1", [ "userId" => $userId ]);
+      
+        return $order;
+    }
+
     public function getOrdersDelForAdm() {
         $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`is_delete` = 1");
+      
+        return $order;
+    }
+
+    public function getOrdersDelForUser($userId) {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_delete` = 1", [ "userId" => $userId ]);
+      
+        return $order;
+    }
+
+    public function getOrdersCancelForUser($userId) {
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_cancel` = 1", [ "userId" => $userId ]);
       
         return $order;
     }
@@ -62,8 +91,8 @@ class order_model extends ModelBase {
     private function insertOrder($order) {
      
         
-        $id = $this->db->create("INSERT INTO `good_order` (`numb_order`, `user_id`, `good_id`, `user_name`, `user_email`, `user_phone`, `user_message`, `date_create`, `date_change`, `comment_admin`, `is_done`, `is_delete`) 
-                                VALUES (:numb_order, :user_id_my, :good_id, :user_name_my, :user_email, :user_phone, :user_message, :date_create, :date_change, :comment_admin, :is_done, :is_delete)", 
+        $id = $this->db->create("INSERT INTO `good_order` (`numb_order`, `user_id`, `good_id`, `user_name`, `user_email`, `user_phone`, `user_message`, `date_create`, `date_change`, `comment_admin`, `price_order`, `is_done`, `is_cancel`, `is_delete`) 
+                                VALUES (:numb_order, :user_id_my, :good_id, :user_name_my, :user_email, :user_phone, :user_message, :date_create, :date_change, :comment_admin, :price_order, :is_done, :is_cancel, :is_delete)", 
         [
             "numb_order" => $order["numb_order"],
             "user_id_my" => $order["user_id"],
@@ -75,7 +104,9 @@ class order_model extends ModelBase {
             "date_create" => $order["date_create"],
             "date_change" => $order["date_change"],
             "comment_admin" => $order["comment_admin"],
+            "price_order" => $order["price_order"],
             "is_done" => $order["is_done"],
+            "is_cancel" => $order["is_cancel"],
             "is_delete" => $order["is_delete"]
         ]);
      
@@ -98,7 +129,9 @@ class order_model extends ModelBase {
                                             `date_create` = :date_create,
                                             `date_change` = :date_change,
                                             `comment_admin` = :comment_admin,
+                                            `price_order` = :price_order,
                                             `is_done` = :is_done,
+                                            `is_cancel` = :is_cancel,
                                             `is_delete` = :is_delete
                                                 WHERE 
                                             `good_order`.`id` = :id ",
@@ -113,7 +146,9 @@ class order_model extends ModelBase {
                                                 "date_create" => $order["date_create"],
                                                 "date_change" => $order["date_change"],
                                                 "comment_admin" => $order["comment_admin"],
+                                                "price_order" => $order["price_order"],
                                                 "is_done" => $order["is_done"],
+                                                "is_cancel" => $order["is_cancel"],
                                                 "is_delete" => $order["is_delete"],
 
                                                 "id" => $order["id"]
@@ -122,6 +157,14 @@ class order_model extends ModelBase {
             return false;
        
         return $order["id"];
+    }
+
+    public function cancelOrder($id) {
+        if ($id > 0) {
+            $this->db->update("UPDATE `good_order` SET `is_cancel` = 1,   WHERE `good_order`.`id` = :id", [ "id" => $id ]);
+            return true;
+        }
+        return false;
     }
 
     public function deleteOrder($id) {

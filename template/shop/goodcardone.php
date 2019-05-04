@@ -11,7 +11,7 @@
 <div class="col-sm">
     <div class="card" style="width: 16rem; ">
         <img src="<?= $src ?>" class="card-img" alt="...">
-        <div class="card-body">
+        <div class="card-body myfontmain">
                 <h5 class="card-title product-name"><?= $value["name"] ?></h5>
                 
                 <?php if ($value["is_discount"] == true): ?>

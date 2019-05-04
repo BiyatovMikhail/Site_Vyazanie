@@ -196,6 +196,10 @@ class good_model extends ModelBase {
       
         if (!isset($good["id"]) || $good["id"] == -1){
     
+      //      $id = $this->insertGood($good);
+      //      var_dump($id); exit();
+      //      $good["id"] = $id;
+      //      $good["article_good"] = $id;
             return $this->insertGood($good);
         }
         else
@@ -203,11 +207,13 @@ class good_model extends ModelBase {
     }
 
     private function insertGood($good) {
-     
-        
-        $id = $this->db->create("INSERT INTO `good` (`name`, `description`, `category_id`, `price`, `per_discount`, `price_discount`, `is_discount`, `count_good`) 
-                                VALUES (:name, :description, :category_id, :price, :per_discount, :price_discount, :is_discount, :count_good)", 
+     //   var_dump($good); exit();
+     //   $good_artic = $good["category_id"]
+
+        $id = $this->db->create("INSERT INTO `good` (`article_good`, `name`, `description`, `category_id`, `price`, `per_discount`, `price_discount`, `is_discount`, `count_good`) 
+                                VALUES (:article_good, :name, :description, :category_id, :price, :per_discount, :price_discount, :is_discount, :count_good)", 
         [
+            "article_good" => $good["article_good"],
             "name" => $good["name"],
             "description" => $good["description"],
             "category_id" => $good["category_id"],
@@ -231,7 +237,8 @@ class good_model extends ModelBase {
         if (!isset($good["is_discount"])) $good["is_discount"] = 0;
         if (!isset($good["count_good"]) || $good["count_good"] == "") $good["count_good"] = 0;
         $result = $this->db->update("UPDATE `good` 
-                                        SET `name` = :name, 
+                                        SET `article_good` = :article_good,
+                                            `name` = :name, 
                                             `description` = :description,
                                             `category_id` = :category_id,
                                             `price` = :price,
@@ -242,6 +249,7 @@ class good_model extends ModelBase {
                                                 WHERE 
                                             `good`.`id` = :id ",
                                             [
+                                                "article_good" => $good["article_good"],
                                                 "name" => $good["name"],
                                                 "description" => $good["description"],
                                                 "category_id" => $good["category_id"],

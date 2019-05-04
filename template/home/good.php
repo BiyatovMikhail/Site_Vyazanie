@@ -12,7 +12,7 @@
             <img src="<?= $src ?>" class="card-img" alt="...">
         </a>
         <div class="card-body">
-            <p class="card-text text-center" style="font-family: 'Parisienne', cursive;">
+            <p class="card-text text-center" >
                 <a href="<?= $url ?>">
                     <?= $MODEL["name"] ?>
                 </a>

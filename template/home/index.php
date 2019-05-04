@@ -24,26 +24,28 @@ $two = $this->WriteHTML($MODEL[0]["items"][1], "home", "good");
 
 this is index
 <div class="container">
-  <div class="row">
+  <!-- <div class="row">
     <div class="line-empty"></div>
-  </div>
-  <div class="row">
+  </div>  -->
+  <!-- <div class="row">
     <div class="line-decorate">
       <img src="/img/linebigdecornew1.png" style="width: 100%;">
     </div>
-    <div class="line-testmy"></div>
-  </div>
+    <div class="line-testmy"></div> 
+    <div class="line-separator" ></div>
+  </div>  -->
+  
   <div class="row">
 
 
     <?= $one ?>
 
     <div class="col-sm">
-      <div class="card" style="width: 20rem;" >
+      <div class="card myfontmain" style="width: 20rem;" >
             <div class="element-indent-empty">
             </div>
             <div class="element-post-title">
-              <p class="text-center text-uppercase font-weight-bold" style="font-family: 'Lobster', cursive;"> Наши новинки </p>
+              <p class="text-center text-uppercase font-weight-bold" > Наши новинки </p>
             </div>
             <div class="element-line-decorate">
                 <img src="/img/line-decor1.png" class="card-img-top" alt="..." >
@@ -74,25 +76,27 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
 
 ?>
 
-  <div class="row">
+ <!--  <div class="row">
     <div class="line-empty"></div>
-  </div>
+  </div> -->
   <div class="row">
-    <div class="line-decorate">
+    <!-- <div class="line-decorate">
       <img src="/img/linebigdecornew2.png" style="width: 100%;">
     </div>
-    <div class="line-testmy"></div>
-  </div>
+    <div class="line-testmy"></div> -->
+    <div class="line-separator" ></div>
+  </div> 
+  
   <div class="row">
     <?= $one ?>
     <div class="col-sm">
       <div class="card" style="width: 20rem;" >
           <div class="element-indent-empty">
           </div>
-         <div class="element indent">
+         <div class="element indent myfontmain">
            
             <div class="element-post-title">
-              <p class="element-text-title text-center" style="font-family: 'Satisfy', cursive;"> Наши акции </p>
+              <p class="element-text-title text-center" > Наши акции </p>
             </div>
             <div class="element-line-decorate">
                 <img src="/img/line-decor1.png" class="card-img-top" alt="..." >
@@ -125,15 +129,18 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
       ?> 
   </div>
 </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="line-empty"></div>
-  </div>
+  </div> -->
   <div class="row">
-    <div class="line-decorate">
+    <!-- <div class="line-decorate">
       <img src="/img/linebigdecornew3.png" style="width: 100%;">
     </div>
-    <div class="line-testmy"></div>
-  </div>
+    <div class="line-testmy"></div> -->
+    <div class="line-separator" ></div>
+  </div> 
+
+  
   <div class="row">
 
   <?= $oneall ?>
@@ -144,14 +151,18 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
 
 <!-- ################################################################################################ -->
 <!-- ################################################################################################ -->
-    <div class="row">
+   <!-- <div class="row">
        <div class="line-empty"></div>
-    </div>
+    </div> -->
     <div class="row">
-       <div class="line-decorate">
-         <img src="/img/linebigdecornew4.png" style="width: 100%;">
-         <div class="line-testmy"></div>
-       </div>
+       <div class="line-decorate2" >
+        <!-- <img src="/img/linebigdecornew4.png" style="height: 20px;" > -->
+       </div> 
+
+       <!-- <div class="line-decorate2" style="background:url(/img/linebigdecornew4.png) no-repeat center center;">
+        
+       </div> -->
+       <div class="line-separator" ></div>
     </div>   
 
 </div>
@@ -163,8 +174,8 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
       
       </div>
       <div class="row">
-        <div class="col-2" style="background-color: grey;">
-          <div class="image-block">
+        <div class="col-2" >
+          <div class="image-block img-rounded center-block">
             <img src="/img/hm1.jpg" style="width: 100%;">
           </div>
         </div>
@@ -177,9 +188,9 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
             Каждое изделие мы создаем исключительно вручную с большой любовью, благодаря чему наши вещи качественные и уникальные.
           </div> 
         </div>
-        <div class="col-2" style="background-color: red;">
-          <div class="image-block center-image">
-            <img src="/img/hm2.jpg">
+        <div class="col-2 " >
+          <div class="image-block ">
+            <img src="/img/hm2.jpg"  style="width: 100%;">
           </div>
         </div>
         <div class="col-4" >
@@ -197,10 +208,9 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
       
       </div>
       <div class="row">
-       <div class="line-decorate">
-         <img src="/img/linebigdecornew5.png" style="width: 100%;">
-         <div class="line-testmy"></div>
-       </div>
+       <div class="line-empty"></div>
+      </div>
+      
     </div> 
       
   </div>

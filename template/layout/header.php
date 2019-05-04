@@ -6,6 +6,10 @@
     <title>Page Title</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+   
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/site.css" /> -->
     <!-- <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
@@ -30,8 +34,9 @@
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
 
-      <a class="text-muted" href="/user/profile">профиль/</a>
-      <a class="text-muted" href="/user/order">мои_заказы/</a>
+      <a class="text-muted" href="/user1/showprofileuser">профиль/</a>
+      <a class="text-muted" href="/order/showorderuser">мои_заказы/</a>
+      <a class="text-muted" href="/user1/orderuser">мои_заказы2/</a>
       <a class="text-muted" href="/admin">Админка</a>
 
         <?= $this->drawRoute("loginform", "displayButton") ?>
@@ -41,6 +46,7 @@
   </header>
 
 thit is heder
-<div class="header-logo" style="text-align:center;">
-    <img src="/img/toplogo.jpg" />
+<div class="header-logo" style="background:url(/img/topLogo2.png) no-repeat center center;" >
+   <!-- <img src="/img/topLogo2.png" />  -->
+   
  </div>

@@ -2,6 +2,7 @@
 
 class user1 extends ControllerBase {
 
+
     public function canAnonymus($action) {
         return true;
     }
@@ -16,6 +17,48 @@ class user1 extends ControllerBase {
             "MODEL",
             "user1",
             "index"
+        );
+    }
+
+    public function showprofileuser() {
+        return $this->Render()->WriteHTML(
+            "MODEL",
+            "user",
+            "profile"
+        );
+    }
+
+    public function orderuser() {
+
+        $user = app::Current()->getUser();
+        
+        $userId = $user->getUserID();
+
+      //  /** @var good_model $model2 */
+      //  $model2 = $this->getModel("good", "good");
+       // var_dump($model2); exit();
+        /** @var order_model $model */
+        $model = $this->getModel("order", "order");
+     //   $orderModel = $this->getModel("order");
+
+       // var_dump($model); exit();
+
+        $ordersAll = $model->getOrdersGoodActivForUser($userId);
+        // var_dump($ordersAll); exit();
+        $ordersActiv = $model->getOrdersGoodActivForUser($userId);  
+        $ordersDone = $model->getOrdersDoneForUser($userId); 
+        $ordersCancel = $model->getOrdersCancelForUser($userId);  
+
+        $data = [
+            "orderalluser" => $ordersAll,
+            "orderactivuser" => $ordersActiv,
+            "orderdoneuser" => $ordersDone,
+            "ordercanseluser" => $ordersCancel,
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "order", "orderalluser"
         );
     }
 

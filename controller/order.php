@@ -23,6 +23,14 @@ class order extends ControllerBase {
         );
     }
 
+    public function showorderuser() {
+        return $this->Render()->WriteHTML(
+            "MODEL",
+            "user",
+            "order"
+        );
+    }
+
     public function save_order() {
 
         $current_user = $this->getModel("user");
@@ -33,6 +41,7 @@ class order extends ControllerBase {
         $numb_order = $_POST["numb_order"];
         $user_id = $_POST["user_id"];
         var_dump($user_id); exit();
+
         if ($user_id != -1) {
             $user_name = $current_user["surname"] + $current_user["name"] + $current_user["name2"];
             $user_email = $current_user["email"];
@@ -50,7 +59,9 @@ class order extends ControllerBase {
         $date_create = $_POST["date_create"];
         $date_change = $_POST["date_change"];
         $comment_admin = $_POST["comment_admin"];
+        $price_order = $_POST["price_order"];
         $is_done = $_POST["is_done"];
+        $is_cancel = $_POST["is_cancel"];
         $is_delete = $_POST["is_delete"];
 
         $data1 = [
@@ -64,7 +75,9 @@ class order extends ControllerBase {
             "date_create" => date("Y-m-d H:i:s"),
             "date_change" => date("Y-m-d H:i:s"),
             "comment_admin" => $comment_admin,
+            "price_order" => $price_order,
             "is_done" => 0,
+            "is_cancel" => 0,
             "is_delete" => 0
         ];
 
