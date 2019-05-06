@@ -145,11 +145,16 @@
                                                 <?php endif; ?>
                                         <?php else: ?>
                                         <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> шт </div>
-                                        <a href="#" class="btn btn-primary">Добавить в корзину</a>
-                                            <!-- Button trigger modal basket -->
-                                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
-                                            Добавить в корзину модальное окно корзина
-                                            </button>
+                                        <form class="order-basketTemp" method="POST" action="/basket/saveBasketTemp" novalidate>
+                                            <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
+                                            <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+                                            <!-- <a href="#" class="btn btn-primary">Добавить в корзину</a> -->
+                                            <button type="submit" class="btn btn-primary">Добавить в корзину</button>
+                                                <!-- Button trigger modal basket -->
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
+                                                Добавить в корзину модальное окно корзина
+                                                </button>
+                                        </form>
                                         <?php endif; ?>
                                     </div>
                                 </div> 

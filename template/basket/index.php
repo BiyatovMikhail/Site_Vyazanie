@@ -8,9 +8,10 @@
           <th scope="col">Название</th>
           <th scope="col">Фото</th>
           <th scope="col">Цена</th>
+          <th scope="col">Цена со скидкой</th>
           <th scope="col">Количество</th>
           <th scope="col">Сумма</th>
-          <th></th>
+          <th scope="col">удалить</th>
         </tr>
       </thead>
       <tbody>
@@ -26,12 +27,18 @@
               </label></div>
           </td>
           <td>
+          <div>
+              <label>
+              400p
+              </label></div>
+          </td>
+          <td>
           <div>                       
               <input type="number" id="replyNumber" min="0" data-bind="value:replyNumber" />
           </div>
           </td>
           <td>@mdo</td>
-          <th></th>
+          <th> удалить</th>
         </tr>
         <tr>
           <th scope="row">2</th>
@@ -41,20 +48,12 @@
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
-          <th></th>
+          <td>@fat</td>
+          <th>удалитть</th>
         </tr>
-        <tr>
-          <th scope="row">3</th>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <td>Larry</td>
-          <td>the Bird</td>
-          <td>@twitter</td>
-          <th></th>
-        </tr>
+       
         
-        <tr><td colspan="7"><img src="img/loading.gif" alt=""></td></tr>
+        <tr><td colspan="9"><img src="img/loading.gif" alt=""></td></tr>
         
       </tbody>
     </table>

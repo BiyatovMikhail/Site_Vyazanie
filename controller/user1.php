@@ -21,8 +21,20 @@ class user1 extends ControllerBase {
     }
 
     public function showprofileuser() {
+
+        $user = app::Current()->getUser();
+        var_dump($user); exit();
+        // $userModel = [
+        //     "surname" => $user["surname"],
+        //     "name" => $user["name"],
+        //     "name2" => $user["name2"],
+        //     "nikname" => $user["nikname"],
+        //     "email" => $user["email"],
+        //     "phone" => $user["phone"],
+        //     "gender" => $user["gender"],
+        // ];
         return $this->Render()->WriteHTML(
-            "MODEL",
+            $user,
             "user",
             "profile"
         );
@@ -59,6 +71,34 @@ class user1 extends ControllerBase {
         return $this->Render()->WriteHTML(
             $data,
             "order", "orderalluser"
+        );
+    }
+
+    public function basketUser() {
+
+        $user = app::Current()->getUser();
+        
+        $userId = $user->getUserID();
+
+        /** @var basket_model $model */
+        $model = $this->getModel("basket", "basket");
+     
+       // var_dump($model); exit();
+
+        $basketTempByUser = $model->getBasketTempActivForUser($userId);
+        // var_dump($ordersAll); exit();
+     //   $goodsActiv = $model->getOrdersGoodActivForUser($userId);  
+        
+
+        $data = [
+            "basketTempByUser" => $basketTempByUser,
+     //       "goods" => $goodsActiv
+           
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "user", "basketuser"
         );
     }
 
