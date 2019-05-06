@@ -193,7 +193,6 @@ class good_model extends ModelBase {
 
 
     public function saveGood($good) {
-      
         if (!isset($good["id"]) || $good["id"] == -1){
     
       //      $id = $this->insertGood($good);
@@ -210,8 +209,27 @@ class good_model extends ModelBase {
      //   var_dump($good); exit();
      //   $good_artic = $good["category_id"]
 
-        $id = $this->db->create("INSERT INTO `good` (`article_good`, `name`, `description`, `category_id`, `price`, `per_discount`, `price_discount`, `is_discount`, `count_good`) 
-                                VALUES (:article_good, :name, :description, :category_id, :price, :per_discount, :price_discount, :is_discount, :count_good)", 
+        $id = $this->db->create("INSERT INTO `good` 
+                                    (`article_good`, 
+                                    `name`, 
+                                    `description`, 
+                                    `category_id`, 
+                                    `price`, 
+                                    `per_discount`, 
+                                    `price_discount`, 
+                                    `is_discount`, 
+                                    `count_good`) 
+                                VALUES 
+                                    (
+                                        :article_good, 
+                                        :name, 
+                                        :description, 
+                                        :category_id, 
+                                        :price, 
+                                        :per_discount, 
+                                        :price_discount, 
+                                        :is_discount, 
+                                        :count_good)", 
         [
             "article_good" => $good["article_good"],
             "name" => $good["name"],
@@ -223,8 +241,6 @@ class good_model extends ModelBase {
             "is_discount" => $good["is_discount"],
             "count_good" => $good["count_good"]
         ]);
-     
-            
 
         if ($id !== false)
             if (isset($good["params"]) && is_array($good["params"]))

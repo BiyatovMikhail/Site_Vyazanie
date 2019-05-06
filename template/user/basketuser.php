@@ -17,14 +17,11 @@
       <tbody>
         <tr>
           <th scope="row">1</th>
-          <td>Mark</td>
-          <td>Otto</td>
-          <td>@mdo</td>
+          <td>артик</td>
+          <td>назв тов</td>
+          <td>фото тов</td>
           <td>
-          <div>
-              <label>
-              500p
-              </label></div>
+              <div><label>500p</label></div>
           </td>
           <td>
           <div>
@@ -37,19 +34,27 @@
               <input type="number" id="replyNumber" min="1" data-bind="value:replyNumber" style="width: 3em;"/>
           </div>
           </td>
-          <td>@mdo</td>
-          <th> удалить</th>
+          <td>сумма</td>
+          <th> <button type="button" class="btn-sm btn-outline-danger">X</button></th>
         </tr>
         <tr>
           <th scope="row">2</th>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-          <td>@fat</td>
-          <th>удалитть</th>
+          <td>арт</td>
+          <td>назв</td>
+          <td>фото</td>
+          <td>
+              <div><label>800p</label></div>
+          </td>
+          <td>
+             <div><label>700p</label></div>
+          </td>
+          <td>
+          <div>                       
+              <input type="number" id="replyNumber" min="1" data-bind="value:replyNumber" style="width: 3em;"/>
+          </div>
+          </td>
+          <td>сумма</td>
+          <th><button type="button" class="btn-sm btn-outline-danger">Удалить</button></th>
         </tr>
        
         

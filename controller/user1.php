@@ -22,7 +22,7 @@ class user1 extends ControllerBase {
 
     public function showprofileuser() {
 
-        $user = app::Current()->getUser();
+        $user = app::Current()->getRealUser();
         var_dump($user); exit();
         // $userModel = [
         //     "surname" => $user["surname"],
@@ -161,8 +161,11 @@ class user1 extends ControllerBase {
         ];
       //  var_dump($dataUser); exit();
      
+        $_SESSION["MESSAGE"] = "Вы успешно зарегистрированы! 
+		Теперь вы може войти на сайт под своим логиным  и паролем!";
+
         $this->model->saveUser($dataUser);
-        return $this->index();
+        return $this->Render()->Redirect("loginform");
     }
    
 

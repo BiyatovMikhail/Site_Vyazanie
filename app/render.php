@@ -31,7 +31,7 @@ class render {
         return ob_get_clean();
     }
 
-    public function Redirect($controller, $action) {
+    public function Redirect($controller, $action = "index") {
         header("Location: /" . $controller . "/" . $action);
         die();
     }

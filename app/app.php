@@ -95,6 +95,13 @@ class app {
         return $this->user;
     }       
 
+    /**
+     * @return User
+     */
+    public function getRealUser() {
+        return $this->db->selectOne("SELECT * FROM `user` WHERE `id` = :id;", ["id" => $this->user->getUserID()]);
+    }
+
 
     private static $current;
     /**

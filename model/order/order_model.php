@@ -7,7 +7,12 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllUserGoodForAdm() {
-        return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id ", []);
+        $models = $this->db->selectMany("SELECT `good_order`.`*`, `good`.`*`, `good_category`.name AS cat_name FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id LEFT JOIN `good_category` ON `good_category`.id = `good`.category_id ", []);
+        foreach ($models as $key => $value) {
+            $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
+            $models[$key]["url"] = $url;
+        }
+        return $models;
     }
 
     public function getOrdersAllGoodForUser($userId) {
@@ -82,10 +87,14 @@ class order_model extends ModelBase {
             $order["id"] = $id;
             $order["numb_order"] = $id;
 
-            return $this->updateOrder($order);
+            $this->updateOrder($order);
+
+            return $id;
         }
-        else
-            return $this->updateOrder($order);
+        else {
+            $this->updateOrder($order);
+            return $order["id"];
+        }
     }
 
     private function insertOrder($order) {

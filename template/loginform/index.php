@@ -1,3 +1,14 @@
+
+<?php
+
+  $message = "";
+  if (isset($_SESSION["MESSAGE"])) {
+    $message = $_SESSION["MESSAGE"];
+    unset($_SESSION["MESSAGE"]);
+  }
+
+?>
+
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -8,7 +19,7 @@
 <div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
-                    <h3>Login for Form 1</h3>
+                    <h5>Login for Form 1 <?= $message ?> </h5>
                     <div class="social-login">
                         <p>
                             <a href="" class="btn social-btn btn-twitter"> <i class="fab fa-twitter"></i>   Войти через Twitter</a>

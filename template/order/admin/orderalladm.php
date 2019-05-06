@@ -1,8 +1,8 @@
 
 <script>
     function fill_modal(selector) {
-        var data = JSON.parse(jQuery(selector).html());
-        var_dump(data); exit();
+        debugger;
+        var data = window[selector];//JSON.parse(jQuery(selector).html());
         jQuery("#good_id").val(data.good_id);
         jQuery("#numberOrder").val(data.numb_order);
         jQuery("#numberGood").val(data.good_id);
@@ -17,7 +17,6 @@
         jQuery("#commentAdmin").val(data.comment_admin);
         jQuery("#isDoneOrder").val(data.is_done);
         jQuery("#isDeleteOrder").val(data.is_delete);
-        
     }
 </script>
 
@@ -62,11 +61,15 @@
                         <th scope="row"><?= ++$i ?></th> 
                         <td><?= $v["numb_order"] ?></td>
                         <td><?= $v["user_name"] ?></td>
-                        <td><?= $v["name"] ?></td>
+                        <td> <a href="<?= $v["url"] ?>" target="_blank"> <?= $v["name"] ?> </a></td>
                         <td><?= $v["date_create"] ?></td>
                         <td>
-                            <div class="order-data-<?= $i ?>" style="display:none;"><?= json_encode($v) ?></div>
-                            <button id="order" type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="fill_modal('.order-data-<?= $i ?>')" >Посмотреть</button>
+                            <div class="order-data-<?= $i ?>" style="display:none;"> 
+                                <script>
+                                    var order_data_<?= $i ?> = <?= json_encode($v) ?>;
+                                </script>
+                            </div>
+                            <button id="order" type="button" class="btn btn-info" data-toggle="modal" data-target=".bd-example-modal-lg" onclick="fill_modal('order_data_<?= $i ?>')" >Посмотреть</button>
                         </td>
                         
                         </tr>

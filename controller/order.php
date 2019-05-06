@@ -15,9 +15,9 @@ class order extends ControllerBase {
    
 
 
-    public function index() {
+    public function index($order_id = -1) {
         return $this->Render()->WriteHTML(
-            "MODEL",
+            $order_id,
             "order",
             "index"
         );
@@ -32,18 +32,18 @@ class order extends ControllerBase {
     }
 
     public function save_order() {
-
-        $current_user = $this->getModel("user");
+        
+        $current_user = app::Current()->getRealUser();
 
         $this->model = $this->getModel("order");
 
         $orderP = $_POST;
         $numb_order = $_POST["numb_order"];
         $user_id = $_POST["user_id"];
-        var_dump($user_id); exit();
+        
 
         if ($user_id != -1) {
-            $user_name = $current_user["surname"] + $current_user["name"] + $current_user["name2"];
+            $user_name = $current_user["surname"] . " " . $current_user["name"]  . " " . $current_user["name2"];
             $user_email = $current_user["email"];
             $user_phone = $current_user["phone"];
         }
@@ -65,7 +65,7 @@ class order extends ControllerBase {
         $is_delete = $_POST["is_delete"];
 
         $data1 = [
-            "numb_order" => $numb_order,
+            "numb_order" => 1,
             "user_id" => $user_id,
             "good_id" => $good_id,
             "user_name" => $user_name,
@@ -80,10 +80,9 @@ class order extends ControllerBase {
             "is_cancel" => 0,
             "is_delete" => 0
         ];
-
      
-        $this->model->saveOrder($data1);
-        return $this->index();
+        $order_id = $this->model->saveOrder($data1);
+        return $this->index($order_id);
     }
 
 
