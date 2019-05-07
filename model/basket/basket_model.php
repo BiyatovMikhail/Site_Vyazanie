@@ -11,6 +11,7 @@ class basket_model extends ModelBase {
     
 
     public function saveBasketTemp($basketTemp) {
+        
         if (!isset($basketTemp["id"]) || $basketTemp["id"] == -1){
            
             return $this->insertBasketTemp($basketTemp);
@@ -20,11 +21,11 @@ class basket_model extends ModelBase {
     }
 
     private function insertBasketTemp($basketTemp) {
-     
+     //   var_dump($basketTemp); exit();
         $id = $this->db->create("INSERT INTO `good_basket_temp` (`user_id`, `good_id`, `count_good`, `is_activ`, `is_cancel`) 
-                                VALUES (:user_id, :good_id, :count_good, :is_activ, :is_cancel)", 
+                                VALUES (:user_id_my, :good_id, :count_good, :is_activ, :is_cancel)", 
         [
-            "user_id" => $basketTemp["user_id"],
+            "user_id_my" => $basketTemp["user_id"],
             "good_id" => $basketTemp["good_id"],
             "count_good" => $basketTemp["count_good"],
             "is_activ" => $basketTemp["is_activ"],
@@ -38,7 +39,7 @@ class basket_model extends ModelBase {
     private function updateBasketTemp($basketTemp) {
       
         $result = $this->db->update("UPDATE `good_basket_temp` 
-                                        SET `user_id` = :user_id, 
+                                        SET `user_id` = :user_id_my, 
                                             `good_id` = :good_id,
                                             `count_good` = :count_good,
                                             `is_activ` = :is_activ,
@@ -46,7 +47,7 @@ class basket_model extends ModelBase {
                                                 WHERE 
                                             `good_basket_temp`.`id` = :id ",
                                             [
-                                                "user_id" => $basketTemp["user_id"],
+                                                "user_id_my" => $basketTemp["user_id"],
                                                 "good_id" => $basketTemp["good_id"],
                                                 "count_good" => $basketTemp["count_good"],
                                                 "is_activ" => $basketTemp["is_activ"],

@@ -1,3 +1,7 @@
+<?php //var_dump($MODEL); exit();
+
+?>
+
 <div class="basket">
   <div class="container">
     <table class="table table-hover table-bordered">

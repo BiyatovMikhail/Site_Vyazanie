@@ -148,6 +148,8 @@
                                         <form class="order-basketTemp" method="POST" action="/basket/saveBasketTemp" novalidate>
                                             <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
                                             <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+                                            <input type="hidden" name="count" value="1" />
+                                            
                                             <!-- <a href="#" class="btn btn-primary">Добавить в корзину</a> -->
                                             <button type="submit" class="btn btn-primary">Добавить в корзину</button>
                                                 <!-- Button trigger modal basket -->

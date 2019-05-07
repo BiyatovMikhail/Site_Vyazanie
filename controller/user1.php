@@ -62,7 +62,8 @@ class user1 extends ControllerBase {
         $ordersCancel = $model->getOrdersCancelForUser($userId);  
 
         $data = [
-            "orderalluser" => $ordersAll,
+            "orderalluser" => $ordersAll["data"],
+            "orderalluser_pages" => $ordersAll["pages"],
             "orderactivuser" => $ordersActiv,
             "orderdoneuser" => $ordersDone,
             "ordercanseluser" => $ordersCancel,
@@ -81,18 +82,18 @@ class user1 extends ControllerBase {
         $userId = $user->getUserID();
 
         /** @var basket_model $model */
-        $model = $this->getModel("basket", "basket");
+        $model_basket = $this->getModel("basket", "basket");
      
        // var_dump($model); exit();
 
-        $basketTempByUser = $model->getBasketTempActivForUser($userId);
+        $basketTempByUser = $model_basket->getBasketTempActivForUser($userId);
         // var_dump($ordersAll); exit();
      //   $goodsActiv = $model->getOrdersGoodActivForUser($userId);  
-        
-
+        $model_good = $this->getModel("good", "good");
+       // $article_good = 
         $data = [
             "basketTempByUser" => $basketTempByUser,
-     //       "goods" => $goodsActiv
+     
            
         ];
 

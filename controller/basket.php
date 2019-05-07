@@ -15,17 +15,19 @@ class basket extends ControllerBase {
     }
     public function saveBasketTemp() {
 
-        $current_user = $this->getModel("user");
+        $current_user = $this->getModel("user1", "user1");
 
-        $current_good = $this->getModel("good");
+        $current_good = $this->getModel("good", "good");
 
         $this->model = $this->getModel("basket");
 
         $good_id = $_POST["good_id"];
        
         $user_id = $_POST["user_id"];
+   //  var_dump($user_id); exit();
         $count = $_POST["count"];
-        
+        $count_good = $_POST["count"];
+       // var_dump($_POST); exit();
         $data1 = [
             "user_id" => $user_id,
             "good_id" => $good_id,
@@ -40,9 +42,7 @@ class basket extends ControllerBase {
         return $this->index();
     }
 
-    public function showBasketTempForUser() {
-
-    }
+    
 
     public function addGoodToBasket() {
 

@@ -39,9 +39,25 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersGoodActivForUser($userId) {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0", [ "userId" => $userId ]);
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0 ";
+        $params = [ "userId" => $userId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT * " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+        
       
-        return $order;
+        return ["data" => $order, "pages" => $res];
     }
 
     public function getOrdersDoneForAdm() {

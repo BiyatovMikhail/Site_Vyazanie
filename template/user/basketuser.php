@@ -1,3 +1,7 @@
+<?php var_dump($MODEL); exit();
+
+?>
+
 <div class="basket">
   <div class="container">
     <table class="table table-hover table-bordered">
@@ -15,56 +19,27 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th scope="row">1</th>
-          <td>артик</td>
-          <td>назв тов</td>
-          <td>фото тов</td>
-          <td>
-              <div><label>500p</label></div>
-          </td>
-          <td>
-          <div>
-              <label>
-              400p
-              </label></div>
-          </td>
-          <td>
-          <div>                       
-              <input type="number" id="replyNumber" min="1" data-bind="value:replyNumber" style="width: 3em;"/>
-          </div>
-          </td>
-          <td>сумма</td>
-          <th> <button type="button" class="btn-sm btn-outline-danger">X</button></th>
-        </tr>
-        <tr>
-          <th scope="row">2</th>
-          <td>арт</td>
-          <td>назв</td>
-          <td>фото</td>
-          <td>
-              <div><label>800p</label></div>
-          </td>
-          <td>
-             <div><label>700p</label></div>
-          </td>
-          <td>
-          <div>                       
-              <input type="number" id="replyNumber" min="1" data-bind="value:replyNumber" style="width: 3em;"/>
-          </div>
-          </td>
-          <td>сумма</td>
-          <th><button type="button" class="btn-sm btn-outline-danger">Удалить</button></th>
-        </tr>
-       
-        
-        <tr><td colspan="9"><img src="img/loading.gif" alt=""></td></tr>
-        
-      </tbody>
+                <? $i = 0; foreach ($MODEL["basketTempByUser"] as $v) {?>
+                    <tr>
+                        <th scope="row"><?= ++$i ?></th> 
+                        <td><?= $v["numb_order"] ?></td>
+                        <td><?= $v["article_good"] ?></td>
+                        <td><?= $v["name"] ?></td>
+                        <td><?= $v["date_create"] ?></td>
+                        <td><?= $v["price_order"] ?>руб.</td>
+                        <td>
+                            
+                            <button id="basketitem" type="button" class="btn btn-info" >Отменить</button>
+                        </td>
+                        
+                        </tr>
+                <?    } ?>
+                
+            </tbody>
     </table>
     <div>Итого: <span id="total-basket-summa">0</span> руб.</div>
     <br>
-    <button id="order" class="btn btn-info">Оформить заказ</button>
+    <button id="basketall" class="btn btn-info">Оформить заказ</button>
   </div>
 </div>
 
