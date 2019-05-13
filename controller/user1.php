@@ -40,7 +40,7 @@ class user1 extends ControllerBase {
         );
     }
 
-    public function orderuser() {
+    public function orderuserAll() {
 
         $user = app::Current()->getUser();
         
@@ -57,16 +57,12 @@ class user1 extends ControllerBase {
 
         $ordersAll = $model->getOrdersGoodActivForUser($userId);
         // var_dump($ordersAll); exit();
-        $ordersActiv = $model->getOrdersGoodActivForUser($userId);  
-        $ordersDone = $model->getOrdersDoneForUser($userId); 
-        $ordersCancel = $model->getOrdersCancelForUser($userId);  
+        
 
         $data = [
             "orderalluser" => $ordersAll["data"],
             "orderalluser_pages" => $ordersAll["pages"],
-            "orderactivuser" => $ordersActiv,
-            "orderdoneuser" => $ordersDone,
-            "ordercanseluser" => $ordersCancel,
+            
         ];
 
         return $this->Render()->WriteHTML(
@@ -74,6 +70,80 @@ class user1 extends ControllerBase {
             "order", "orderalluser"
         );
     }
+
+    public function orderuserActiv() {
+
+        $user = app::Current()->getUser();
+        
+        $userId = $user->getUserID();
+
+        /** @var order_model $model */
+        $model = $this->getModel("order", "order");
+    
+        
+        $ordersActiv = $model->getOrdersGoodActivForUser($userId);  
+        
+
+        $data = [
+            "orderactivuser" => $ordersActiv["data"],
+            "orderactivuser_pages" => $ordersActiv["pages"],
+            
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "order", "orderactivuser"
+        );
+    }
+
+    public function orderuserDone() {
+
+        $user = app::Current()->getUser();
+        
+        $userId = $user->getUserID();
+
+        /** @var order_model $model */
+        $model = $this->getModel("order", "order");
+    
+        $ordersDone = $model->getOrdersDoneForUser($userId); 
+      
+
+        $data = [
+            "orderdoneuser" => $ordersDone["data"],
+            "orderdoneuser_pages" => $ordersDone["pages"],
+            
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "order", "orderdoneuser"
+        );
+    }
+
+    public function orderuserCancel() {
+
+        $user = app::Current()->getUser();
+        
+        $userId = $user->getUserID();
+
+        /** @var order_model $model */
+        $model = $this->getModel("order", "order");
+    
+       
+        $ordersCancel = $model->getOrdersCancelForUser($userId);  
+
+        $data = [
+            "ordercanceluser" => $ordersCancel["data"],
+            "ordercanceluser_pages" => $ordersCancel["pages"],
+           
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "order", "ordercanceluser"
+        );
+    }
+
 
     public function basketUser() {
 

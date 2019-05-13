@@ -36,7 +36,7 @@
 
       <a class="text-muted" href="/user1/showprofileuser">профиль/</a>
       <a class="text-muted" href="/order/showorderuser">мои_заказы/</a>
-      <a class="text-muted" href="/user1/orderuser">мои_заказы2/</a>
+      <a class="text-muted" href="/user1/orderuserAll">мои_заказы2/</a>
       <a class="text-muted" href="/user1/basketUser">корзина/</a>
       
       <a class="text-muted" href="/admin">Админка</a>

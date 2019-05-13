@@ -16,7 +16,7 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllGoodForUser($userId) {
-        var_dump($userId); exit();
+       
         return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId", [ "userId" => $userId ]);
     }
 
