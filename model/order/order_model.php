@@ -16,8 +16,25 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllGoodForUser($userId) {
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId ";
+        $params = [ "userId" => $userId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT * " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+        
+        return ["data" => $order, "pages" => $res];
        
-        return $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId", [ "userId" => $userId ]);
     }
 
     public function getOrderById($id) {
@@ -46,7 +63,7 @@ class order_model extends ModelBase {
         $res = intdiv($all, 3);
         if ($all % 3 > 0) $res++;        
 
-        $sql_res = "SELECT * " . $sql;
+        $sql_res = "SELECT `good_order`.`*`, `good`.`*`, `good_order`.id AS ord_id" . $sql;
         if (isset($_GET["page"])) {
             $skip = $_GET["page"] * 3;
             $sql_res .= " limit " . $skip . ",3";
@@ -56,7 +73,6 @@ class order_model extends ModelBase {
 
         $order = $this->db->selectMany($sql_res, $params);
         
-      
         return ["data" => $order, "pages" => $res];
     }
 
@@ -67,9 +83,26 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersDoneForUser($userId) {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 1", [ "userId" => $userId ]);
-      
-        return $order;
+
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 1 ";
+        $params = [ "userId" => $userId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT * " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+        
+        return ["data" => $order, "pages" => $res];
+
     }
 
     public function getOrdersDelForAdm() {
@@ -79,15 +112,32 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersDelForUser($userId) {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_delete` = 1", [ "userId" => $userId ]);
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_delete` = 1 ", [ "userId" => $userId ]);
       
         return $order;
     }
 
     public function getOrdersCancelForUser($userId) {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_cancel` = 1", [ "userId" => $userId ]);
-      
-        return $order;
+
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_cancel` = 1 ";
+        $params = [ "userId" => $userId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT * " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+        
+        return ["data" => $order, "pages" => $res];
+
     }
 
     public function getOrderBynumb_order($numb_order) {

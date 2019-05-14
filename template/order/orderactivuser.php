@@ -43,8 +43,10 @@
                                     <td><?= $v["date_create"] ?></td>
                                     <td><?= $v["price_order"] ?>руб.</td>
                                     <td>
-                                        
-                                        <button id="order" type="button" class="btn btn-info" >Отменить</button>
+                                        <form class="orderCanselId" method="POST" action="/order/cancel_order" novalidate>
+                                            <input type="hidden" name="order_id" value="<?= $v["ord_id"] ?>" />
+                                            <button id="order" type="submit"  class="btn btn-info" >Отменить</button>
+                                        </form>
                                     </td>
                                     
                                     </tr>

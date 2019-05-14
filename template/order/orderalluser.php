@@ -30,7 +30,7 @@
                             <th scope="col">название товара</th>
                             <th scope="col">дата создания заказа</th>
                             <th scope="col">сумма заказа</th>
-                            <th scope="col">отменить заказ</th>
+                            <th scope="col">статус заказ</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -43,8 +43,16 @@
                                 <td><?= $v["date_create"] ?></td>
                                 <td><?= $v["price_order"] ?>руб.</td>
                                 <td>
-                                    
-                                    <button id="order" type="button" class="btn btn-info" >Отменить</button>
+                                    <?php if($v["is_done"] == "1" ): ?>
+                                    <p> Выполнен </p>
+                                    <?php elseif ($v["is_cancel"] == "1" ): ?>
+                                    <p> Отменен </p>
+                                    <?php else: ?>
+                                    <p> В работе </p>
+
+                                    <?php endif; ?>
+
+
                                 </td>
                                 
                                 </tr>

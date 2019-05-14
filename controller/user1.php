@@ -23,7 +23,7 @@ class user1 extends ControllerBase {
     public function showprofileuser() {
 
         $user = app::Current()->getRealUser();
-        var_dump($user); exit();
+      //  var_dump($user); exit();
         // $userModel = [
         //     "surname" => $user["surname"],
         //     "name" => $user["name"],
@@ -55,7 +55,7 @@ class user1 extends ControllerBase {
 
        // var_dump($model); exit();
 
-        $ordersAll = $model->getOrdersGoodActivForUser($userId);
+        $ordersAll = $model->getOrdersAllGoodForUser($userId);
         // var_dump($ordersAll); exit();
         
 
@@ -82,7 +82,7 @@ class user1 extends ControllerBase {
     
         
         $ordersActiv = $model->getOrdersGoodActivForUser($userId);  
-        
+        //var_dump($ordersActiv); exit();
 
         $data = [
             "orderactivuser" => $ordersActiv["data"],

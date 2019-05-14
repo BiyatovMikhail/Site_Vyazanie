@@ -85,6 +85,16 @@ class order extends ControllerBase {
         return $this->index($order_id);
     }
 
+    public function cancel_order (){
 
+        $orderId = $_POST["order_id"];
+       // var_dump($orderId); exit();
+     //   $this->model = $this->getModel("order");
+
+        $this->model->cancelOrder($orderId);
+
+        return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+
+    }
 
 }
