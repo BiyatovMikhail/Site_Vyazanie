@@ -1,5 +1,7 @@
 <?php
 
+use phpbb\profilefields\lang_helper;
+
 class order_model extends ModelBase {
 
     public function getOrdersAllForAdm() {
@@ -16,7 +18,7 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllGoodForUser($userId) {
-        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId ";
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId ORDER BY date_create DESC";
         $params = [ "userId" => $userId ];
 
         $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
@@ -50,13 +52,13 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersGoodActivForAdm() {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0");
+        $order = $this->db->selectMany("SELECT * FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0 AND `good_order`.`is_cancel` = 0");
       
         return $order;
     }
 
     public function getOrdersGoodActivForUser($userId) {
-        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0 ";
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 0 AND `good_order`.`is_delete` = 0 AND `good_order`.`is_cancel` = 0 ORDER BY date_create DESC";
         $params = [ "userId" => $userId ];
 
         $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
@@ -84,7 +86,7 @@ class order_model extends ModelBase {
 
     public function getOrdersDoneForUser($userId) {
 
-        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 1 ";
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_done` = 1 ORDER BY date_create DESC";
         $params = [ "userId" => $userId ];
 
         $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
@@ -112,14 +114,14 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersDelForUser($userId) {
-        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_delete` = 1 ", [ "userId" => $userId ]);
+        $order = $this->db->selectMany("SELECT * FROM `good_order` where `good_order`.`user_id` = :userId AND `good_order`.`is_delete` = 1 ORDER BY date_create DESC", [ "userId" => $userId ]);
       
         return $order;
     }
 
     public function getOrdersCancelForUser($userId) {
 
-        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_cancel` = 1 ";
+        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId AND `good_order`.`is_cancel` = 1 ORDER BY date_create DESC";
         $params = [ "userId" => $userId ];
 
         $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
@@ -235,8 +237,9 @@ class order_model extends ModelBase {
     }
 
     public function cancelOrder($id) {
+       // var_dump($id); exit();
         if ($id > 0) {
-            $this->db->update("UPDATE `good_order` SET `is_cancel` = 1,   WHERE `good_order`.`id` = :id", [ "id" => $id ]);
+            $this->db->update("UPDATE `good_order` SET `is_cancel` = 1  WHERE `good_order`.`id` = :id", [ "id" => $id ]);
             return true;
         }
         return false;
@@ -244,7 +247,7 @@ class order_model extends ModelBase {
 
     public function deleteOrder($id) {
         if ($id > 0) {
-            $this->db->update("UPDATE `good_order` SET `is_delete` = 1,   WHERE `good_order`.`id` = :id", [ "id" => $id ]);
+            $this->db->update("UPDATE `good_order` SET `is_delete` = 1  WHERE `good_order`.`id` = :id", [ "id" => $id ]);
             return true;
         }
         return false;

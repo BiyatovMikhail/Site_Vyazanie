@@ -180,6 +180,8 @@ class user1 extends ControllerBase {
         $this->model = $this->getModel("user1");
 
         $pass1 = $_POST["pass1"];
+        $user1_id = $_POST["user_id"];
+
       //  $pass2 = $_POST["pass2"];
       //  if ($pass1 != $pass2 && ($pass1 == "" || $pass2 =="") ) {
       //      return $this->index(["Пароли не совпадают"]);
@@ -211,6 +213,7 @@ class user1 extends ControllerBase {
         $is_delete = $_POST["is_delete"];
 
         $dataUser = [
+            "id" => $user1_id,
             "login" => $login,
             "pass" => $pass,
             "comment" => $comment,
@@ -221,22 +224,28 @@ class user1 extends ControllerBase {
             "nikname" => $nikname,
             "email" => $email,
             "phone" => $phone,
-            "gender" => 0,
+            "gender" => $gender,
             "user_id_social" => 0,
             "user_secret_social" => 0,
             "date_create" => date("Y-m-d H:i:s"),
             "date_change" => date("Y-m-d H:i:s"),
-            "is_ban" => 0,
-            "is_delete" => 0
+            "is_ban" =>  $is_ban,
+            "is_delete" => $is_delete
 
         ];
       //  var_dump($dataUser); exit();
      
-        $_SESSION["MESSAGE"] = "Вы успешно зарегистрированы! 
-		Теперь вы може войти на сайт под своим логиным  и паролем!";
+        
+        if ($user1_id == -1){
+            $_SESSION["MESSAGE"] = "Вы успешно зарегистрированы! 
+            Теперь вы може войти на сайт под своим логиным  и паролем!";
 
-        $this->model->saveUser($dataUser);
-        return $this->Render()->Redirect("loginform");
+            $this->model->saveUser($dataUser);
+            return $this->Render()->Redirect("loginform");
+        } else {
+            $this->model->saveUser($dataUser);
+           return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+        }
     }
    
 

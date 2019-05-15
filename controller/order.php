@@ -90,7 +90,8 @@ class order extends ControllerBase {
         $orderId = $_POST["order_id"];
        // var_dump($orderId); exit();
      //   $this->model = $this->getModel("order");
-
+        $this->model = $this->getModel("order");
+     
         $this->model->cancelOrder($orderId);
 
         return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);

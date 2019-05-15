@@ -61,7 +61,7 @@
             
         </div>
 
-        <?= $this->WriteHTML($MODEL["orderalluser_pages"], "shared", "paginator") ?>
+        <?= $this->WriteHTML($MODEL["orderactivuser_pages"], "shared", "paginator") ?>
 
     </div>
 
