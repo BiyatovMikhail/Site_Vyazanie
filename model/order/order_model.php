@@ -9,7 +9,7 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllUserGoodForAdm() {
-        $models = $this->db->selectMany("SELECT `good_order`.`*`, `good`.`*`, `good_category`.name AS cat_name FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id LEFT JOIN `good_category` ON `good_category`.id = `good`.category_id ", []);
+        $models = $this->db->selectMany("SELECT `good_order`.`*`, `good`.`*`, `good_category`.name AS cat_name FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id LEFT JOIN `good_category` ON `good_category`.id = `good`.category_id ORDER BY date_create DESC", []);
         foreach ($models as $key => $value) {
             $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
             $models[$key]["url"] = $url;
@@ -18,14 +18,26 @@ class order_model extends ModelBase {
     }
 
     public function getOrdersAllGoodForUser($userId) {
-        $sql = " FROM `good_order` LEFT JOIN `good` ON `good`.id = `good_order`.good_id where `good_order`.`user_id` = :userId ORDER BY date_create DESC";
+        $sql = " 
+            FROM 
+                `good_order` 
+                    LEFT JOIN `good` ON 
+                        `good`.id = `good_order`.good_id 
+                    LEFT JOIN `good_category` ON 
+                        `good_category`.id = `good`.category_id 
+            where `good_order`.`user_id` = :userId
+            ORDER BY date_create DESC        
+        ";
         $params = [ "userId" => $userId ];
 
         $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
         $res = intdiv($all, 3);
         if ($all % 3 > 0) $res++;        
 
-        $sql_res = "SELECT * " . $sql;
+        $sql_res = "SELECT                 
+        `good_order`.`*`, 
+        `good`.`*`, 
+        `good_category`.name AS cat_name  " . $sql;
         if (isset($_GET["page"])) {
             $skip = $_GET["page"] * 3;
             $sql_res .= " limit " . $skip . ",3";
@@ -34,6 +46,13 @@ class order_model extends ModelBase {
         }
 
         $order = $this->db->selectMany($sql_res, $params);
+
+        foreach ($order as $key => $value) {
+            $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
+            $url2 = "/admin/userone/" . $value["login"];
+            $order[$key]["url"] = $url;
+            $order[$key]["url2"] = $url2;
+        }
         
         return ["data" => $order, "pages" => $res];
        

@@ -60,7 +60,7 @@
                         <tr>
                         <th scope="row"><?= ++$i ?></th> 
                         <td><?= $v["numb_order"] ?></td>
-                        <td><?= $v["user_name"] ?></td>
+                        <td> <a href="<?= $v["url2"] ?>" target="_blank2"> <?= $v["user_name"] ?> </a></td>
                         <td> <a href="<?= $v["url"] ?>" target="_blank"> <?= $v["name"] ?> </a></td>
                         <td><?= $v["date_create"] ?></td>
                         <td>

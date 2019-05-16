@@ -7,9 +7,9 @@
             ]) ?>
 
 <div class="col-sm">
-    <div class="card" style="width: 20rem;">
+    <div class="card" style="width: 20rem; height: 30rem;">
         <a href="<?= $url ?>">
-            <img src="<?= $src ?>" class="card-img" alt="...">
+            <img src="<?= $src ?>" class="card-img" style="width: 20rem; height: 25rem;" alt="...">
         </a>
         <div class="card-body">
             <p class="card-text text-center" >

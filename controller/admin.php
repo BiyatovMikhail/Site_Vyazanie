@@ -58,6 +58,10 @@ class admin extends ControllerBase {
             [
                 "href" => "/admin/order",
                 "text" => "все заказы"
+            ],
+            [
+                "href" => "/admin/userall",
+                "text" => "таблица юзеров"
             ]
         ], "shared", "menu");
     }
@@ -108,6 +112,9 @@ class admin extends ControllerBase {
         return $this->writeComponent();
     }
     public function order() {
+        return $this->writeComponent();
+    }
+    public function userall() {
         return $this->writeComponent();
     }
 }

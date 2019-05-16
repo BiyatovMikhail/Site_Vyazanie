@@ -41,7 +41,7 @@ this is index
     <?= $one ?>
 
     <div class="col-sm">
-      <div class="card myfontmain" style="width: 20rem;" >
+      <div class="card myfontmain" style="width: 20rem; height: 30rem;" >
             <div class="element-indent-empty">
             </div>
             <div class="element-post-title">
@@ -90,7 +90,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
   <div class="row">
     <?= $one ?>
     <div class="col-sm">
-      <div class="card" style="width: 20rem;" >
+      <div class="card" style="width: 20rem; height: 30rem;" >
           <div class="element-indent-empty">
           </div>
          <div class="element indent myfontmain">
