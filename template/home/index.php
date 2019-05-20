@@ -35,13 +35,14 @@ this is index
     <div class="line-separator" ></div>
   </div>  -->
   
-  <div class="row">
+  <div class="row align-middle">
 
 
     <?= $one ?>
 
-    <div class="col-sm">
-      <div class="card myfontmain" style="width: 20rem; height: 30rem;" >
+    <div class="col-sm align-middle">
+      <div class="card myfontmain align-middle" style="width: 20rem; height: 30rem;" >
+      <div class="card-content align-middle">
             <div class="element-indent-empty">
             </div>
             <div class="element-post-title">
@@ -58,7 +59,7 @@ this is index
             </div>
             <div class="element-indent-empty">
             </div>
-          
+      </div>
       </div>
     </div>
     
