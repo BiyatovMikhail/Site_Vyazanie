@@ -46,7 +46,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col" style="background-color: green;">
+                            <div class="col" >
                                 <div class="product-gallery">
                                     <div class="product-main-images">
                                         <?php $src = $this->drawRoute("pic", "onesrc", [
@@ -98,7 +98,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col" style="background-color: red;">
+                            <div class="col" >
                                 <div class="product-description myfontmain">
                                     <div class="product-name-good"> <?= $MODEL["goods"]["name"]?></div>
                                     <?php if ($MODEL["goods"]["is_discount"] == true): ?>
@@ -173,9 +173,10 @@
 
 
                 <div class="container">
-                    <div class="line-decorate">
-                            <img src="/img/LineBigDecor11.png" style="width: 70%;">
-                    </div>
+                    
+                    <div class="row">
+                        <div class="line-separator" ></div>
+                    </div> 
                     <div class="shop-product bind-product">
                         <div class="bind-product-description"> 
                             <h3> Также вам может понравиться </h3>

@@ -35,14 +35,14 @@ this is index
     <div class="line-separator" ></div>
   </div>  -->
   
-  <div class="row align-middle">
+  <div class="row">
 
 
     <?= $one ?>
 
-    <div class="col-sm align-middle">
-      <div class="card myfontmain align-middle" style="width: 20rem; height: 30rem;" >
-      <div class="card-content align-middle">
+    <div class="col-sm">
+      <div class="card myfontmain " style="width: 20rem; height: 30rem;" >
+      <div class="card-content ">
             <div class="element-indent-empty">
             </div>
             <div class="element-post-title">
@@ -54,11 +54,10 @@ this is index
             <div class="element-post-text">
                <p class="text-center font-italic" > Новая коллекция </p>
             </div>
-            <div class="element-post-button">
+            <div class="element-post-button text-center">
                 <a href="/shop" class="btn btn-outline-secondary" >Перейти в магазин</a>
             </div>
-            <div class="element-indent-empty">
-            </div>
+            
       </div>
       </div>
     </div>
@@ -94,7 +93,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
       <div class="card" style="width: 20rem; height: 30rem;" >
           <div class="element-indent-empty">
           </div>
-         <div class="element indent myfontmain">
+         <div class="element indent myfontmain text-center">
            
             <div class="element-post-title">
               <p class="element-text-title text-center" > Наши акции </p>
@@ -108,8 +107,7 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
             <div class="element-post-button text-center">
                 <a href="/shop/category/Акции" class="btn btn-outline-secondary" >Посмотреть акции</a>
             </div>
-            <div class="element-indent-empty">
-            </div>
+            
           </div>
       </div>
     </div>
