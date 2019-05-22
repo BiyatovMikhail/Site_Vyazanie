@@ -1,6 +1,6 @@
-<div class="col-3">
+<div class="col">
     <?= $this->drawAction("menu") ?>
 </div>
-<div class="col-9">
+<div class="col">
     <?= $MODEL["component"] ?>
 </div>

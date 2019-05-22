@@ -11,16 +11,12 @@
 
 <?php //var_dump($MODEL[1]); exit(); ?>
 
-
-
 <?php 
-
 
 $one = $this->WriteHTML($MODEL[0]["items"][0], "home", "good");
 $two = $this->WriteHTML($MODEL[0]["items"][1], "home", "good");
 
 ?>
-
 
 this is index
 <div class="container">
@@ -36,7 +32,6 @@ this is index
   </div>  -->
   
   <div class="row">
-
 
     <?= $one ?>
 
@@ -63,7 +58,6 @@ this is index
     </div>
     
     <?= $two ?>
-
 
   </div>
 <!-- ################################################################################################ -->

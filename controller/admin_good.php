@@ -95,15 +95,37 @@ class admin_good extends ControllerBase {
     }
 
 
+    function massSave() {
+        $arr = $_POST;
+        if (!isset($arr["price"])) return;
+
+        foreach ($arr["price"] as $key => $value) {
+            $this->model->priceUpdate([
+                "per_discount" => $arr["per_discount"][$key],
+                "price" => $arr["price"][$key],
+                "price_discount" => $arr["price_discount"][$key],
+                "is_discount" => isset($arr["is_discount"][$key]) ? "1" : "0",
+                "id" => $key
+            ]);
+        }
+    }
+
     
     public function goodtable() {
+
+        if (isset($_POST["price"])) {
+            $this->massSave();
+        }
+
         /** @var good_model $model */
         $model = $this->getModel("good", "good");
        
-        $categoryname = $this->request->getPath()[2];
-        $goodname = $this->request->getPath()[3];
+     //   $categoryname = $this->request->getPath()[2];
+          $categoryname = $_POST["categoryname"];
+    //    $goodname = $this->request->getPath()[3];
 
-        $goods = $model->getGoodByName($goodname, $categoryname);
+     //   $goods = $model->getGoodByName($goodname, $categoryname);
+        $goods = $model->getGoodAll();
         $category = $model->getcategoryes();
        
         return $this->Render()->WriteHTML(

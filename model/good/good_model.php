@@ -191,6 +191,27 @@ class good_model extends ModelBase {
         return $this->db->selectMany($sql, []);
     }
 
+    public function priceUpdate($data) {
+        $sql = "update `good` set 
+                `price` = :price,
+                `per_discount` = :per_discount,
+                `price_discount` = :price_discount,
+                `is_discount` = :is_discount
+                where 
+                `good`.`id` = :id ";
+
+        $result = $this->db->update($sql, [
+            "per_discount" => $data["per_discount"],
+            "price_discount" => $data["price_discount"],
+            "price" => $data["price"],
+            "is_discount" => $data["is_discount"],
+            "id" => $data["id"]
+        ]);
+        
+
+        return $result;
+    }
+
 
     public function saveGood($good) {
         if (!isset($good["id"]) || $good["id"] == -1){
