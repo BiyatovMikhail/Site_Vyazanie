@@ -1,7 +1,7 @@
 <div class="but">
                     <form method="GET" action="/admin/good/edit_good" >
                         <input type="hidden" name="cat" value="<?= $MODEL["cat"] ?>" />
-                        <input type="submit" value="Создать" />
+                      <!--  <input type="submit" value="Создать" /> -->
                     </form>    
                     <a href="/admin/good/edit_good/?cat=<?= $MODEL["cat"] ?>" class="btn btn-primary">Создать товар</a>
 </div>

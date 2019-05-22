@@ -95,4 +95,27 @@ class admin_good extends ControllerBase {
     }
 
 
+    
+    public function goodtable() {
+        /** @var good_model $model */
+        $model = $this->getModel("good", "good");
+       
+        $categoryname = $this->request->getPath()[2];
+        $goodname = $this->request->getPath()[3];
+
+        $goods = $model->getGoodByName($goodname, $categoryname);
+        $category = $model->getcategoryes();
+       
+        return $this->Render()->WriteHTML(
+            [
+                "catname" => $categoryname,
+                "goods" => $goods,
+                "category" => $category,
+                
+            ],
+            "good/admin",
+            "goodtable"
+        );
+    }
+
 }

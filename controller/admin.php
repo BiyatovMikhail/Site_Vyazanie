@@ -62,6 +62,10 @@ class admin extends ControllerBase {
             [
                 "href" => "/admin/userall",
                 "text" => "таблица юзеров"
+            ],
+            [
+                "href" => "/admin/good/goodtable",
+                "text" => "таблица товаров"
             ]
         ], "shared", "menu");
     }
@@ -115,6 +119,9 @@ class admin extends ControllerBase {
         return $this->writeComponent();
     }
     public function userall() {
+        return $this->writeComponent();
+    }
+    public function goodtable() {
         return $this->writeComponent();
     }
 }

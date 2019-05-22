@@ -14,7 +14,7 @@
         </a>
        
         <div class="card-body">
-            <p class="card-text text-center" >
+            <p class="card-text text-center myfontmain" >
                 <a href="<?= $url ?>">
                     <?= $MODEL["name"] ?>
                 </a>

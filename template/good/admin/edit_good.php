@@ -91,8 +91,14 @@
 </tr>
 <?php endforeach; ?>
 <tr>
-    <td><input name="params[name][]" value="" /></td>
-    <td><input name="params[value][]" value="" /></td>
+    <td>
+        <p> название </p>
+        <input name="params[name][]" value="" />
+    </td>
+    <td>
+        <p> значение </p>
+        <input name="params[value][]" value="" />
+    </td>
     <td>
         <button type="button" onclick="addLine(this); return false;">Add</button>
         <button type="button" onclick="removeLine(this); return false;">Remove</button>
@@ -113,7 +119,7 @@
     }
 </script>
 
-        <button type="submit" class="btn btn-primary">Отправить</button>
+        <button type="submit" class="btn btn-primary">Сохранить</button>
     </form>
 
     <?php if ($v["id"] != -1): ?>
@@ -126,13 +132,14 @@
         ]) ?> 
 
     </p>
-
+    <p> добавить фотографию </p>
     <p> 
         <?= $this->drawRoute("pic", "add", [
             "module" => "good",
             "id" => $v["id"]
         ]) ?> 
     </p>
+    <!--
     <p> 
         <?= $this->drawRoute("comment", "all", [
             "module" => "good",
@@ -148,5 +155,6 @@
     </p>
 
     <?php endif; ?>
+    -->
 
 </div>

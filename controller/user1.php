@@ -144,23 +144,24 @@ class user1 extends ControllerBase {
         );
     }
 
-
+    
     public function basketUser() {
 
         $user = app::Current()->getUser();
         
         $userId = $user->getUserID();
+       // var_dump($userId); exit();
 
         /** @var basket_model $model */
         $model_basket = $this->getModel("basket", "basket");
      
-       // var_dump($model); exit();
+        //var_dump($model_basket); exit();
 
         $basketTempByUser = $model_basket->getBasketTempActivForUser($userId);
-        // var_dump($ordersAll); exit();
-     //   $goodsActiv = $model->getOrdersGoodActivForUser($userId);  
+
+       // var_dump($basketTempByUser); exit();
         $model_good = $this->getModel("good", "good");
-       // $article_good = 
+       
         $data = [
             "basketTempByUser" => $basketTempByUser,
      
