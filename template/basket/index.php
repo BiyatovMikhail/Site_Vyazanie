@@ -25,24 +25,24 @@
           <td>Otto</td>
           <td>@mdo</td>
           <td>
-          <div>
-              <label>
-              500p
-              </label></div>
+            <div>
+             <input name="price[<?= $v["id"] ?>]" type="number" id="goodPriceNumber" min="0" step="1" value="<?= $v["price"] ?>"  style="width: 4em;" data-bind="value:replyNumber" />
+            </div>
           </td>
           <td>
-          <div>
-              <label>
-              400p
-              </label></div>
+            <div>
+              <input name="price_discount[<?= $v["id"] ?>]" type="number" id="goodPriceDiscountNumber" min="0" step="1" value="<?= $v["price_discount"] ?>"  style="width: 4em;" data-bind="value:replyNumber" />
+            </div>
           </td>
           <td>
           <div>                       
-              <input type="number" id="replyNumber" min="0" data-bind="value:replyNumber" />
+              <input name="count" type="number" id="replyNumber" min="1" step="1" style="width: 4em;" data-bind="value:replyNumber" />
           </div>
           </td>
-          <td>@mdo</td>
-          <th> удалить</th>
+          <td>
+          <input name="summa" type="number" id="replyNumber" min="1" step="1" style="width: 4em;" data-bind="value:replyNumber" />
+          </td>
+          <th> <button id="delGood" type="submit"  class="btn btn-info" >X</button></th>
         </tr>
         <tr>
           <th scope="row">2</th>

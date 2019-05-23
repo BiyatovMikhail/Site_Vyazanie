@@ -1,6 +1,6 @@
 <?= $this->WriteHTML("", "layout", "header") ?>
 
-<ul class="nav nav-pills nav-fill navmy">
+<ul class="nav nav-pills nav-fill navmy ">
   <li class="nav-item">
     <a class="nav-link active" href="#">active</a>
   </li>

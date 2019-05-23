@@ -130,7 +130,7 @@
                                         <?php if ($MODEL["goods"]["count_good"] == 0): ?>
                                        
                                         <div class="count-product myfontmain">Товара в наличии нет, но его можно заказать. </div>
-                                            <a href="#" class="btn btn-primary myfontmain">Заказать</a>
+                                       <!-- <a href="#" class="btn btn-primary myfontmain">Заказать</a> -->
                                                 <?php if ($MODEL["userid"] == -1): ?>
                                                 <!-- Button trigger modal order notUser -->
                                                 <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#ordernotUserModalCenter">
@@ -145,18 +145,24 @@
                                                 <?php endif; ?>
                                         <?php else: ?>
                                         <div class="count-product"> Количество товара в наличии -  <?= $MODEL["goods"]["count_good"]?> шт </div>
-                                        <form class="order-basketTemp" method="POST" action="/basket/saveBasketTemp" novalidate>
-                                            <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
-                                            <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
-                                            <input type="hidden" name="count" value="1" />
-                                            
-                                            <!-- <a href="#" class="btn btn-primary">Добавить в корзину</a> -->
-                                            <button type="submit" class="btn btn-primary">Добавить в корзину</button>
-                                                <!-- Button trigger modal basket -->
-                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
-                                                Добавить в корзину модальное окно корзина
-                                                </button>
-                                        </form>
+                                            <form id="basket_id" class="order-basketTemp" method="POST" action="/basket/saveBasketTemp" novalidate>
+                                                <input type="hidden" name="user_id" value="<?= $MODEL["userid"] ?>" />
+                                                <input type="hidden" name="good_id" value="<?= $MODEL["goods"]["id"] ?>" />
+                                                <input type="hidden" name="count" value="1" />
+                                                
+                                                <!-- <a href="#" class="btn btn-primary">Добавить в корзину</a> -->
+                                            <!--    <button type="submit" class="btn btn-primary">Добавить в корзину</button>  -->
+                                                    <!-- Button trigger modal basket -->
+                                                    <button onclick="sendToBasket()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
+                                                        Добавить в корзину модальное окно корзина
+                                                    </button>
+
+                                                    <script>
+                                                        function sendToBasket() {
+                                                            jQuery.post("/basket/saveBasketTemp", jQuery("#basket_id").serialize());
+                                                        }
+                                                    </script>
+                                            </form>
                                         <?php endif; ?>
                                     </div>
                                 </div> 
@@ -198,9 +204,9 @@
     </div>
 
     <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
+  <!--  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModalCenter">
     Запустить модальное окно
-    </button>
+    </button> -->
 
   
 
@@ -316,32 +322,31 @@
 
     <!-- Modal basket-->
     <div class="modal fade" id="basketModalCenter" tabindex="-1" role="dialog" aria-labelledby="basketModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-        <div class="modal-header">
-            <h5 class="modal-title" id="basketModalLongTitle">Товар добавлен в карзину</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-            </button>
-        </div>
-       
-        <div class="modal-body">
-            <h5>Р5</h5>
-            <p>This <a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">перейти в корзину</a> on click.</p>
-            <hr>
-            <h5>Н5</h5>
-            <p> <a href="#" data-dismiss="modal" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">продолжить покупки</a>  on click.</p>
-            <hr>
-            <h5>р5</h5>
-            <p><a href="#" class="tooltip-test" title="Tooltip">перейти в корзину для оформления заказа</a> and <a href="#" class="tooltip-test" title="Tooltip">продолжить покупки</a> on hover.</p>
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="basketModalLongTitle">Товар добавлен в карзину</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body">
+                    <!-- <h5>Р5</h5> -->
+                    <p><a href="/user1/basketUser" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">перейти в корзину</a> </p>
+                    <hr>
+                <!--  <h5>Н5</h5> -->
+                    <p> <a href="#" data-dismiss="modal" role="button" class="btn btn-secondary popover-test" title="Popover title" data-content="Popover body content is set in this attribute.">продолжить покупки</a> </p>
+                    <hr>
+                <!-- <h5>р5</h5> 
+                    <p><a href="#" class="tooltip-test" title="Tooltip">перейти в корзину для оформления заказа</a> and <a href="#" class="tooltip-test" title="Tooltip">продолжить покупки</a> on hover.</p>
+                    -->
+                </div>
+        <!--    <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                </div> -->
             </div>
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
-           
-        </div>
-        </div>
-    </div>
     </div>
 
 
