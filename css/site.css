@@ -18,11 +18,14 @@
 }
 
 .navmy.nav-pills .nav-link.active {
-    background-color: green;;
+    color: #ddd;
+    background-color: green;
 }
 
 .navmy.nav-pills .nav-link {
     border-radius: 1.25rem;
+    font-family: 'Lobster', cursive;
+    color: #3f2f04;
 }
 
 .myfontmain{
@@ -157,6 +160,7 @@
     width:100%; height:100%;
     background-repeat: no-repeat;
     background-position: 50% 0, center !important;
+
 }
 
 .product-gallery .product-images img {

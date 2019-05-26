@@ -4,7 +4,12 @@ class basket_model extends ModelBase {
 
 
     public function getBasketTempActivForUser($userId) {
-        $basketTemp = $this->db->selectMany("SELECT * FROM `good_basket_temp` where `good_basket_temp`.`user_id` = :userId AND`good_basket_temp`.`is_activ` = 0 AND `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
+        $basketTemp = $this->db->selectMany("SELECT * FROM 
+        `good_basket_temp` 
+        LEFT JOIN `good` ON `good`.id = `good_basket_temp`.good_id 
+        where `good_basket_temp`.`user_id` = :userId AND 
+        `good_basket_temp`.`is_activ` = 0 AND 
+        `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
       
         return $basketTemp;
     }

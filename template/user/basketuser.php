@@ -20,22 +20,10 @@
       </thead>
       <tbody>
                 <? $i = 0; foreach ($MODEL["basketTempByUser"] as $v) {?>
-                    <tr>
-                        <th scope="row"><?= ++$i ?></th> 
-                        <td><?= $v["numb_order"] ?></td>
-                        <td><?= $v["article_good"] ?></td>
-                        <td><?= $v["name"] ?></td>
-                        <td><?= $v["date_create"] ?></td>
-                        <td><?= $v["price_order"] ?>руб.</td>
-                        <td>
-                            <button id="basketitem" type="button" class="btn btn-info" >X</button>
-                        </td>
-                        
-                        </tr>
-                        <tr>
+       <tr>
           <th scope="row"><?= ++$i ?></th>
-          <td><?= $v["numb_order"] ?></td>
           <td><?= $v["article_good"] ?></td>
+          <td><?= $v["name"] ?></td>
           <td><?= $v["name"] ?></td>
           <td>
             <div class="basket_price">
@@ -57,6 +45,26 @@
           </td>
           <th> <button id="delGood" type="submit"  class="btn btn-info" >X</button></th>
         </tr>
+        <tr>
+             <div class="product-basket-images">
+              <div class="row">
+              <?php 
+              $srcsm2 = $this->drawRoute("pic", "onesrc", [
+                "module" => "good",
+                "id" => $v["good_id"]
+            ]); 
+            //var_dump($srcsm2); exit();
+              ?>
+                  
+                 
+                  <div class="all-product-images">
+                          <div class="card mx-1 my-1" style="width: 4rem;" >
+                              <img src="<?= $srcsm2 ?>" class="card-img img-fluid" alt="<?= $srcsm2["name"] ?>">
+                          </div>
+                  </div>
+            </div>
+        </tr>
+
                 <?    } ?>
                 
             </tbody>
@@ -66,6 +74,8 @@
     <button id="basketall" class="btn btn-info">Оформить заказ</button>
   </div>
 </div>
+
+
 
 <script>
     function SummIt() {

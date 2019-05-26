@@ -161,10 +161,15 @@ class user1 extends ControllerBase {
 
        // var_dump($basketTempByUser); exit();
         $model_good = $this->getModel("good", "good");
-       
+    //   $goodsBasketTemp = array();
+
+    //   foreach ($basketTempByUser["good_id"] as $value) {
+    //      $goodsBasketTemp[] = $model_good->getGood($value["id"]);
+    //   }
+
         $data = [
             "basketTempByUser" => $basketTempByUser,
-     
+  //          "goodsBasket" => $goodsBasketTemp
            
         ];
 
