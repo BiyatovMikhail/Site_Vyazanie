@@ -63,7 +63,7 @@ this is goodtable
                                     <th scope="row"><?= ++$i ?></th> 
                                     <td><?= $v["cat_name"] ?></td>
                                     <td><?= $v["article_good"] ?></td>
-                                    <td><?= $v["name"] ?></td>
+                                    <td><a href="/admin/good/edit_good/<?= $v["id"] ?>"> <?= $v["name"] ?> </a></td>
                                     <td><?= $v["price"] ?></td>
                                     <td>
                                         <div>                       

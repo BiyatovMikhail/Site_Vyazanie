@@ -4,12 +4,26 @@ class basket_model extends ModelBase {
 
 
     public function getBasketTempActivForUser($userId) {
-        $basketTemp = $this->db->selectMany("SELECT * FROM 
-        `good_basket_temp` 
-        LEFT JOIN `good` ON `good`.id = `good_basket_temp`.good_id 
-        where `good_basket_temp`.`user_id` = :userId AND 
-        `good_basket_temp`.`is_activ` = 0 AND 
-        `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
+        $basketTemp = $this->db->selectMany("SELECT 
+        `good_basket_temp`.*,
+        `good`.`article_good`,
+        `good`.`name`,
+        `good`.`description`,
+        `good`.`category_id`,
+        `good`.`price`,
+        `good`.`per_discount`,
+        `good`.`price_discount`,
+        `good`.`is_discount`,
+        `good`.`count_good` AS count_good_good
+    
+    FROM 
+            `good_basket_temp` 
+            LEFT JOIN `good` ON `good`.id = `good_basket_temp`.good_id 
+            where `good_basket_temp`.`user_id` = :userId AND 
+            `good_basket_temp`.`is_activ` = 0 AND 
+            `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
+
+      //  var_dump($basketTemp); exit();
       
         return $basketTemp;
     }

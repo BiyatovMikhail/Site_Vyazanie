@@ -1,5 +1,5 @@
 <?php //var_dump($MODEL); exit();
-
+  // var_dump($MODEL["basketTempByUser"]); exit();
 ?>
 
 <div class="basket">
@@ -24,50 +24,62 @@
           <th scope="row"><?= ++$i ?></th>
           <td><?= $v["article_good"] ?></td>
           <td><?= $v["name"] ?></td>
-          <td><?= $v["name"] ?></td>
           <td>
-            <div class="basket_price">
-             <?= $v["price"] ?>
+              <div class="product-basket-images">
+                <div class="row">
+                <?php 
+                $srcsm2 = $this->drawRoute("pic", "onesrc", [
+                  "module" => "good",
+                  "id" => $v["good_id"]
+              ]); 
+                ?>
+                  <div class="all-product-images">
+                      <div class="card mx-1 my-1" style="width: 4rem; max-height: 4rem;" >
+                          <img src="<?= $srcsm2 ?>" class="card-img img-fluid" alt="<?= $srcsm2["name"] ?>">
+                      </div>
+                  </div>
+              </div>
             </div>
           </td>
+          <?php if ($v["is_discount"] == true): ?>
           <td>
-            <div>
-             <?= $v["price_discount"] ?>
-            </div>
-          </td>
+              <div class="basket_price price">
+              <?= $v["price"] ?>
+              </div>
+          </td>  
+          <td>
+              <div class="basket_price discount">
+              <?= $v["price_discount"] ?>
+              </div>
+            </td>
+          <?php else: ?>
+            <td>
+              <div class="basket_price price">
+              <?= $v["price"] ?>
+              </div>
+            </td>
+            <td>
+              <div class="basket_price discount">
+              <?= $v["price"] ?>
+              </div>
+            </td>
+          <?php endif; ?>
+         
           <td>
           <div class="basket_count">                       
-              <input onblure="SummIt()" name="count" type="number" id="replyNumber" min="1" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
+              <input onchange="SummIt()" name="count" type="number" id="replyNumber" min="1" max="<?= $v["count_good_good"] ?>" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </div>
           </td>
           <td class="basket_summa">
-          <input name="summa" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
+            <input name="summa" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </td>
           <th> <button id="delGood" type="submit"  class="btn btn-info" >X</button></th>
         </tr>
-        <tr>
-             <div class="product-basket-images">
-              <div class="row">
-              <?php 
-              $srcsm2 = $this->drawRoute("pic", "onesrc", [
-                "module" => "good",
-                "id" => $v["good_id"]
-            ]); 
-            //var_dump($srcsm2); exit();
-              ?>
-                  
-                 
-                  <div class="all-product-images">
-                          <div class="card mx-1 my-1" style="width: 4rem;" >
-                              <img src="<?= $srcsm2 ?>" class="card-img img-fluid" alt="<?= $srcsm2["name"] ?>">
-                          </div>
-                  </div>
-            </div>
-        </tr>
+       
 
-                <?    } ?>
-                
-            </tbody>
+             <?    } ?>
+        
+        </tbody>
     </table>
     <div>Итого: <span id="total-basket-summa">0</span> руб.</div>
     <br>
@@ -79,17 +91,19 @@
 
 <script>
     function SummIt() {
+      debugger;
       var summ = 0;
       var table = jQuery("#basket_table tbody");
 
       table.children("tr").each(function(i, e) {
         var tr = jQuery(e);
-        var price = parseInt(tr.children(".basket_price").html());
+        var price = parseInt(tr.find(".basket_price.price").html());
+        var discount = parseInt(tr.find(".basket_price.discount").html());
         var count = parseInt(tr.find(".basket_count input").val());
 
-        tr.children(".basket_summa").html(price*count);
+        tr.children(".basket_summa").html(discount*count);
 
-        summ += price*count;
+        summ += discount*count;
       });
 
       jQuery("#total-basket-summa").html(summ);
