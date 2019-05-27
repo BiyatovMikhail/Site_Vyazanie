@@ -25,8 +25,8 @@
 <body>
 
     <header class="blog-header py-3 headerwight">
-    <div class="row flex-nowrap justify-content-between align-items-center">
-      <div class="col-4 pt-1">
+    <div class="row ">
+      <div class="col-4 ">
         <a class="text-muted" href="#">Subscribe</a>
       </div>
       <div class="col-4 text-center">
