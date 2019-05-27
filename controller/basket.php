@@ -42,6 +42,18 @@ class basket extends ControllerBase {
         return $this->index();
     }
 
+    public function cancel_basketTemp (){
+
+        $basketTempId = $_POST["baskettemp_id"];
+       // var_dump($basketTempId); exit();
+     //   $this->model = $this->getModel("basket");
+        $this->model = $this->getModel("basket");
+     
+        $this->model->cancelBasketTemp($basketTempId);
+
+        return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
+
+    }
     
 
     public function addGoodToBasket() {

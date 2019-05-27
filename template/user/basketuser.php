@@ -34,8 +34,9 @@
               ]); 
                 ?>
                   <div class="all-product-images">
-                      <div class="card mx-1 my-1" style="width: 4rem; max-height: 4rem;" >
-                          <img src="<?= $srcsm2 ?>" class="card-img img-fluid" alt="<?= $srcsm2["name"] ?>">
+                      <div class="card mx-1 my-1" style="max-width: 4rem; max-height: 4rem;" >
+                        <!--  <img src="<?= $srcsm2 ?>" class="card-img img-fluid" alt="<?= $srcsm2["name"] ?>"> -->
+                          <div class="basket-card-product-images" style="width: 4rem; height: 4rem; background:url(<?= $srcsm2 ?>); "></div>
                       </div>
                   </div>
               </div>
@@ -73,12 +74,19 @@
           <td class="basket_summa">
             <input name="summa" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </td>
-          <th> <button id="delGood" type="submit"  class="btn btn-info" >X</button></th>
+          <th> 
+              <form class="basketGoodCanselId" method="POST" action="/basket/cancel_basketTemp" novalidate>
+                  <input type="hidden" name="baskettemp_id" value="<?= $v["id"] ?>" />
+                  <button id="delGood" type="submit"  class="btn btn-info" >X</button>
+              </form>
+          </th>
         </tr>
-       
-
-             <?    } ?>
-        
+          <?    } ?>
+             <tr>
+      <td colspan="7"> Всего: </td>
+      <td><span id="total-basket-summa">0</span></td>
+      <td></td>
+    </tr>
         </tbody>
     </table>
     <div>Итого: <span id="total-basket-summa">0</span> руб.</div>
@@ -102,7 +110,7 @@
         var count = parseInt(tr.find(".basket_count input").val());
 
         tr.children(".basket_summa").html(discount*count);
-
+        
         summ += discount*count;
       });
 

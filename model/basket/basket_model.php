@@ -79,10 +79,10 @@ class basket_model extends ModelBase {
        
         return $basketTemp["id"];
     }
-
+    
     public function cancelBasketTemp($id) {
         if ($id > 0) {
-            $this->db->update("UPDATE `good_basket_temp` SET `is_cancel` = 1,   WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);
+            $this->db->update("UPDATE `good_basket_temp` SET `is_cancel` = 1 WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);
             return true;
         }
         return false;
@@ -90,7 +90,7 @@ class basket_model extends ModelBase {
 
     public function deleteBasketTemp($id) {
         if ($id > 0) {
-            $this->db->update("UPDATE `good_basket_temp` SET `is_activ` = 1,   WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);
+            $this->db->update("UPDATE `good_basket_temp` SET `is_activ` = 1 WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);
             return true;
         }
         return false;
