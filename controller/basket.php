@@ -14,7 +14,7 @@ class basket extends ControllerBase {
         );
     }
     public function saveBasketTemp() {
-
+       // var_dump("hnadsjaghjahg"); exit();
         $current_user = $this->getModel("user1", "user1");
 
         $current_good = $this->getModel("good", "good");
@@ -22,8 +22,29 @@ class basket extends ControllerBase {
         $this->model = $this->getModel("basket");
 
         $good_id = $_POST["good_id"];
-       
         $user_id = $_POST["user_id"];
+
+        var_dump($user_id,  $good_id); exit();
+
+        if($user_id == -1){
+            return $this->Render()->WriteHTML(
+                "MODEL",
+                "basket",
+                "cheked"
+            );
+        }
+
+        $isGoodCheked = $this->model->chekedGoodInBasketTemp($good_id, $user_id);
+
+        if($isGoodCheked == true){
+            return $this->Render()->WriteHTML(
+                "MODEL",
+                "basket",
+                "cheked"
+            );
+        }
+       
+       
    //  var_dump($user_id); exit();
         $count = $_POST["count"];
         $count_good = $_POST["count"];
@@ -36,7 +57,7 @@ class basket extends ControllerBase {
             "is_cancel" => 0
             
         ];
-
+        var_dump($data1); exit();
      
         $this->model->saveBasketTemp($data1);
         return $this->index();

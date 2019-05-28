@@ -25,7 +25,7 @@
        <tr>
           <th scope="row"><?= ++$i ?></th>
           <td> <div name="article_good"> <?= $v["article_good"] ?> </div></td>
-          <td><div name="name_good"> <?= $v["name"] ?></div></td>
+          <td><div name="name_good"> <a href="<?= $v["url"] ?>" target="_blank"> <?= $v["name"] ?> </a></div></td>
           <td>
               <div class="product-basket-images">
                 <div class="row">

@@ -18,70 +18,80 @@
 
 	<form method="POST" action="/user1/save_user">
 	<input type="hidden" name="user_id" value="<?=  $MODEL["id"] ?>" />
+	<label class="myfontmain" for="surname">Ваша фамилия</label>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		</div>
 		<?php if($MODEL["surname"] != ""): ?>
-			<input name="surname" class="form-control" value="<?= $MODEL["surname"] ?>" type="text">
+			<input name="surname" id="surname" class="form-control" value="<?= $MODEL["surname"] ?>" type="text">
 		<?php else :?>
-			<input name="surname" class="form-control" value="<?= $MODEL["surname"] ?>" placeholder="Ваша фамилия" type="text">
+			<input name="surname" id="surname" class="form-control" value="<?= $MODEL["surname"] ?>" placeholder="Ваша фамилия" type="text">
 		<?php endif; ?>
     </div> <!-- form-group// -->
+	<label class="myfontmain" for="name">Ваше имя</label>
     <div class="form-group input-group">
+	
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="name" class="form-control" value="<?= $MODEL["name"] ?>" placeholder="Ваше имя" type="text">
+		
+        <input name="name" id="name" class="form-control" value="<?= $MODEL["name"] ?>" placeholder="Ваше имя" type="text">
     </div> <!-- form-group// -->
+	<label class="myfontmain" for="name2">Ваше отчество</label>
 	<div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
 		 </div>
-        <input name="name2" class="form-control" value="<?= $MODEL["name2"] ?>" placeholder="Ваше отчество" type="text">
+        <input name="name2" id="name2" class="form-control" value="<?= $MODEL["name2"] ?>" placeholder="Ваше отчество" type="text">
     </div> <!-- form-group// -->
+	<label class="myfontmain" for="nikname">Ваш ник</label>
     <div class="form-group input-group">
 		<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fas fa-user-secret"></i> </span>
 		 </div>
-        <input name="nikname" class="form-control" value="<?= $MODEL["nikname"] ?>" placeholder="Ваш ник" type="text">
-    </div> <!-- form-group// -->
+        <input name="nikname" id="nikname" class="form-control" value="<?= $MODEL["nikname"] ?>" placeholder="Ваш ник" type="text">
+	</div> <!-- form-group// -->
+	<label class="myfontmain" for="email">Ваш email</label>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
 		 </div>
-        <input name="email" class="form-control" value="<?= $MODEL["email"] ?>" placeholder="Ваш email" type="email">
-    </div> <!-- form-group// -->
+        <input name="email" id="email" class="form-control" value="<?= $MODEL["email"] ?>" placeholder="Ваш email" type="email">
+	</div> <!-- form-group// -->
+	<label class="myfontmain" for="phone">Ваш телефон</label>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-phone"></i> </span>
 		</div>
-		
-    	<input name="phone" class="form-control" value="<?= $MODEL["phone"] ?>" placeholder="Ваш телефон" type="text">
-    </div> <!-- form-group// -->
+    	<input name="phone" id="phone" class="form-control" value="<?= $MODEL["phone"] ?>" placeholder="Ваш телефон" type="text">
+	</div> <!-- form-group// -->
+	<label class="myfontmain" for="gender">Ваш пол</label>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fas fa-venus-mars"></i> </span>
 		</div>
-		<select class="form-control" name="gender">
+		<select class="form-control" id="gender" name="gender" selected="selected">
 			<option value="0"> Ваш пол</option>
-			<option value="1">Мужской</option>
-			<option value="2">Женский</option>
+			<option value="1" <?php if ($MODEL["gender"] == 1) echo("selected"); ?>>Мужской</option>
+			<option value="2" <?php if ($MODEL["gender"] == 2) echo("selected"); ?>>Женский</option>
 			
 		</select>
 	</div> <!-- form-group end.// -->
 	<label >Если хотите изменить пароль введите новые значения</label>
+	<label class="myfontmain" for="pass1">Введите пароль</label>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" name="pass1" value="<?= $MODEL["pass"] ?>" placeholder="Придумайте новый пароль" type="password">
-    </div> <!-- form-group// -->
+        <input class="form-control" name="pass1" id="pass1" value="<?= $MODEL["pass"] ?>" placeholder="Придумайте новый пароль" type="password">
+	</div> <!-- form-group// -->
+	<label class="myfontmain" for="pass2">Повторите пароль</label>
     <div class="form-group input-group">
     	<div class="input-group-prepend">
 		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
 		</div>
-        <input class="form-control" name="pass2" value="<?= $MODEL["pass"] ?>" placeholder="Повторите новый пароль" type="password">
+        <input class="form-control" name="pass2" id="pass2" value="<?= $MODEL["pass"] ?>" placeholder="Повторите новый пароль" type="password">
     </div> <!-- form-group// -->                                      
     <div class="form-group">
 

@@ -4,28 +4,73 @@ class basket_model extends ModelBase {
 
 
     public function getBasketTempActivForUser($userId) {
-        $basketTemp = $this->db->selectMany("SELECT 
-        `good_basket_temp`.*,
-        `good`.`article_good`,
-        `good`.`name`,
-        `good`.`description`,
-        `good`.`category_id`,
-        `good`.`price`,
-        `good`.`per_discount`,
-        `good`.`price_discount`,
-        `good`.`is_discount`,
-        `good`.`count_good` AS count_good_good
+    //     $basketTemp = $this->db->selectMany("SELECT 
+    //     `good_basket_temp`.*,
+    //     `good`.`article_good`,
+    //     `good`.`name`,
+    //     `good`.`description`,
+    //     `good`.`category_id`,
+    //     `good`.`price`,
+    //     `good`.`per_discount`,
+    //     `good`.`price_discount`,
+    //     `good`.`is_discount`,
+    //     `good`.`count_good` AS count_good_good
     
-    FROM 
+    // FROM 
+    //         `good_basket_temp` 
+    //         LEFT JOIN `good` ON `good`.id = `good_basket_temp`.good_id 
+    //         where `good_basket_temp`.`user_id` = :userId AND 
+    //         `good_basket_temp`.`is_activ` = 0 AND 
+    //         `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
+      
+    //     return $basketTemp;
+////////////
+
+        $sql = " 
+        FROM 
             `good_basket_temp` 
             LEFT JOIN `good` ON `good`.id = `good_basket_temp`.good_id 
+            LEFT JOIN `good_category` ON 
+                        `good_category`.id = `good`.category_id 
             where `good_basket_temp`.`user_id` = :userId AND 
             `good_basket_temp`.`is_activ` = 0 AND 
-            `good_basket_temp`.`is_cancel` = 0", [ "userId" => $userId ]);
+            `good_basket_temp`.`is_cancel` = 0        
+    ";
+    $params = [ "userId" => $userId ];
 
-      //  var_dump($basketTemp); exit();
-      
-        return $basketTemp;
+    $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+    $res = intdiv($all, 100);
+    if ($all % 100 > 0) $res++;        
+
+    $sql_res = "SELECT 
+    `good_basket_temp`.*,
+    `good`.`article_good`,
+    `good`.`name`,
+    `good`.`description`,
+    `good`.`category_id`,
+    `good`.`price`,
+    `good`.`per_discount`,
+    `good`.`price_discount`,
+    `good`.`is_discount`,
+    `good`.`count_good` AS count_good_good ,
+    `good_category`.name AS cat_name " . $sql;
+    if (isset($_GET["page"])) {
+        $skip = $_GET["page"] * 100;
+        $sql_res .= " limit " . $skip . ",100";
+    } else {
+        $sql_res .= " limit 100";
+    }
+
+    $basket = $this->db->selectMany($sql_res, $params);
+
+    foreach ($basket as $key => $value) {
+        $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
+        $url2 = "/admin/userone/" . $value["login"];
+        $basket[$key]["url"] = $url;
+        $basket[$key]["url2"] = $url2;
+    }
+    
+    return ["data" => $basket, "pages" => $res];
     }
     
 
@@ -79,7 +124,24 @@ class basket_model extends ModelBase {
        
         return $basketTemp["id"];
     }
-    
+
+    public function chekedGoodInBasketTemp($good_id, $user_id){
+        $good = $this->db->update("SELECT * FROM `good_basket_temp` 
+                 where `good_basket_temp`.`user_id` = :user_id_my AND 
+                `good_basket_temp`.`is_activ` = 0 AND 
+                `good_basket_temp`.`is_cancel` = 0 AND 
+                `good_basket_temp`.`good_id` = :good_id ", 
+                [ "user_id_my" => $user_id ,
+                   "good_id" => $good_id
+                 ]);
+             var_dump($good); exit();
+        if ($good > 0) {
+           
+            return true;
+        }
+        return false;
+    }
+
     public function cancelBasketTemp($id) {
         if ($id > 0) {
             $this->db->update("UPDATE `good_basket_temp` SET `is_cancel` = 1 WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);

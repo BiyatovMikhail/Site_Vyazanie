@@ -154,13 +154,15 @@ class user1 extends ControllerBase {
         $model = $this->getModel("basket", "basket");
      
         $basketPayAll = $model->getBasketPayAllForUser($userId);
-       
+        
+
         $data = [
             "basketPayUserAll" => $basketPayAll["data"],
             "basketPayUserAll_pages" => $basketPayAll["pages"],
             
         ];
 
+      //  var_dump($data); exit();
         return $this->Render()->WriteHTML(
             $data,
             "basket", "basketPayUserAll"
@@ -190,7 +192,9 @@ class user1 extends ControllerBase {
     //   }
 
         $data = [
-            "basketTempByUser" => $basketTempByUser,
+            "basketTempByUser" => $basketTempByUser["data"],
+            "basketTempByUser_pages" => $basketTempByUser["pages"],
+  //          "basketTempByUser" => $basketTempByUser,
   //          "goodsBasket" => $goodsBasketTemp
            
         ];
