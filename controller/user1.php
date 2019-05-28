@@ -275,6 +275,17 @@ class user1 extends ControllerBase {
            return $this->Render()->RedirectURL($_SERVER["HTTP_REFERER"]);
         }
     }
+
+    public function BasketUpdateCount() {
+        $id = $_POST["id"];
+        $value = $_POST["value"];
+
+        /** @var basket_model $model */
+        $model = $this->getModel("basket", "basket");
+
+        $model->UpdateCount($id, $value);
+
+    }
    
 
   

@@ -88,6 +88,7 @@ class basket_model extends ModelBase {
         return false;
     }
 
+   
     public function deleteBasketTemp($id) {
         if ($id > 0) {
             $this->db->update("UPDATE `good_basket_temp` SET `is_activ` = 1 WHERE `good_basket_temp`.`id` = :id", [ "id" => $id ]);
@@ -220,6 +221,36 @@ class basket_model extends ModelBase {
         return $basketPay["id"];
     }
 
+    public function UpdateCount($id, $value) {
+        $result = $this->db->update("UPDATE `good_basket_temp` 
+                                        SET `count_good` = :value 
+                                                WHERE 
+                                            `id` = :id ",
+                                            [
+                                                "value" => $value,
+                                                "id" => $id
+                                            ]);
+        if ($result === false)
+            return false;
+       
+        return true;
+    }
+
+    public function getLastNumberOrderBasket(){
+        $lastNumberOrder = $this->db->selectOne("SELECT MAX(number_order) as m
+        FROM `good_basket`", []);
+
+    //    var_dump($lastNumberOrder); exit();
+      
+        return $lastNumberOrder;
+    }
+
+    public function addBuyToBasketPay($sql){
+        //var_dump($sql); exit();
+       $id = $this->db->create($sql, []);
+     
+        return $id;
+    }
 
 
 }

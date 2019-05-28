@@ -5,9 +5,18 @@
 this basketPayUserAll
 
 <div >
-<table class="table table-responsive table-hover">
+
+<table class="table table-responsive-lg table-hover">
     <thead>
-        <tr><th>#</th><th>Номер заказа</th><th>Дата заказа</th><th>кол-во товаров</th><th>сумма заказа</th><th>статус</th><th>del</th></tr>
+        <tr>
+            <th>#</th>
+            <th>Номер заказа</th>
+            <th>Дата заказа</th>
+            <th>кол-во товаров</th>
+            <th>сумма заказа</th>
+            <th>статус</th>
+            <th>del</th>
+        </tr>
     </thead>
     
        <? $i = 0; foreach ($MODEL["basketPayUserAll"] as $v) {?>
@@ -40,7 +49,7 @@ this basketPayUserAll
         <tr>
           <td colspan="7">
             <div class="rrr"> 
-                 <div class="container">
+                 
                     <table class="table table-hover table-bordered" id="basket_table">
                     <thead class="thead-light">
                         <tr>
@@ -122,7 +131,7 @@ this basketPayUserAll
                         </tbody>
                     </table>
                     
-                </div>
+               
             </div>
           </td>
         </tr>
@@ -180,6 +189,7 @@ this basketPayUserAll
         </tr>
     </tbody>
 </table>
+
 </div>
 
 

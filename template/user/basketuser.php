@@ -5,7 +5,7 @@
 <div class="basket">
 <form class="addBuyToBasketPay" method="POST" action="/basket/addBuyToBasketPay" novalidate>
   <div class="container">
-  
+  <div class="table-responsive-lg">
     <table class="table table-hover table-bordered" id="basket_table">
       <thead class="thead-light">
         <tr>
@@ -70,31 +70,42 @@
          
           <td>
           <div class="basket_count">                       
-              <input onchange="SummIt()" name="count_good" type="number" id="replyNumber" min="1" max="<?= $v["count_good_good"] ?>" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
+              <input onchange="SummIt(); Update(<?= $v["id"] ?>, this);" name="count_good[]" type="number" id="replyNumber" min="1" max="<?= $v["count_good_good"] ?>" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </div>
           </td>
           <td class="basket_summa">
-            <input name="summa" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
+            <input name="summa[]" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </td>
           <th> 
+            <input type="hidden" name="id[]" value="<?= $v["id"] ?>" />
            <!--   <form class="basketGoodCanselId" method="POST" action="/basket/cancel_basketTemp" novalidate> -->
+                  
                   <input type="hidden" name="baskettemp_id" value="<?= $v["id"] ?>" />
-                  <button id="delGood" type="submit"  class="btn btn-info" >X</button>
+                  <button id="delGood" type="button" onclick="deleteRow(<?= $v["id"] ?>)"  class="btn btn-info" >X</button>
           <!--    </form> -->
+                  <script>
+                      function deleteRow(id) {
+                        jQuery.post("/basket/cancel_basketTemp", { baskettemp_id: id }, function() { window.location.href = window.location.href });
+                      }
+                  </script>
           </th>
         </tr>
           <?    } ?>
              <tr>
       <td colspan="7"> Всего: </td>
-      <td><span id="total-basket-summa">0</span></td>
+      <td><span class="total-basket-summa">0</span></td>
       <td></td>
     </tr>
         </tbody>
     </table>
-   
-    <div>Итого: <span id="total-basket-summa" name="basket_summa">0</span> руб.</div>
+    </div>
+    <div>Итого: <span class="total-basket-summa" name="basket_summa">0</span> руб.</div>
     <br>
-    <button type="submit" id="addBuyToBasketPay" class="btn btn-info">Оформить заказ</button>
+    <?php if ($MODEL["basketTempByUser"] == null): ?>
+        <p> У вас пока нет товаров в корзине(((. Вы можете их добавить))) </p>
+    <?php else: ?>
+        <button type="submit" id="addBuyToBasketPay" class="btn btn-info">Оформить заказ</button>
+     <?php endif; ?>
   </div>
   </form>
 </div>
@@ -103,12 +114,12 @@
 
 <script>
     function SummIt() {
-      debugger;
       var summ = 0;
       var table = jQuery("#basket_table tbody");
 
       table.children("tr").each(function(i, e) {
         var tr = jQuery(e);
+        if (tr.find(".basket_price.price").length == 0) return;
         var price = parseInt(tr.find(".basket_price.price").html());
         var discount = parseInt(tr.find(".basket_price.discount").html());
         var count = parseInt(tr.find(".basket_count input").val());
@@ -118,10 +129,21 @@
         summ += discount*count;
       });
 
-      jQuery("#total-basket-summa").html(summ);
+      jQuery(".total-basket-summa").html(summ);
     }
 
     SummIt();
+
+
+    function Update(id, el) {
+      jQuery.post("/user1/BasketUpdateCount", { "id": id, "value": jQuery(el).val() });
+    }
+
+    function addToBasket() {
+      jQuery.post("/basket/addBuyToBasketPay", { "id": id, "value": jQuery(el).val() });
+    }
+
+
 </script>
 
 
