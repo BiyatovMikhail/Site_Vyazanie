@@ -97,6 +97,128 @@ class basket_model extends ModelBase {
     }
 
 
+    public function getBasketPayAllForUser($userId) {
+        $sql = " 
+        FROM 
+        `good_basket` 
+            LEFT JOIN `good` ON 
+                `good`.id = `good_basket`.good_id 
+            LEFT JOIN `good_category` ON 
+                `good_category`.id = `good`.category_id 
+    where `good_basket`.`user_id` = :userId
+    ORDER BY date_create DESC        
+        ";
+        $params = [ "userId" => $userId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT                 
+        `good_basket`.`*`, 
+        `good`.`article_good`,
+		  `good`.`name`, 
+		  `good`.`category_id`, 
+		  `good`.`price` AS price_good, 
+		  `good`.`price_discount`, 
+		  `good`.`is_discount`,  
+        `good_category`.name AS cat_name " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+
+        foreach ($order as $key => $value) {
+            $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
+            $url2 = "/admin/userone/" . $value["login"];
+            $order[$key]["url"] = $url;
+            $order[$key]["url2"] = $url2;
+        }
+        
+        return ["data" => $order, "pages" => $res];
+       
+    }
+
+
+
+
+
+
+
+
+    public function saveBasketPay($basketPayArry) {
+        
+        if (!isset($basketPayArry["id"]) || $basketPayArry["id"] == -1){
+           
+            return $this->insertBasketPay($basketPayArry);
+        }
+        else
+            return $this->updateBasketPay($basketPayArry);
+    }
+
+    private function insertBasketPay($basketPay) {
+     
+        $id = $this->db->create("INSERT INTO `good_basket` (`number_order`, `good_id`, `prise`, `user_id`, `count`, `prise_basket`, `date_create`, `date_change`, `comment_admin`, `is_done`, `is_cancel`, `is_delete`) 
+                                                    VALUES (:number_order, :good_id, :prise, :user_id_my, :count_my, :prise_basket, :date_create, :date_change, :comment_admin, :is_done, :is_cancel, :is_delete)", 
+        [
+            "number_order" => $basketPay["number_order"],
+            "good_id" => $basketPay["good_id"],
+            "prise" => $basketPay["prise"],
+            "user_id_my" => $basketPay["user_id"],
+            "count_my" => $basketPay["count"],
+            "prise_basket" => $basketPay["prise_basket"],
+            "date_create" => $basketPay["date_create"],
+            "date_change" => $basketPay["date_change"],
+            "comment_admin" => $basketPay["comment_admin"],
+            "is_done" => $basketPay["is_done"],
+            "is_cancel" => $basketPay["is_cancel"],
+            "is_delete" => $basketPay["is_delete"]
+            
+        ]);
+     
+        return $id;
+    }
+
+    private function updateBasketPay($basketPay) {
+      
+        $result = $this->db->update("UPDATE `good_basket` 
+                                        SET `number_order` = :number_order, 
+                                            `good_id` = :good_id,
+                                            `user_id` = :user_id_my,
+                                            `count` = :count_my,
+                                            `prise_basket` = :prise_basket,
+                                            `date_create` = :date_create,
+                                            `date_change` = :date_change,
+                                            `comment_admin` = :comment_admin,
+                                            `is_done` = :is_done,
+                                            `is_cancel` = :is_cancel,
+                                            `is_delete` = :is_delete
+                                                WHERE 
+                                            `good_basket`.`id` = :id ",
+                                            [
+                                                "number_order" => $basketPay["number_order"],
+                                                "good_id" => $basketPay["good_id"],
+                                                "user_id_my" => $basketPay["user_id"],
+                                                "count_my" => $basketPay["count"],
+                                                "prise_basket" => $basketPay["prise_basket"],
+                                                "date_create" => $basketPay["date_create"],
+                                                "date_change" => $basketPay["date_change"],
+                                                "comment_admin" => $basketPay["comment_admin"],
+                                                "is_done" => $basketPay["is_done"],
+                                                "is_cancel" => $basketPay["is_cancel"],
+                                                "is_delete" => $basketPay["is_delete"],
+                                                                                                
+                                                "id" => $basketPay["id"]
+                                            ]);
+        if ($result === false)
+            return false;
+       
+        return $basketPay["id"];
+    }
 
 
 

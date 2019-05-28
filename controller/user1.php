@@ -145,6 +145,28 @@ class user1 extends ControllerBase {
     }
 
     
+    public function basketBuyUserAll() {
+
+        $user = app::Current()->getUser();
+        $userId = $user->getUserID();
+
+        /** @var basket_model $model */
+        $model = $this->getModel("basket", "basket");
+     
+        $basketPayAll = $model->getBasketPayAllForUser($userId);
+       
+        $data = [
+            "basketPayUserAll" => $basketPayAll["data"],
+            "basketPayUserAll_pages" => $basketPayAll["pages"],
+            
+        ];
+
+        return $this->Render()->WriteHTML(
+            $data,
+            "basket", "basketPayUserAll"
+        );
+    }
+
     public function basketUser() {
 
         $user = app::Current()->getUser();

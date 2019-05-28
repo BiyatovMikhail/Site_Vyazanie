@@ -58,9 +58,9 @@ class basket extends ControllerBase {
 
     public function addGoodToBasket() {
 
-        $current_user = $this->getModel("user");
+        $current_user = $this->getModel("user1", "user1");
 
-        $current_good = $this->getModel("good");
+        $current_good = $this->getModel("good", "good");
 
         $this->model = $this->getModel("basket");
 
@@ -100,11 +100,12 @@ class basket extends ControllerBase {
     }
 
 
-    public function addBuyToBasket() {
+    public function addBuyToBasketPay() {
+      var_dump($_POST); exit();
+      
+        $current_user = $this->getModel("user1", "user1");
 
-        $current_user = $this->getModel("user");
-
-        $current_good = $this->getModel("good");
+        $current_good = $this->getModel("good", "good");
 
         $this->model = $this->getModel("basket");
 
@@ -139,7 +140,7 @@ class basket extends ControllerBase {
         ];
 
      
-        $this->model->saveBasket($data1);
+        $this->model->saveBasketPay($data1);
         return $this->index();
     }
 

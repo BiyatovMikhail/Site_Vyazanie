@@ -8,18 +8,15 @@
     <?= $MODEL ?>
   </button>
   <div class="dropdown-menu">
-  <a class="dropdown-item" href="/user1/showprofileuser">профиль/</a>
-      <a class="dropdown-item" href="/order/showorderuser">мои_заказы/</a>
-      <a class="dropdown-item" href="/user1/orderuserAll">мои_заказы2/</a>
-      <a class="dropdown-item" href="/user1/basketUser">корзина/</a>
+  <a class="dropdown-item" href="/user1/showprofileuser">профиль</a>
+      <a class="dropdown-item" href="/order/showorderuser">мои_заказы</a>
+      <a class="dropdown-item" href="/user1/orderuserAll">мои_заказы2</a>
+      <a class="dropdown-item" href="/user1/basketBuyUserAll">мои_покупки</a>
+      <a class="dropdown-item" href="/user1/basketUser">корзина</a>
       <div class="dropdown-divider"></div>
       <a class="dropdown-item" href="/admin">Админка</a>
       <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Action</a>
-    <a class="dropdown-item" href="#">Another action</a>
-    <a class="dropdown-item" href="#">Something else here</a>
-    <div class="dropdown-divider"></div>
-    <a class="dropdown-item" href="#">Separated link</a>
+    
   </div>
 </div>
 

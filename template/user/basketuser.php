@@ -3,7 +3,9 @@
 ?>
 
 <div class="basket">
+<form class="addBuyToBasketPay" method="POST" action="/basket/addBuyToBasketPay" novalidate>
   <div class="container">
+  
     <table class="table table-hover table-bordered" id="basket_table">
       <thead class="thead-light">
         <tr>
@@ -22,8 +24,8 @@
                 <? $i = 0; foreach ($MODEL["basketTempByUser"] as $v) {?>
        <tr>
           <th scope="row"><?= ++$i ?></th>
-          <td><?= $v["article_good"] ?></td>
-          <td><?= $v["name"] ?></td>
+          <td> <div name="article_good"> <?= $v["article_good"] ?> </div></td>
+          <td><div name="name_good"> <?= $v["name"] ?></div></td>
           <td>
               <div class="product-basket-images">
                 <div class="row">
@@ -44,23 +46,23 @@
           </td>
           <?php if ($v["is_discount"] == true): ?>
           <td>
-              <div class="basket_price price">
+              <div class="basket_price price" name="price_good">
               <?= $v["price"] ?>
               </div>
           </td>  
           <td>
-              <div class="basket_price discount">
+              <div class="basket_price discount" name="price_discount_good">
               <?= $v["price_discount"] ?>
               </div>
             </td>
           <?php else: ?>
             <td>
-              <div class="basket_price price">
+              <div class="basket_price price" name="price_good">
               <?= $v["price"] ?>
               </div>
             </td>
             <td>
-              <div class="basket_price discount">
+              <div class="basket_price discount" name="price_discount_good">
               <?= $v["price"] ?>
               </div>
             </td>
@@ -68,17 +70,17 @@
          
           <td>
           <div class="basket_count">                       
-              <input onchange="SummIt()" name="count" type="number" id="replyNumber" min="1" max="<?= $v["count_good_good"] ?>" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
+              <input onchange="SummIt()" name="count_good" type="number" id="replyNumber" min="1" max="<?= $v["count_good_good"] ?>" step="1" value="<?= $v["count_good"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </div>
           </td>
           <td class="basket_summa">
             <input name="summa" type="number" id="replyNumber" min="1" step="1" value="<?= $v["price_summ"] ?>" style="width: 4em;" data-bind="value:replyNumber" />
           </td>
           <th> 
-              <form class="basketGoodCanselId" method="POST" action="/basket/cancel_basketTemp" novalidate>
+           <!--   <form class="basketGoodCanselId" method="POST" action="/basket/cancel_basketTemp" novalidate> -->
                   <input type="hidden" name="baskettemp_id" value="<?= $v["id"] ?>" />
                   <button id="delGood" type="submit"  class="btn btn-info" >X</button>
-              </form>
+          <!--    </form> -->
           </th>
         </tr>
           <?    } ?>
@@ -89,10 +91,12 @@
     </tr>
         </tbody>
     </table>
-    <div>Итого: <span id="total-basket-summa">0</span> руб.</div>
+   
+    <div>Итого: <span id="total-basket-summa" name="basket_summa">0</span> руб.</div>
     <br>
-    <button id="basketall" class="btn btn-info">Оформить заказ</button>
+    <button type="submit" id="addBuyToBasketPay" class="btn btn-info">Оформить заказ</button>
   </div>
+  </form>
 </div>
 
 
@@ -131,9 +135,9 @@
         <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-1" aria-expanded="false" aria-controls="group-of-rows-1">
         
         <td><i class="fa fa-plus" aria-hidden="true"></i>1</td>
-            <td>зак 002</td>
-          	<td>2019</td>  
-            <td>4</td>
+            <td>зак 001</td>
+          	<td>2011</td>  
+            <td>10</td>
             <td>355руб</td>
             <td>в работе</td>
             <td>отменить</td>
@@ -160,10 +164,10 @@
             
        
         <td><i class="fa fa-plus" aria-hidden="true"></i>2</td>
-            <td>003</td>
-          	<td>2018</td>  
-            <td>40</td>
-            <td>Платье 1</td>
+            <td>002</td>
+          	<td>2012</td>  
+            <td>20</td>
+            <td>Платье 2</td>
             <td>выполнен</td>
             <td>отменить</td>
         </tr>
@@ -172,17 +176,54 @@
         <tr>
         <td>
             <div class="rrr2"> 
-              dtd 2
+              dtd 21
             </div>
           </td>
         </tr>
         <tr>
         <td>
             <div class="rrr2"> 
-              dtd 2
+              dtd 22
             </div>
           </td>
         </tr>
+        <tr>
+        <td>
+            <div class="rrr2"> 
+              dtd 23
+            </div>
+          </td>
+        </tr>
+        <tr>
+        <td>
+            <div class="rrr2"> 
+              dtd 24
+            </div>
+          </td>
+        </tr>
+    </tbody>
+    <tbody>
+        <tr class="clickable" data-toggle="collapse" data-target="#group-of-rows-3" aria-expanded="false" aria-controls="group-of-rows-3">
+            
+       
+        <td><i class="fa fa-plus" aria-hidden="true"></i>2</td>
+            <td>003</td>
+          	<td>2013</td>  
+            <td>30</td>
+            <td>Платье 3</td>
+            <td>выполнен</td>
+            <td>отменить</td>
+        </tr>
+    </tbody>
+    <tbody id="group-of-rows-3" class="collapse">
+        <tr>
+        <td>
+            <div class="rrr3"> 
+              dtd 31
+            </div>
+          </td>
+        </tr>
+        
     </tbody>
 </table>
 </div>
