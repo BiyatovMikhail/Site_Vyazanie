@@ -356,6 +356,35 @@
                 </div>
         
                 <div class="modal-footer">
+                <?php if ($MODEL["userid"] == -1): ?>
+                    <a href="/loginform/registerform" ><button type="button" class="btn btn-primary"> Зарегистрироваться </button> </a>
+                    <a href="/loginform" > <button type="button" class="btn btn-primary"> Войти  </button> </a>
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                <?php else: ?>
+                     <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                <?php endif; ?>
+                </div> 
+            </div>
+        </div>
+    </div>
+
+
+<!-- Modal User allert-->
+<div class="modal fade" id="alertUserModalCenter" tabindex="-1" role="dialog" aria-labelledby="alertUserModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertUserModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body" id="alertUserModalLongTitleBody">
+                    
+                </div>
+        
+                <div class="modal-footer">
                     <a href="/loginform/registerform" ><button type="button" class="btn btn-primary"> Зарегистрироваться </button> </a>
                     <a href="/loginform" > <button type="button" class="btn btn-primary"> Войти  </button> </a>
                     <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>

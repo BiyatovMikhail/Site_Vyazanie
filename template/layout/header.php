@@ -9,6 +9,8 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC&display=swap" rel="stylesheet">
+    
    
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" media="screen" href="/css/site.css" /> -->

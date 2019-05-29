@@ -9,12 +9,15 @@
     background-color: rgb(252, 236, 204);
 }
 
+.navmy {
+    font-family: 'Amatic SC', cursive;
+}
 .navmy .nav-link a {
     max-width: 1400px;
     margin:0 auto;
     background-color: white;
     text-decoration-color: #333;
-    font-family: 'Lobster', cursive;
+    
 }
 
 .navmy.nav-pills .nav-link.active {
@@ -24,7 +27,7 @@
 
 .navmy.nav-pills .nav-link {
     border-radius: 1.25rem;
-    font-family: 'Lobster', cursive;
+    
     color: #3f2f04;
 }
 
@@ -38,8 +41,11 @@
 }
 .myfont3{
     font-family: 'Parisienne', cursive;
+    
 }
-
+.myfont4{
+    font-family: 'Amatic SC', cursive;
+}
 .headerwight{
     max-width: 1400px;
     margin:0 auto;
