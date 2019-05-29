@@ -169,7 +169,9 @@
     background-repeat: no-repeat;
     background-position: 50% 0, center !important;
 }
-
+.good-img-card{
+    background-size:cover !important;
+}
 
 .product-gallery .product-images img {
     width: 80px;

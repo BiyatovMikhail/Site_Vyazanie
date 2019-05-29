@@ -32,16 +32,20 @@ class admin_userall extends ControllerBase {
         );
     }
 
-    public function userOne($userId) {
+    public function userOne() {
+
+        $userId = $_POST["user_id"];
+        
         $userOne = $this->model->getUserById($userId);
-       
+        //var_dump($userOne); exit();
+
         $data = [
-            "useroneadm" => $userAll,
+            "useroneadm" => $userOne,
             
         ];
 
         return $this->Render()->WriteHTML(
-            $data,
+            $userOne,
             "user/admin", "profile_user_one"
         );
     }

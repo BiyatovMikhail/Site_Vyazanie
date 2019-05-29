@@ -14,7 +14,7 @@ class basket extends ControllerBase {
         );
     }
     public function saveBasketTemp() {
-       // var_dump("hnadsjaghjahg"); exit();
+        var_dump("hnadsjaghjahg"); exit();
         $current_user = $this->getModel("user1", "user1");
 
         $current_good = $this->getModel("good", "good");
@@ -24,25 +24,25 @@ class basket extends ControllerBase {
         $good_id = $_POST["good_id"];
         $user_id = $_POST["user_id"];
 
-        var_dump($user_id,  $good_id); exit();
+        // var_dump($user_id,  $good_id); exit();
 
-        if($user_id == -1){
-            return $this->Render()->WriteHTML(
-                "MODEL",
-                "basket",
-                "cheked"
-            );
-        }
+        // if($user_id == -1){
+        //     return $this->Render()->WriteHTML(
+        //         "MODEL",
+        //         "basket",
+        //         "cheked"
+        //     );
+        // }
 
-        $isGoodCheked = $this->model->chekedGoodInBasketTemp($good_id, $user_id);
+        // $isGoodCheked = $this->model->chekedGoodInBasketTemp($good_id, $user_id);
 
-        if($isGoodCheked == true){
-            return $this->Render()->WriteHTML(
-                "MODEL",
-                "basket",
-                "cheked"
-            );
-        }
+        // if($isGoodCheked == true){
+        //     return $this->Render()->WriteHTML(
+        //         "MODEL",
+        //         "basket",
+        //         "cheked"
+        //     );
+        // }
        
        
    //  var_dump($user_id); exit();

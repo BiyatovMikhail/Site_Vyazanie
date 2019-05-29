@@ -47,7 +47,14 @@
                                 <td><?= $v["phone"] ?></td>
                                 <td><?= $v["date_create"] ?></td>
                                 <td>
-                                <button id="userAll" type="button" href="/userall/admin/userOne" class="btn btn-info" >Посмотреть</button>
+                                   <form class="userOneId" method="POST" action="/admin/userall/userOne" novalidate> 
+                  
+                                        <input type="hidden" name="user_id" value="<?= $v["id"] ?>" />
+                                  <!--      <button id="delGood" type="button" onclick="deleteRow(<?= $v["id"] ?>)"  class="btn btn-info" >X</button> -->
+                                        <button id="userOne" type="submit" href="/admin/userall/userOne" class="btn btn-info" >Посмотреть</button>
+
+                                   </form> 
+                               
                                 </td>
                                 
                                 </tr>
