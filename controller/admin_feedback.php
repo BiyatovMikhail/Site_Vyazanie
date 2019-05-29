@@ -44,6 +44,7 @@ class admin_feedback extends ControllerBase {
     public function save() {
         if (isset($_POST["action"])) {
             $user  = $_POST["user"];
+            $phone  = $_POST["phone"];
             $email = $_POST["email"];
             $text  = $_POST["text"];
 
@@ -52,6 +53,7 @@ class admin_feedback extends ControllerBase {
             $data[] = [
                 "user" => $user,
                 "email" => $email,
+                "phone" => $phone,
                 "text" => $text
             ];
             $this->conf->set("data", $data);
@@ -84,4 +86,24 @@ class admin_feedback extends ControllerBase {
 
         return $this->index();
     }
+
+    public function Look() {
+        $key = "";
+        if (isset($this->path[3]))
+            $key = $this->path[3];
+
+        if ($key == "")
+            return $this->index();
+      //  var_dump($key); exit();
+        $this->conf->load("feedbacks");
+        $data = $this->conf->get("data", []);
+        
+
+        return $this->Render()->WriteHTML([
+            "key" => $key,
+            "value" => $this->conf->get($key)
+        ], "feedback/admin", "look");
+    }
+
+
 }

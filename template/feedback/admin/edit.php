@@ -30,6 +30,7 @@
       </ul>
     </div>
     <div>
+    
         <input type="submit" name="submit" value="Отправить">
         &nbsp;
         <!-- <input type="reset" name="reset" value="Reset Form"> -->

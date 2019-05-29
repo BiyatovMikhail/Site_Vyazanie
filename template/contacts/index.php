@@ -24,19 +24,26 @@
                 <br>
                 <strong> Оставить сообщение  </strong>
                 <br>
-                    <form>
+                    <form action="/admin/feedback/save" enctype="multipart/form-data" method="POST">
+                      <input type="hidden" name="action" value="test" />
+                      <input type="hidden" name="module" value="<?= $MODEL["module"] ?>" />
+                          <div class="form-group">
+                            <label for="exampleInputName1">Ваше имя</label>
+                            <input type="text" name="user" class="form-control" id="exampleInputName1" aria-describedby="nameHelp" placeholder="Введите ваше имя">
+                            
+                        </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Ваш еmail</label>
-                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите email">
+                            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Введите email">
                             
                         </div>
                         <div class="form-group">
                             <label for="InputPhone1">Телефон</label>
-                            <input type="text" class="form-control" id="InputPhone1" placeholder="введите телефон">
+                            <input type="text" name="phone" class="form-control" id="InputPhone1" placeholder="введите телефон">
                         </div>
                         <div class="form-group">
                             <label for="textAreaMessage">Cообщение</label>
-                            <textarea class="form-control" id="textAreaMessage" placeholder="ваше сообщение"></textarea>
+                            <textarea class="form-control" name="text" id="textAreaMessage" placeholder="ваше сообщение"></textarea>
                             
                         </div>
                         

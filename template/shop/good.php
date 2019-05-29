@@ -1,7 +1,5 @@
 <? $MODEL  ?>
 <? //var_dump($MODEL); exit(); ?>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <div class="container">
     <div class="row">
@@ -137,14 +135,20 @@
                                                 <!-- <a href="#" class="btn btn-primary">Добавить в корзину</a> -->
                                             <!--    <button type="submit" class="btn btn-primary">Добавить в корзину</button>  -->
                                                     <!-- Button trigger modal basket -->
-                                                    <button onclick="sendToBasket()" type="button" class="btn btn-primary" data-toggle="modal" data-target="#basketModalCenter">
+                                                    <button onclick="sendToBasket()" type="button" class="btn btn-primary"  data-target="#basketModalCenter">
                                                         Добавить в корзину модальное окно корзина
                                                     </button>
 
                                                     <script>
                                                         function sendToBasket() {
-                                                            var_dump("qwerqewrqewr"); exit();
-                                                            jQuery.post("/basket/saveBasketTemp", jQuery("#basket_id").serialize());
+                                                            jQuery.post("/basket/saveBasketTemp", jQuery("#basket_id").serialize(), function(data) {
+                                                                if (data == "") {
+                                                                    $('#basketModalCenter').modal('show');
+                                                                } else {
+                                                                    jQuery("#alertModalLongTitleBody").html(data);
+                                                                    $('#alertModalCenter').modal('show');
+                                                                }
+                                                            });
                                                         }
                                                     </script>
                                             </form>
@@ -334,6 +338,31 @@
         </div>
     </div>
 
+
+
+<!-- Modal allert-->
+<div class="modal fade" id="alertModalCenter" tabindex="-1" role="dialog" aria-labelledby="alertModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content text-center">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="alertModalLongTitle"></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            
+                <div class="modal-body" id="alertModalLongTitleBody">
+                    
+                </div>
+        
+                <div class="modal-footer">
+                    <a href="/loginform/registerform" ><button type="button" class="btn btn-primary"> Зарегистрироваться </button> </a>
+                    <a href="/loginform" > <button type="button" class="btn btn-primary"> Войти  </button> </a>
+                    <button type="button" class="btn btn-secondary " data-dismiss="modal">Закрыть</button>
+                </div> 
+            </div>
+        </div>
+    </div>
 
 
 

@@ -134,9 +134,8 @@ class basket_model extends ModelBase {
                 [ "user_id_my" => $user_id ,
                    "good_id" => $good_id
                  ]);
-             var_dump($good); exit();
-        if ($good > 0) {
-           
+
+        if ($good > 0) {           
             return true;
         }
         return false;
