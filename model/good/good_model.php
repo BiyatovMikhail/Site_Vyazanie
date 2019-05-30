@@ -10,7 +10,7 @@ class good_model extends ModelBase {
     }
 
     public function getGoodAll() {
-        return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id", []);
+        return $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id ORDER BY article_good DESC", []);
     }
 
     public function getGoodAllRand($exclude = null) {
@@ -80,7 +80,7 @@ class good_model extends ModelBase {
     public function getGoodByName($goodname, $namecat) {
         $goodname = str_replace("_", "/", $goodname);
         $namecat = str_replace("_", "/", $namecat);
-        $good = $this->db->selectOne("SELECT * FROM good AS g WHERE g.category_id IN (SELECT id FROM good_category WHERE `name` = :namecat) AND `name` = :namegood", ["namecat" => $namecat, "namegood" => $goodname]);
+        $good = $this->db->selectOne("SELECT * FROM good AS g WHERE g.category_id IN (SELECT id FROM good_category WHERE `name` = :namecat) AND `name` = :namegood ORDER BY article_good DESC", ["namecat" => $namecat, "namegood" => $goodname]);
         
         if ($good !== false) {
             $good["params"] = $this->getParams($good["id"]);
@@ -109,10 +109,10 @@ class good_model extends ModelBase {
     public function getGoodsByCategory($id, $count = 100) {
         $goods = null;
         if (is_numeric($id))
-            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where category_id = :id limit " .  $count, [ "id" => $id ]);
+            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where category_id = :id ORDER BY article_good DESC limit " .  $count, [ "id" => $id ]);
         else {
             $id = str_replace("_", "/", $id);
-            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) limit " .  $count, [ "id" => $id ]);
+            $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where `category_id` = (select `id` from `good_category` where `name` = :id limit 1) ORDER BY article_good DESC limit " .  $count, [ "id" => $id ]);
         }
 
         $ids = [];
@@ -136,7 +136,7 @@ class good_model extends ModelBase {
 
     public function getGoodsInStock($count = 100) {
         $goods = null;
-        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where count_good > 0 limit " .  $count, [  ]);
+        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where count_good > 0  ORDER BY article_good DESC limit " .  $count, [  ]);
 
         $ids = [];
         foreach ($goods as $k => $value) {
@@ -159,7 +159,7 @@ class good_model extends ModelBase {
 
     public function getGoodsIsDiscount($count = 100) {
         $goods = null;
-        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where is_discount = true limit " .  $count, [  ]);
+        $goods = $this->db->selectMany("SELECT `good`.*, `good_category`.name AS cat_name FROM `good` LEFT JOIN `good_category` ON `good`.category_id = `good_category`.id where is_discount = true ORDER BY article_good DESC limit " .  $count, [  ]);
 
         $ids = [];
         foreach ($goods as $k => $value) {

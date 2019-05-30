@@ -55,6 +55,7 @@ class basket extends ControllerBase {
      
         $this->model->saveBasketTemp($data1);
         exit();
+       
     }
 
     public function cancel_basketTemp (){
@@ -151,14 +152,18 @@ class basket extends ControllerBase {
         WHERE 
             t.id IN (" . $ids . ")        
         ";
-        $this->model->addBuyToBasketPay($sql);
+        $order_basket_id = $this->model->addBuyToBasketPay($sql);
 
        foreach ($_POST["id"] as $key => $value) {
            $this->model->deleteBasketTemp($value);
        }
         
-
-        return $this->index();
+        
+        return $this->Render()->WriteHTML(
+            $order_basket_id,
+            "basket",
+            "afterBasketBuy"
+        );
     }
 
 
