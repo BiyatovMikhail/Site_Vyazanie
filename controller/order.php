@@ -80,8 +80,13 @@ class order extends ControllerBase {
             "is_cancel" => 0,
             "is_delete" => 0
         ];
-     
+
+            
         $order_id = $this->model->saveOrder($data1);
+
+        $mail_data = $this->Render()->WriteHTML("", "mailer", "mail");
+        app::Current()->SendMail("mihail71bma@yandex.ru", "test2", $mail_data);
+        
         return $this->index($order_id);
     }
 

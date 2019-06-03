@@ -1,5 +1,12 @@
 <?php
 
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+
+require __DIR__ . '/../lib/phpmailer/src/Exception.php';
+require __DIR__ . '/../lib/phpmailer/src/PHPMailer.php';
+require __DIR__ . '/../lib/phpmailer/src/SMTP.php';
+
 require_once __DIR__ . "/request.php";
 require_once __DIR__ . "/render.php";
 require_once __DIR__ . "/config.php";
@@ -203,5 +210,47 @@ class app {
             "test",
             "ttt"
         ];
+    }
+
+    public function SendMail($to, $subject, $body) {
+        // Instantiation and passing `true` enables exceptions
+        $mail = new PHPMailer(true);
+
+        try {
+            //Server settings
+            $mail->SMTPDebug = 2;                                       // Enable verbose debug output
+            $mail->isSMTP();                                            // Set mailer to use SMTP
+            $mail->Host       = 'smtp.yandex.ru';                       // Specify main and backup SMTP servers
+            $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
+            $mail->Username   = 'mihail71bma@yandex.ru';                     // SMTP username
+            $mail->Password   = 'Qwerty_12345';                               // SMTP password
+            $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
+            $mail->Port       = 465;                                    // TCP port to connect to
+        
+            //Recipients
+            $mail->setFrom('mihail71bma@yandex.ru', 'FROM SITE');
+            $mail->addAddress($to);     // Add a recipient
+
+            $mail->addReplyTo('mihail71bma@yandex.ru', 'Information');
+
+            // $mail->addCC('cc@example.com');
+            // $mail->addBCC('bcc@example.com');
+        
+            // Attachments
+            // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+            // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+        
+            // Content
+            $mail->isHTML(true);                                  // Set email format to HTML
+            $mail->Subject = $subject;
+            $mail->Body    = $body;
+            $mail->AltBody = strip_tags($body);
+        
+            $mail->send();
+            // echo 'Message has been sent';
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
+
     }
 }

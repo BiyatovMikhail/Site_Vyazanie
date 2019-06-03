@@ -409,7 +409,7 @@
 
 <!-- Modal slider-->
 <div class="modal fade bd-example-modal-xl" id="sliderModalCenter" tabindex="-1" role="dialog" aria-labelledby="sliderModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+        <div class="modal-dialog modal-dialog-centered my-modal" role="document">
             <div class="modal-content text-center">
                 <div class="modal-header">
                     <h5 class="modal-title" id="sliderModalLongTitle"></h5>

@@ -216,20 +216,18 @@ class good_model extends ModelBase {
     public function saveGood($good) {
         if (!isset($good["id"]) || $good["id"] == -1){
     
-      //      $id = $this->insertGood($good);
-      //      var_dump($id); exit();
-      //      $good["id"] = $id;
-      //      $good["article_good"] = $id;
-            return $this->insertGood($good);
+           $id = $this->insertGood($good);
+           $good["id"] = $id;
+           $good["article_good"] = $id;
+           $this->updateGood($good);
+            return $id;
         }
         else
             return $this->updateGood($good);
     }
 
     private function insertGood($good) {
-     //   var_dump($good); exit();
-     //   $good_artic = $good["category_id"]
-
+    
         $id = $this->db->create("INSERT INTO `good` 
                                     (`article_good`, 
                                     `name`, 
