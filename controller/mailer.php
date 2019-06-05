@@ -7,7 +7,7 @@ class mailer extends ControllerBase {
 
     public function index() {
 
-        $mail_data = $this->Render()->WriteHTML("", "mailer", "mail");
+        $mail_data = $this->Render()->WriteHTML("", "mailer", "mail_order_adm");
         app::Current()->SendMail("mihail71bma@yandex.ru", "test2", $mail_data);
     }
 }

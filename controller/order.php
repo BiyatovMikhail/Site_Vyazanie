@@ -83,9 +83,25 @@ class order extends ControllerBase {
 
             
         $order_id = $this->model->saveOrder($data1);
+        $good_model = $this->getModel("good", "good");
+        $current_good = $good_model->getGood($good_id);
+        $model_order_adm = [
+           "user_namefull" => $user_name,
+            "user_email" => $user_email,
+            "user_phone" => $user_phone,
+            "numb_order" => $order_id,
+            "good_id" => $good_id,
+            "user_message" => $user_message,
+            "price_order" => $price_order,
+            "good_name" => $current_good["name"],
+            
+        ];
+        $mail_adres_send_adm1 = "mihail71bma@yandex.ru";
+        $mail_adres_send_adm2 = "sen_77@bk.ru";
 
-        $mail_data = $this->Render()->WriteHTML("", "mailer", "mail");
-        app::Current()->SendMail("mihail71bma@yandex.ru", "test2", $mail_data);
+      //  var_dump($model_order_adm); exit();
+        $mail_data = $this->Render()->WriteHTML($model_order_adm, "mailer", "mail_order_adm");
+        app::Current()->SendMail($mail_adres_send_adm1, "Новый заказ!", $mail_data);
         
         return $this->index($order_id);
     }
