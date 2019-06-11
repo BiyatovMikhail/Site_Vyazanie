@@ -11,10 +11,10 @@
     <table border="1">
         <tr>
             <th>
-                № zakaza
+                № zakaza заказа
             </th>
             <th>
-                name Usera
+                name Usera юзера
             </th>
             <th>
                 email Usera

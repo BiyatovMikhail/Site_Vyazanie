@@ -205,6 +205,51 @@ class basket_model extends ModelBase {
        
     }
 
+    public function getGoodsByNumOrd($numbOrdId) {
+        $sql = " 
+        FROM 
+        `good_basket` 
+            LEFT JOIN `good` ON 
+                `good`.id = `good_basket`.good_id 
+            LEFT JOIN `good_category` ON 
+                `good_category`.id = `good`.category_id 
+    where `good_basket`.`number_order` = :number_order
+    ORDER BY date_create DESC        
+        ";
+        $params = [ "number_order" => $numbOrdId ];
+
+        $all = intval($this->db->selectOne("SELECT count(*) as qq " . $sql, $params)["qq"]);
+        $res = intdiv($all, 3);
+        if ($all % 3 > 0) $res++;        
+
+        $sql_res = "SELECT                 
+        `good_basket`.`*`, 
+        `good`.`article_good`,
+		  `good`.`name`, 
+		  `good`.`category_id`, 
+		  `good`.`price` AS price_good, 
+		  `good`.`price_discount`, 
+		  `good`.`is_discount`,  
+        `good_category`.name AS cat_name " . $sql;
+        if (isset($_GET["page"])) {
+            $skip = $_GET["page"] * 3;
+            $sql_res .= " limit " . $skip . ",3";
+        } else {
+            $sql_res .= " limit 3";
+        }
+
+        $order = $this->db->selectMany($sql_res, $params);
+
+        foreach ($order as $key => $value) {
+            $url = "/shop/good/" . str_replace("/", "_", $value["cat_name"]) . "/" . $value["name"];
+            $url2 = "/admin/userone/" . $value["login"];
+            $order[$key]["url"] = $url;
+            $order[$key]["url2"] = $url2;
+        }
+        
+        return ["data" => $order, "pages" => $res];
+       
+    }
 
 
 
