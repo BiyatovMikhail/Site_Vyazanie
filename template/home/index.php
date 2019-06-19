@@ -18,11 +18,10 @@ $two = $this->WriteHTML($MODEL[0]["items"][1], "home", "good");
 
 ?>
 
-this is index
 <div class="container">
-  <!-- <div class="row">
+   <div class="row">
     <div class="line-empty"></div>
-  </div>  -->
+  </div>  
   <!-- <div class="row">
     <div class="line-decorate">
       <img src="/img/linebigdecornew1.png" style="width: 100%;">
@@ -47,7 +46,7 @@ this is index
                 <img src="/img/line-decor1.png" class="card-img-top" alt="..." >
             </div>
             <div class="element-post-text">
-               <p class="text-center font-italic" > Новая коллекция </p>
+               <p class="element-text text-center " > Новая коллекция </p>
             </div>
             <div class="element-post-button text-center">
                 <a href="/shop" class="btn btn-outline-secondary" >Перейти в магазин</a>
@@ -88,10 +87,10 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
           <div class="element-indent-empty">
           </div>
          <div class="element indent myfontmain text-center">
-           
             <div class="element-post-title">
-              <p class="element-text-title text-center" > Наши акции </p>
+              <p class="text-center text-uppercase font-weight-bold" > Наши Акции </p>
             </div>
+            
             <div class="element-line-decorate">
                 <img src="/img/line-decor1.png" class="card-img-top" alt="..." >
             </div>
@@ -148,9 +147,9 @@ $two = $this->WriteHTML($MODEL[1]["items"][1], "home", "good");
        <div class="line-empty"></div>
     </div> -->
     <div class="row">
-       <div class="line-decorate2" >
+      <!-- <div class="line-decorate2" > -->
         <!-- <img src="/img/linebigdecornew4.png" style="height: 20px;" > -->
-       </div> 
+      <!-- </div> -->
 
        <!-- <div class="line-decorate2" style="background:url(/img/linebigdecornew4.png) no-repeat center center;">
         

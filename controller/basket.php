@@ -207,7 +207,7 @@ class basket extends ControllerBase {
         $mail_adres_send_user = $user_email;
         $mail_adres_send_user2 = "mixail_956@rambler.ru";
 
-      //  var_dump($model_basket_adm); exit();
+        //  var_dump($model_basket_adm); exit();
         $mail_data = $this->Render()->WriteHTML($model_basket_adm, "mailer", "mail_basket_adm");
         app::Current()->SendMail($mail_adres_send_adm3, "Новый заказ!", $mail_data);
         

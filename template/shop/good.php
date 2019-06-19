@@ -52,18 +52,6 @@
                                                     </div>
                                                 </div>
                                             <?php endforeach; ?>
-
-                                           
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images4.jpg); "></div>
-                                                </div>
-                                            </div>
-                                            <div class="all-product-images">
-                                                <div class="card card-product-images" >
-                                                    <div class="content-card-product-images" style="background:url(/img/images3.jpg); "></div>
-                                                </div>
-                                            </div>
                                            
                                         </div>
 
@@ -108,9 +96,9 @@
                                         
                                         <br>
 
-                                        "Остались вопросы? Пишите в Whatsapp или звоните по номеру +7 (968) 827-20-04 и мы обязательно поможем определиться вам с выбором, а также сразу оформить заказ."
+                                        "Остались вопросы? Пишите в Whatsapp или звоните по номеру +7 (910) 556-65-66 и мы обязательно поможем определиться вам с выбором, а также сразу оформить заказ."
 
-                                        "Обращаем ваше внимание, что товар, которого нет в наличии может быть произведен под заказ. Условия размещения индивидуального заказа читайте здесь."
+                                        "Обращаем ваше внимание, что товар, которого нет в наличии может быть произведен под заказ."
                                     </div>
                                     <div class="product-params">
                                         <div class="size-product">
@@ -180,17 +168,39 @@
                     </div> 
                     <div class="row">
                         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                                <?php $srcsm = $this->drawRoute("pic", "allsrc", [
+                                "module" => "good",
+                                "id" => $MODEL["goods"]["id"]
+                                 ]); ?>
                             <ol class="carousel-indicators">
-                                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                                    <?php $i = 0; foreach ($srcsm  as $value): ?>
+                                        <?php if($i == 0): ?>
+                                            <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i++ ?>" class="active"></li>
+                                        <?php else: ?>
+                                           <li data-target="#carouselExampleIndicators" data-slide-to="<?= $i++ ?>" ></li>
+                                        <?php endif; ?>
+                                     <?php endforeach; ?>
+                              <!--  <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
                                 <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li> -->
                             </ol>
                             <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                    <?php $src = $this->drawRoute("pic", "onesrc", [
-                                            "module" => "good",
-                                            "id" => $MODEL["goods"]["id"]
-                                        ]) ?>
+                                        
+                                        <?php $ii = 0; foreach ($srcsm  as $value): ?>
+                                            <?php if($ii == 0): ?>
+                                            <div class="carousel-item active">
+                                                <img class="d-block w-100" src="<?= $value["link"] ?>" alt="<?= $value["name"] ?> <?= $ii++ ?>">
+                                            </div>
+                                            <?php else: ?>
+                                                <div class="carousel-item">
+                                                <img class="d-block w-100" src="<?= $value["link"] ?>" alt="<?= $value["name"] ?> <?= $ii++ ?>">
+                                            </div>
+                                            <?php endif; ?>
+                                            
+                                        <?php endforeach; ?>
+
+                              <!--  <div class="carousel-item active">
+                                         
                                     <img class="d-block w-100" src="<?= $src ?>" alt="First slide">
                                 </div>
                                 <div class="carousel-item">
@@ -198,7 +208,7 @@
                                 </div>
                                 <div class="carousel-item">
                                 <img class="d-block w-100" src="/img/images1.jpg" alt="Third slide">
-                                </div>
+                                </div> -->
                             </div>
                             <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -409,8 +419,14 @@
 
 <!-- Modal slider-->
 <div class="modal fade bd-example-modal-xl" id="sliderModalCenter" tabindex="-1" role="dialog" aria-labelledby="sliderModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered my-modal" role="document">
+        <div class="modal-dialog my-modal" role="document">
             <div class="modal-content text-center">
+            <? //var_dump($MODEL["goods"]); exit(); ?>
+                                <?php $srcsm = $this->drawRoute("pic", "allsrc", [
+                                "module" => "good",
+                                "id" => $MODEL["goods"]["id"]
+                                 ]); ?>
+
                 <div class="modal-header">
                     <h5 class="modal-title" id="sliderModalLongTitle"></h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -422,32 +438,61 @@
                 <div class="bd-example">
                     <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                         <ol class="carousel-indicators">
-                        <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
+                             <?php $k = 0; foreach ($srcsm  as $value): ?>
+                            <?php if($k == 0): ?>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="<?= $k++ ?>" class="active"></li>
+                            <?php else: ?>
+                                <li data-target="#carouselExampleCaptions" data-slide-to="<?= $k++ ?>" ></li>
+                            <?php endif; ?>
+                            <?php endforeach; ?>
+                      <!--  <li data-target="#carouselExampleCaptions" data-slide-to="0" class="active"></li>
                         <li data-target="#carouselExampleCaptions" data-slide-to="1"></li>
-                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li>
+                        <li data-target="#carouselExampleCaptions" data-slide-to="2"></li> -->
                         </ol>
                         <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img src="/img/images1.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5>First slide label</h5>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <?php $kk = 0; foreach ($srcsm  as $value): ?>
+                                <?php if($kk == 0): ?>
+                                <div class="carousel-item active">
+                                    <img class="d-block w-100" src="<?= $value["link"] ?>" alt="<?= $value["name"] ?> <?= $kk++ ?>">
+                                    <div class="carousel-caption d-none d-md-block">
+                                     <!--   <h5><? $MODEL["goods"]["name"] ?></h5>  -->
+                                        <p><?= $value["name"] ?></p>
+                                    </div>
+                                </div>
+                                <?php else: ?>
+                                <div class="carousel-item">
+                                    <img class="d-block w-100" src="<?= $value["link"] ?>" alt="<?= $value["name"] ?> <?= $kk++ ?>">
+                                    <div class="carousel-caption d-none d-md-block">
+                                 <!--   <h5><? $MODEL["goods"]["name"] ?></h5>  -->
+                                        <p><?= $value["name"] ?></p>
+                                    </div>
+                                </div>
+                                </div>
+                                <?php endif; ?>
+                                
+                            <?php endforeach; ?>
+
+                    <!--     <div class="carousel-item active">
+                                <img src="/img/images1.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5>First slide label</h5>
+                                <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/img/images2.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5>Second slide label</h5>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <div class="carousel-item">
+                                <img src="/img/images2.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5>Second slide label</h5>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                                </div>
                             </div>
-                        </div>
-                        <div class="carousel-item">
-                            <img src="/img/images3.jpg" class="d-block w-100" alt="...">
-                            <div class="carousel-caption d-none d-md-block">
-                            <h5>Third slide label</h5>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-                            </div>
-                        </div>
+                            <div class="carousel-item">
+                                <img src="/img/images3.jpg" class="d-block w-100" alt="...">
+                                <div class="carousel-caption d-none d-md-block">
+                                <h5>Third slide label</h5>
+                                <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                                </div>
+                            </div> -->
                         </div>
                         <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
