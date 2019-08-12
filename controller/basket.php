@@ -177,9 +177,9 @@ class basket extends ControllerBase {
         $goods = $curr_basket_model->getGoodsByNumOrd($order_basket_id);
 
         $model_basket_adm = [
-            "user" = [
+           "user" = [
            "user_namefull" => $current_user["surname"] + $current_user["name"],
-           "order_basket_id" = $order_basket_id,
+           "order_basket_id" => $order_basket_id,
             "user_email" => $current_user["email"],
             "user_phone" => $current_user["phone"],
             "price_order" => $goods["prise_basket"],
@@ -192,6 +192,7 @@ class basket extends ControllerBase {
             "good_name" => $current_good["name"],
             ]
         ];
+
         $model_basket_user = [
             
              "numb_order" => $order_id,

@@ -29,7 +29,8 @@
     <a class="nav-link" href="/contacts">Контакты</a>
   </li>
   <li class="nav-item">
-    <a class="nav-link" href="/basket">Корзина</a>
+    <a class="nav-link" href="/user1/basketUser">Корзина</a>
+   <!-- <a class="nav-link" href="/basket">Корзина</a> -->
   </li>
   <li class="nav-item">
     <a class="nav-link disabled" href="#">Disabled</a>

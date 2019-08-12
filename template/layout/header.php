@@ -29,10 +29,10 @@
     <header class="blog-header py-3 headerwight">
     <div class="row ">
       <div class="col-4 ">
-        <a class="text-muted" href="#">Subscribe</a>
+       <!-- <a class="text-muted" href="#">Subscribe</a> -->
       </div>
       <div class="col-4 text-center">
-        <a class="blog-header-logo text-dark" href="#">Large</a>
+      <!--  <a class="blog-header-logo text-dark" href="#">Large</a>  -->
       </div>
       <div class="col-4 d-flex justify-content-end align-items-center">
 
@@ -49,7 +49,7 @@
     </div>
   </header>
 
-thit is heder
+
 <div class="header-logo" style="background:url(/img/topLogo2.png) no-repeat center center;" >
    <!-- <img src="/img/topLogo2.png" />  -->
    
