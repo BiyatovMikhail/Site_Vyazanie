@@ -226,9 +226,10 @@ class app {
             $mail->Password   = 'Qwerty_12345';                               // SMTP password
             $mail->SMTPSecure = 'ssl';                                  // Enable TLS encryption, `ssl` also accepted
             $mail->Port       = 465;                                    // TCP port to connect to
-        
+            $mail->CharSet = "UTF-8";
+            
             //Recipients
-            $mail->setFrom('mihail71bma@yandex.ru', 'FROM SITE');
+            $mail->setFrom('mihail71bma@yandex.ru', 'Волшебная Нить');
             $mail->addAddress($to);     // Add a recipient
 
             $mail->addReplyTo('mihail71bma@yandex.ru', 'Information');

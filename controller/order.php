@@ -111,15 +111,22 @@ class order extends ControllerBase {
         $mail_adres_send_user = $user_email;
         $mail_adres_send_user2 = "mixail_956@rambler.ru";
 
+       // var_dump($order_id); exit();
+        $subjectmessage = "Новый заказ № " . $order_id;
+        $subject_message_user = "Ваш заказ № " . $order_id;
+      //  $zagolovok2 = "Новый заказ № ";
+      //  var_dump($zagolovok); exit();
       //  var_dump($model_order_adm); exit();
         $mail_data = $this->Render()->WriteHTML($model_order_adm, "mailer", "mail_order_adm");
-        app::Current()->SendMail($mail_adres_send_adm3, "Новый заказ!", $mail_data);
+        app::Current()->SendMail($mail_adres_send_adm1, $subjectmessage, $mail_data, "Content-type:text/plain; charset=UTF-8");
         
         $mail_data_user = $this->Render()->WriteHTML($model_order_user, "mailer", "mail_order_user");
-        app::Current()->SendMail($mail_adres_send_user2, "Новый заказ!", $mail_data_user);
+        app::Current()->SendMail($mail_adres_send_user2, $subject_message_user, $mail_data_user, "Content-type:text/plain; charset=UTF-8");
 
         return $this->index($order_id);
     }
+
+   
 
     public function cancel_order (){
 
