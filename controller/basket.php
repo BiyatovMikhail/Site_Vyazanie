@@ -2,6 +2,8 @@
 
 class basket extends ControllerBase {
 
+  //  $current_good_id = -1;
+
     public function canAnonymus($action) {
         return true;
     }
@@ -87,7 +89,7 @@ class basket extends ControllerBase {
        
 
         $good_id = $_POST["good_id"];
-        
+        $current_good_id = $good_id;
         $prise = $_POST["prise"];
         $user_id = $_POST["user_id"];
         $count = $_POST["count"];
@@ -116,6 +118,59 @@ class basket extends ControllerBase {
         $this->model->saveBasket($data1);
         return $this->index();
     }
+
+    // public function sendMailAfterBasket($order_basket_id){
+
+    //     var_dump($order_basket_id); exit();
+    //     $current_user = $this->getModel("user1", "user1");
+    //     $good_model = $this->getModel("good", "good");
+    //     $curr_basket_model = $this->getModel("basket", "basket");
+
+    //    // var_dump($good_id); exit();
+       
+    //     $goods = $curr_basket_model->getGoodsByNumOrd($order_basket_id);
+
+    //     $current_good = $good_model->getGood($good_id);
+
+    //     $model_basket_adm = [
+    //        "user" => [
+    //        "user_namefull" => $current_user["surname"] + $current_user["name"],
+    //        "order_basket_id" => $order_basket_id,
+    //         "user_email" => $current_user["email"],
+    //         "user_phone" => $current_user["phone"],
+    //         "price_order" => $goods["prise_basket"],
+    //         ],
+    //         "goods" => [
+    //         "numb_order" => $order_id,
+    //         "good_id" => $good_id,
+    //         "user_message" => $user_message,
+    //         "price_order" => $price_order,
+    //         "good_name" => $current_good["name"],
+    //         ]
+    //     ];
+
+    //     $model_basket_user = [
+            
+    //          "numb_order" => $order_id,
+    //          "good_id" => $good_id,
+    //          "price_order" => $price_order,
+    //          "good_name" => $current_good["name"],
+    //          "date_create" => date("Y-m-d H:i:s"),
+             
+    //      ];
+    //     $mail_adres_send_adm1 = "mihail71bma@yandex.ru";
+    //     $mail_adres_send_adm2 = "sen_77@bk.ru";
+    //     $mail_adres_send_adm3 = "mixail_956@rambler.ru";
+    //     $mail_adres_send_user = $user_email;
+    //     $mail_adres_send_user2 = "mixail_956@rambler.ru";
+
+    //  //     var_dump($model_basket_adm); exit();
+    //     $mail_data = $this->Render()->WriteHTML($model_basket_adm, "mailer", "mail_basket_adm");
+    //     app::Current()->SendMail($mail_adres_send_adm3, "Новый заказ!", $mail_data);
+        
+    //     $mail_data_user = $this->Render()->WriteHTML($model_basket_user, "mailer", "mail_basket_user");
+    //     app::Current()->SendMail($mail_adres_send_user2, "Новый заказ!", $mail_data_user);
+    // }
 
 
     public function addBuyToBasketPay() {
@@ -157,34 +212,31 @@ class basket extends ControllerBase {
        foreach ($_POST["id"] as $key => $value) {
            $this->model->deleteBasketTemp($value);
        }
-        
-       sendMailAfterBasket($order_basket_id);
-        
-        return $this->Render()->WriteHTML(
-            $order_basket_id,
-            "basket",
-            "afterBasketBuy"
-        );
-    }
+       
+     //  var_dump($order_basket_id); exit();
+     //  sendMailAfterBasket($order_basket_id);
+      
 
-    public function sendMailAfterBasket($order_basket_id){
-
-
+       // var_dump($order_basket_id); exit();
         $current_user = $this->getModel("user1", "user1");
         $good_model = $this->getModel("good", "good");
         $curr_basket_model = $this->getModel("basket", "basket");
-        $current_good = $good_model->getGood($good_id);
+
+        var_dump($good_id); exit();
+       
         $goods = $curr_basket_model->getGoodsByNumOrd($order_basket_id);
 
+        $current_good = $good_model->getGood($good_id);
+
         $model_basket_adm = [
-           "user" = [
+           "user" => [
            "user_namefull" => $current_user["surname"] + $current_user["name"],
            "order_basket_id" => $order_basket_id,
             "user_email" => $current_user["email"],
             "user_phone" => $current_user["phone"],
             "price_order" => $goods["prise_basket"],
             ],
-            "goods" = [
+            "goods" => [
             "numb_order" => $order_id,
             "good_id" => $good_id,
             "user_message" => $user_message,
@@ -208,13 +260,27 @@ class basket extends ControllerBase {
         $mail_adres_send_user = $user_email;
         $mail_adres_send_user2 = "mixail_956@rambler.ru";
 
-        //  var_dump($model_basket_adm); exit();
+     //     var_dump($model_basket_adm); exit();
         $mail_data = $this->Render()->WriteHTML($model_basket_adm, "mailer", "mail_basket_adm");
         app::Current()->SendMail($mail_adres_send_adm3, "Новый заказ!", $mail_data);
         
         $mail_data_user = $this->Render()->WriteHTML($model_basket_user, "mailer", "mail_basket_user");
         app::Current()->SendMail($mail_adres_send_user2, "Новый заказ!", $mail_data_user);
+    
+
+       
+
+        return $this->Render()->WriteHTML(
+            $order_basket_id,
+            "basket",
+            "afterBasketBuy"
+        );
+
+     //   var_dump($order_basket_id); exit();
+       // sendMailAfterBasket($order_basket_id);
     }
+
+    
 
 
 }
