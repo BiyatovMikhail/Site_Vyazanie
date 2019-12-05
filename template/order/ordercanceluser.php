@@ -1,3 +1,5 @@
+<-- поправить ширину экрана -->
+
 <div class="conteiner">
 
     <div class="card text-center">

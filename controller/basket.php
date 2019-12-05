@@ -212,7 +212,14 @@ class basket extends ControllerBase {
        foreach ($_POST["id"] as $key => $value) {
            $this->model->deleteBasketTemp($value);
        }
-       
+
+     // здесь нужно принять массив данных с template/user/basketuser , чтобы потом
+     // отправить все это на почту функция sendMailAfterBasket, 
+     // данные такие же как в корзине ( template /user/ basketuser и 
+     // controller/ user1/ basketuser): номер заказа, сумма заказа общая,  
+     // массив товаров - номер товара, название товара, цена, кол-во
+
+        var_dump($_POST); exit();
      //  var_dump($order_basket_id); exit();
      //  sendMailAfterBasket($order_basket_id);
       

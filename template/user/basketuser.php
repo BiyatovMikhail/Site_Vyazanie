@@ -1,5 +1,7 @@
 <?php //var_dump($MODEL); exit();
-  // var_dump($MODEL["basketTempByUser"]); exit();
+ //  var_dump($MODEL["basketTempByUser"]); exit();
+ // отсюда нужно отправить нормальный массив данных в controller / basket чтобы потом отправить на почту данные 
+ // с количеством товаров, суммой заказа, номером заказа
 ?>
 
 <div class="basket">
